@@ -18,7 +18,7 @@ void test_rockPaperScissors_sameResult(void)
     /* arrange */
     //Hier die Werte eingeben
     char result; //p=player, c=computer, n=none
-    int inputPlayer = 1;
+    int inputPlayer = ROCK;
     int inputComputer = inputPlayer;
 
     /* act */
@@ -29,6 +29,50 @@ void test_rockPaperScissors_sameResult(void)
     //Vergleichen
     TEST_ASSERT_EQUAL_INT('n', result);
 }
+
+void test_rockPaperScissors_differentResultsPlayerWins(void)
+{
+    /* arrange */
+    //Hier die Werte eingeben
+    char result; //p=player, c=computer, n=none
+    int inputPlayer = ROCK;
+    int inputComputer = SCISSORS;
+
+    /* act */
+    //Die Funktion wird ausgeführt 
+    result = findWinner(inputPlayer, inputComputer);
+
+    /* assert */
+    //Vergleichen
+    TEST_ASSERT_EQUAL_INT('p', result);
+
+     /* arrange */
+    //Hier die Werte eingeben
+    inputPlayer = PAPER;
+    inputComputer = ROCK;
+
+    /* act */
+    //Die Funktion wird ausgeführt 
+    result = findWinner(inputPlayer, inputComputer);
+
+    /* assert */
+    //Vergleichen
+    TEST_ASSERT_EQUAL_INT('p', result);
+
+      /* arrange */
+    //Hier die Werte eingeben
+    inputPlayer = SCISSORS;
+    inputComputer = PAPER;
+
+    /* act */
+    //Die Funktion wird ausgeführt 
+    result = findWinner(inputPlayer, inputComputer);
+
+    /* assert */
+    //Vergleichen
+    TEST_ASSERT_EQUAL_INT('p', result);
+}
+
 
 #endif // TEST
 
