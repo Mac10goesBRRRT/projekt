@@ -63,6 +63,19 @@ void test_getEnemyHealth(void){
     TEST_ASSERT_EQUAL(health, getEnemyHealth(test));
 }
 
+void test_setEnemyDamage(void){
+    int damage = 4, result;
+    enemy test = {50, damage*2};
+    setEnemyDamage(&test.damage, damage);
+    TEST_ASSERT_EQUAL(damage, test.damage);
+}
+
+void test_getEnemyDamage(void){
+    int damage = 4, result;
+    enemy test = {50, damage};
+    result = getEnemyDamage(test);
+    TEST_ASSERT_EQUAL(damage, result);
+}
 
 
 #endif // TEST

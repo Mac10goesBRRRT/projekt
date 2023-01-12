@@ -39,3 +39,11 @@ int getEnemyHealth(enemy enemy){
     //gibt health zurück, benötigt keine adress pointer
     return enemy.health;
 }
+
+void *setEnemyDamage(int *num, int damage){
+    *num = damage;
+}
+
+int getEnemyDamage(enemy enemy){
+    return enemy.damage;
+}
