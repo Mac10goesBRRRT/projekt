@@ -17,3 +17,7 @@ void setCharacterStrength(Character *character, int newStrength)
 {
    character->strength = newStrength;
 }
+
+int getCharacterStrength(Character *character) {
+    return character->strength;
+}

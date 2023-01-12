@@ -33,6 +33,8 @@ void test_setCharacterStrenght(void)
     TEST_ASSERT_EQUAL_INT(50,testCharacter.strength);
 }
 
-
+void test_getCharacterStrength(void) {
+    TEST_ASSERT_EQUAL_INT(5,testCharacter2.strength);
+}
 
 #endif // TEST
