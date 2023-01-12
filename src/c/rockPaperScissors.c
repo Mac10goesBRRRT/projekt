@@ -13,15 +13,24 @@ char findWinner(int inputPlayer, int inputComputer){
         if (inputComputer == SCISSORS){
             return 'p';
         }
+        else if (inputComputer == PAPER){
+            return 'c';
+        }
     }
     else if (inputPlayer == PAPER){
         if (inputComputer == ROCK){
             return 'p';
         }
+        else if (inputComputer == SCISSORS){
+            return 'c';
+        }
     }
     else if (inputPlayer == SCISSORS){
         if (inputComputer == PAPER){
             return 'p';
+        }
+        else if (inputComputer == ROCK){
+            return 'c';
         }
     }
 }
