@@ -36,5 +36,6 @@ void *setEnemyHealth(int *num, int health){
 }
 
 int getEnemyHealth(enemy enemy){
+    //gibt health zurück, benötigt keine adress pointer
     return enemy.health;
 }

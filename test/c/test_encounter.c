@@ -54,6 +54,15 @@ void test_setEnemyHealth(void){
     TEST_ASSERT_EQUAL(health, test.health);
 }
 
+void test_getEnemyHealth(void){
+    //arrange
+    int health = 50;
+    //act
+    enemy test = {health};
+    //assert
+    TEST_ASSERT_EQUAL(health, getEnemyHealth(test));
+}
+
 
 
 #endif // TEST
