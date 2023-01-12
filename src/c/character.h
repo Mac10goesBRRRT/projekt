@@ -6,16 +6,18 @@ typedef struct {
     char name [50];
 } Character;
 
-void setCharacterHealthPoints (Character *character,int newHealthPoints);
+void setCharacterHealthPoints (Character *character, int newHealthPoints);
 
 int getCharacterHealthPoints (Character *character);
 
 void setCharacterStrength (Character *character, int newStrength);
 
-int getCharacterStrength(Character *character);
+int getCharacterStrength (Character *character);
 
 void setCharacterDexterity (Character *character, int newDexterity);
 
-int getCharacterDexterity(Character *character);
+int getCharacterDexterity (Character *character);
+
+void setCharacterIntelligence (Character *character, int newIntelligence);
 
 #endif
