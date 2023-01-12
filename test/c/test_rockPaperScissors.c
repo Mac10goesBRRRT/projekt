@@ -17,7 +17,7 @@ void test_rockPaperScissors_sameResult(void)
 {
     /* arrange */
     //Hier die Werte eingeben
-    char result; //p=player, c=computer, n=none
+    char result;
     int inputPlayer = ROCK;
     int inputComputer = inputPlayer;
 
@@ -27,14 +27,14 @@ void test_rockPaperScissors_sameResult(void)
 
     /* assert */
     //Vergleichen
-    TEST_ASSERT_EQUAL_INT('n', result);
+    TEST_ASSERT_EQUAL_INT(NOWINNER, result);
 }
 
 void test_rockPaperScissors_differentResultsPlayerWins(void)
 {
     /* arrange */
     //Hier die Werte eingeben
-    char result; //p=player, c=computer, n=none
+    char result;
     int inputPlayer = ROCK;
     int inputComputer = SCISSORS;
 
@@ -44,7 +44,7 @@ void test_rockPaperScissors_differentResultsPlayerWins(void)
 
     /* assert */
     //Vergleichen
-    TEST_ASSERT_EQUAL_INT('p', result);
+    TEST_ASSERT_EQUAL_INT(PLAYERWINSROUND, result);
 
      /* arrange */
     //Hier die Werte eingeben
@@ -57,7 +57,7 @@ void test_rockPaperScissors_differentResultsPlayerWins(void)
 
     /* assert */
     //Vergleichen
-    TEST_ASSERT_EQUAL_INT('p', result);
+    TEST_ASSERT_EQUAL_INT(PLAYERWINSROUND, result);
 
       /* arrange */
     //Hier die Werte eingeben
@@ -70,14 +70,14 @@ void test_rockPaperScissors_differentResultsPlayerWins(void)
 
     /* assert */
     //Vergleichen
-    TEST_ASSERT_EQUAL_INT('p', result);
+    TEST_ASSERT_EQUAL_INT(PLAYERWINSROUND, result);
 }
 
 void test_rockPaperScissors_differentResultsPlayerLoses(void)
 {
     /* arrange */
     //Hier die Werte eingeben
-    char result; //p=player, c=computer, n=none
+    char result;
     int inputPlayer = ROCK;
     int inputComputer = PAPER;
 
@@ -87,7 +87,7 @@ void test_rockPaperScissors_differentResultsPlayerLoses(void)
 
     /* assert */
     //Vergleichen
-    TEST_ASSERT_EQUAL_INT('c', result);
+    TEST_ASSERT_EQUAL_INT(COMPUTERWINSROUND, result);
 
      /* arrange */
     //Hier die Werte eingeben
@@ -100,7 +100,7 @@ void test_rockPaperScissors_differentResultsPlayerLoses(void)
 
     /* assert */
     //Vergleichen
-    TEST_ASSERT_EQUAL_INT('c', result);
+    TEST_ASSERT_EQUAL_INT(COMPUTERWINSROUND, result);
 
       /* arrange */
     //Hier die Werte eingeben
@@ -113,7 +113,7 @@ void test_rockPaperScissors_differentResultsPlayerLoses(void)
 
     /* assert */
     //Vergleichen
-    TEST_ASSERT_EQUAL_INT('c', result);
+    TEST_ASSERT_EQUAL_INT(COMPUTERWINSROUND, result);
 }
 
 #endif // TEST

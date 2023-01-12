@@ -8,9 +8,9 @@ enum inputOptions{
 };
     
 enum roundWinner{
-    PLAYERWINSROUND = 'p',
-    COMPUTERWINSROUND = 'c',
-    NOWINNER = 'n'
+    PLAYERWINSROUND,
+    COMPUTERWINSROUND,
+    NOWINNER
 };
 
 
