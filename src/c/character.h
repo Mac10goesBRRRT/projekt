@@ -8,5 +8,10 @@ typedef struct {
 
 void setCharacterHealthPoints (Character *character,int newHealthPoints);
 
+int getCharacterHealthPoints (Character *character);
+
+void setCharacterStrength (Character *character, int newStrength);
+
+
 
 #endif

@@ -12,3 +12,8 @@ void setCharacterHealthPoints (Character *character, int newHealthPoints){
 int getCharacterHealthPoints (Character *character) {
     return character->healthPoints;
 }
+
+void setCharacterStrength(Character *character, int newStrength)
+{
+   character->strength = newStrength;
+}
