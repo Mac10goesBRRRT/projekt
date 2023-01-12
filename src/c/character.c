@@ -8,3 +8,7 @@ Character character;
 void setCharacterHealthPoints (Character *character, int newHealthPoints){
     character->healthPoints = newHealthPoints;
 }
+
+int getCharacterHealthPoints (Character *character) {
+    return character->healthPoints;
+}
