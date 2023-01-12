@@ -22,3 +22,19 @@ int playerHealth(int health, int damage){
     }
     return health;
 }
+
+enemy createEnemy(int health)
+{
+    enemy test;
+    test.health = health;
+    return test;
+}
+
+void *setEnemyHealth(int *num, int health){
+    *num = health;
+    //return health;
+}
+
+int getEnemyHealth(enemy enemy){
+    return enemy.health;
+}

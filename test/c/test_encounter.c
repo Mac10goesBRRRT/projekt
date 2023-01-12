@@ -3,6 +3,7 @@
 
 #include "encounter.h"
 
+
 void setUp(void){
 
 }
@@ -42,5 +43,17 @@ void test_playerIsNotOverhealed(void){
     //assert
     TEST_ASSERT_EQUAL(expectedHealth, health);
 }
+
+void test_setEnemyHealth(void){
+    //arrange
+    int health = 50, result;
+    //act
+    enemy test = {health*2};
+    setEnemyHealth(&test.health, health);
+    //assert
+    TEST_ASSERT_EQUAL(health, test.health);
+}
+
+
 
 #endif // TEST
