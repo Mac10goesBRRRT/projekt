@@ -13,7 +13,7 @@ void setUp(void)
     testCharacter.dexterity = 0;
     testCharacter2.dexterity = 5;
     testCharacter.intelligence = 0;
-    testCharacter2.intelligence = 5;
+    testCharacter2.intelligence = 7;
 }
 
 void tearDown(void)
@@ -54,6 +54,10 @@ void test_setCharacterIntelligence(void) {
     TEST_ASSERT_EQUAL_INT(0,testCharacter.intelligence);
     setCharacterIntelligence(&testCharacter,45);
     TEST_ASSERT_EQUAL_INT(45,testCharacter.intelligence);
+}
+
+void test_getCharacterIntelligence(void) {
+    TEST_ASSERT_EQUAL_INT(7,testCharacter2.intelligence);
 }
 
 #endif // TEST

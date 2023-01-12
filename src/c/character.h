@@ -20,4 +20,6 @@ int getCharacterDexterity (Character *character);
 
 void setCharacterIntelligence (Character *character, int newIntelligence);
 
+int getCharacterIntelligence (Character *character);
+
 #endif

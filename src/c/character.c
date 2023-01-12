@@ -32,3 +32,7 @@ int getCharacterDexterity (Character *character) {
 void setCharacterIntelligence (Character *character, int newIntelligence) {
     character->intelligence = newIntelligence;
 }
+
+int getCharacterIntelligence (Character *character) {
+    return character->intelligence;
+}
