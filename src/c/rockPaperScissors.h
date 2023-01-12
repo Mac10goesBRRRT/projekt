@@ -13,7 +13,13 @@ enum roundWinner{
     NOWINNER
 };
 
+enum gameWinner{
+    PLAYERWINSGAME,
+    COMPUTERWINSGAME
+};
+
 
 char findWinner(int inputPlayer, int inputComputer);
+char getComputerInput();
 
 #endif

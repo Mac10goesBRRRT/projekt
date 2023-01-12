@@ -4,9 +4,12 @@
 
 #include "rockPaperScissors.h"
 
+char getComputerInput(){
+    int input = rand() % 3;
+    return input;
+}
 
 char findWinner(int inputPlayer, int inputComputer){
-
     if (inputPlayer == inputComputer){
         return NOWINNER;
     }
