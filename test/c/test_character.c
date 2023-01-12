@@ -44,4 +44,9 @@ void test_setCharacterDexterity(void) {
     TEST_ASSERT_EQUAL_INT(50,testCharacter.dexterity);
 }
 
+
+void test_getCharacterDexterity(void) {
+    TEST_ASSERT_EQUAL_INT(5,testCharacter2.dexterity);
+}
+
 #endif // TEST

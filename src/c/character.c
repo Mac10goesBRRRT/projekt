@@ -24,3 +24,7 @@ int getCharacterStrength (Character *character) {
 void setCharacterDexterity (Character *character, int newDexterity) {
     character->dexterity = newDexterity;
 }
+
+int getCharacterDexterity (Character *character) {
+    return character->dexterity;
+}

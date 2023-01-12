@@ -16,4 +16,6 @@ int getCharacterStrength(Character *character);
 
 void setCharacterDexterity (Character *character, int newDexterity);
 
+int getCharacterDexterity(Character *character);
+
 #endif
