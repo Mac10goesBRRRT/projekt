@@ -6,31 +6,20 @@
 
 
 char findWinner(int inputPlayer, int inputComputer){
+
     if (inputPlayer == inputComputer){
-        return 'n';
+        return NOWINNER;
     }
-    else if (inputPlayer == ROCK){
-        if (inputComputer == SCISSORS){
-            return 'p';
-        }
-        else if (inputComputer == PAPER){
-            return 'c';
-        }
+    else if (inputPlayer == ROCK && inputComputer == SCISSORS) {
+        return PLAYERWINSROUND;
     }
-    else if (inputPlayer == PAPER){
-        if (inputComputer == ROCK){
-            return 'p';
-        }
-        else if (inputComputer == SCISSORS){
-            return 'c';
-        }
+    else if (inputPlayer == PAPER && inputComputer == ROCK) {
+        return PLAYERWINSROUND;
     }
-    else if (inputPlayer == SCISSORS){
-        if (inputComputer == PAPER){
-            return 'p';
-        }
-        else if (inputComputer == ROCK){
-            return 'c';
-        }
+    else if (inputPlayer == SCISSORS && inputComputer == PAPER) {
+        return PLAYERWINSROUND;
+    }
+    else {
+        return COMPUTERWINSROUND;
     }
 }

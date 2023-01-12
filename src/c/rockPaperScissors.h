@@ -2,11 +2,18 @@
 #define ROCKPAPERSCISSORS_H
 
 enum inputOptions{
-        ROCK = 1,
-        PAPER = 2,
-        SCISSORS = 3
-    };
+    ROCK,
+    PAPER,
+    SCISSORS
+};
     
+enum roundWinner{
+    PLAYERWINSROUND = 'p',
+    COMPUTERWINSROUND = 'c',
+    NOWINNER = 'n'
+};
+
+
 char findWinner(int inputPlayer, int inputComputer);
 
 #endif
