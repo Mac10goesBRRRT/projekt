@@ -65,6 +65,9 @@ int getEnemyArmor(enemy enemy){
 int enemyDamaged(enemy enemy, int damage){
     int armor = getEnemyArmor(enemy);
     int damagedealt = damage - armor;
+    if(damagedealt < 1){
+        damagedealt = 1;
+    }
     enemy.health = enemy.health - damagedealt;
     return enemy.health;
 }
