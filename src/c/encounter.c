@@ -30,7 +30,7 @@ int playerHealth(int health, int damage){
 }
 
 int enemyDamaged(enemy enemy, int damage){
-    int armor = getEnemyArmor(enemy);
+    int armor = getEnemyInt(&enemy.armor);
     int damagedealt = damage - armor;
     if(damagedealt < 1){
         damagedealt = 1;
@@ -47,25 +47,12 @@ void *setEnemyHealth(int *num, int health){
     //return health;
 }
 
-int getEnemyHealth(enemy enemy){
-    //gibt health zurück, benötigt keine adress pointer
-    return enemy.health;
-}
-
 void *setEnemyDamage(int *num, int damage){
     *num = damage;
 }
 
-int getEnemyDamage(enemy enemy){
-    return enemy.damage;
-}
-
 void *setEnemyArmor(int *num, int armor){
     *num = armor;
-}
-
-int getEnemyArmor(enemy enemy){
-    return enemy.armor;
 }
 
 int getEnemyInt(int *structParam){
