@@ -77,5 +77,11 @@ void test_getEnemyDamage(void){
     TEST_ASSERT_EQUAL(damage, result);
 }
 
-
+void test_get_setEnemyArmor(void){
+    int armor = 4, result;
+    enemy test = {50, 4, armor*2};
+    setEnemyArmor(&test.armor, armor);
+    result = getEnemyArmor(test);
+    TEST_ASSERT_EQUAL(armor, result);
+}
 #endif // TEST

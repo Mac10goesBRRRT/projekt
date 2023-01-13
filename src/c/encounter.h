@@ -6,6 +6,7 @@
 typedef struct {
     int health;
     int damage;
+    int armor;
 } enemy; 
 
 
@@ -18,5 +19,9 @@ int getEnemyHealth(enemy enemy);
 //setEnemyDamage(&enemy.damage, damage);
 void *setEnemyDamage(int *num, int damage);
 int getEnemyDamage(enemy enemy);
+//setEnemyArmor(&enemy.armor, armor);
+void *setEnemyArmor(int *num, int damage);
+int getEnemyArmor(enemy enemy);
+
 
 #endif
