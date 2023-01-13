@@ -23,5 +23,7 @@ int getEnemyDamage(enemy enemy);
 void *setEnemyArmor(int *num, int damage);
 int getEnemyArmor(enemy enemy);
 
+int enemyDamaged(enemy enemy, int damage);
+
 
 #endif

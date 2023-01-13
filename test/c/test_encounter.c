@@ -84,4 +84,21 @@ void test_get_setEnemyArmor(void){
     result = getEnemyArmor(test);
     TEST_ASSERT_EQUAL(armor, result);
 }
+
+void test_PlayerAttacksEnemy_DoesDamage(void)
+{
+    //arrange
+    int playerDamage = 10;
+    int enemyHealth = 50;
+    int enemyArmor = 4;
+    //health - (damage - armor)
+    int expectedEnemyHealth = 44;
+    //act
+    enemy test = {enemyHealth, 4, enemyArmor};
+    test.health = enemyDamaged(test, playerDamage);
+    //assert
+    TEST_ASSERT_EQUAL(expectedEnemyHealth, test.health);
+}
+
+
 #endif // TEST

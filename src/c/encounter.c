@@ -62,3 +62,9 @@ int getEnemyArmor(enemy enemy){
     return enemy.armor;
 }
 
+int enemyDamaged(enemy enemy, int damage){
+    int armor = getEnemyArmor(enemy);
+    int damagedealt = damage - armor;
+    enemy.health = enemy.health - damagedealt;
+    return enemy.health;
+}
