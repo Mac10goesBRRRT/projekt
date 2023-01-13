@@ -3,7 +3,7 @@
 #include <string.h>
 #include <stdbool.h>
 
-#include <encounter.h>
+#include "encounter.h"
 /*Gegner mit AC, damagedealt = damage-AC, kann nicht kleiner 1 sein
 evtl. lair bonus der dem gegner ein wenig mehr/weniger damage erlaubt
 gegner erhalten eine zufällige menge Gold, die beim tod an den spieler gegeben werden
@@ -29,13 +29,19 @@ int playerHealth(int health, int damage){
     return health;
 }
 
-/* enemy createEnemy(int health)
-{
-    enemy test;
-    test.health = health;
-    return test;
-} */
+int enemyDamaged(enemy enemy, int damage){
+    int armor = getEnemyArmor(enemy);
+    int damagedealt = damage - armor;
+    if(damagedealt < 1){
+        damagedealt = 1;
+    }
+    enemy.health = enemy.health - damagedealt;
+    return enemy.health;
+}
 
+
+
+//Getter/Setter Funktionen
 void *setEnemyHealth(int *num, int health){
     *num = health;
     //return health;
@@ -62,12 +68,6 @@ int getEnemyArmor(enemy enemy){
     return enemy.armor;
 }
 
-int enemyDamaged(enemy enemy, int damage){
-    int armor = getEnemyArmor(enemy);
-    int damagedealt = damage - armor;
-    if(damagedealt < 1){
-        damagedealt = 1;
-    }
-    enemy.health = enemy.health - damagedealt;
-    return enemy.health;
+int getEnemyInt(int *structParam){
+    return *structParam;
 }
