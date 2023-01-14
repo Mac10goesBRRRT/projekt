@@ -31,11 +31,6 @@ void test_getCharacterHealthPoints (void) {
     TEST_ASSERT_EQUAL_INT(15,testCharacter2.healthPoints);
 }
 
-void test_addCharacterHealthPoints (void) {
-    increaseStat(&testCharacter2,HEALTHPOINTS,5);
-    TEST_ASSERT_EQUAL_INT(20,testCharacter2.healthPoints);
-}
-
 void test_setCharacterStrenght(void) {
     TEST_ASSERT_EQUAL_INT(0,testCharacter.strength);
     setCharacterStrength(&testCharacter,50);
@@ -44,11 +39,6 @@ void test_setCharacterStrenght(void) {
 
 void test_getCharacterStrength(void) {
     TEST_ASSERT_EQUAL_INT(5,testCharacter2.strength);
-}
-
-void test_addCharacterStrength (void) {
-    increaseStat(&testCharacter2,STRENGTH,5);
-    TEST_ASSERT_EQUAL_INT(10,testCharacter2.strength);
 }
 
 void test_setCharacterDexterity(void) {
@@ -69,6 +59,13 @@ void test_setCharacterIntelligence(void) {
 
 void test_getCharacterIntelligence(void) {
     TEST_ASSERT_EQUAL_INT(7,testCharacter2.intelligence);
+}
+
+void test_increaseStat(void) {
+    increaseStat(&testCharacter2,STRENGTH,15);
+    TEST_ASSERT_EQUAL_INT(20,testCharacter2.strength);
+    increaseStat(&testCharacter2,INTELLIGENCE,15);
+    TEST_ASSERT_EQUAL_INT(22,testCharacter2.intelligence);
 }
 
 #endif // TEST
