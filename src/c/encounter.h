@@ -15,6 +15,7 @@ bool playerAlive(int health);
 int playerHealth(int health, int damage);
 int enemyDamaged(enemy enemy, int damage);
 int switchTurns(int currentTurn);
+int fight(int playerHealth, int playerDamage, int playerArmor, int playerAttack, enemy enemy);
 
 
 //Getter/Setter Funktionen

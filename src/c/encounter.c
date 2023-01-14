@@ -64,3 +64,14 @@ int switchTurns(int currentTurn){
     currentTurn = currentTurn % 2 + 1;
     return currentTurn;
 }
+
+int fight(int playerHealth, int playerDamage, int playerArmor, int playerAttack, enemy enemy){
+    int currentTurn = 0;
+    while(playerAlive(playerHealth) && getEnemyInt(&enemy.health) > 0){
+        setEnemyHealth(&enemy.health, enemyDamaged(enemy, playerDamage));
+    }
+    if(playerAlive(playerHealth)){
+        return 1;
+    }
+    return 0;
+}

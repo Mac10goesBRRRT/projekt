@@ -145,4 +145,17 @@ void test_switchingTurns(void)
     //assert
     TEST_ASSERT_EQUAL(1,result);
 }
+
+void test_FightPlayerWins(void)
+{
+    //arange
+    int playerHealth = 100, playerDamage = 10, playerArmor = 4, playerAttack = 5;
+    int enemyHealth = 1, enemyDamage = 4, enemyArmor = 4, enemyAttack = 5;
+    int result;
+    //arrange
+    enemy test = {enemyHealth, enemyDamage, enemyArmor, enemyAttack};
+    result = fight(playerHealth, playerDamage, playerArmor, playerAttack, test);
+    //assert
+    TEST_ASSERT_EQUAL(1, result);
+}
 #endif // TEST
