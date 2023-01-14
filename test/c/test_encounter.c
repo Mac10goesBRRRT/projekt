@@ -17,18 +17,23 @@ void test_isPlayerAlive_healthGreaterZero(void)
 {
     //arrange
     int health = 100;
+    bool result;
     //act
+    result = playerAlive(health);
     //assert
-    TEST_ASSERT_TRUE(playerAlive(health));
+    TEST_ASSERT_TRUE(result);
 }
 
 void test_isPlayerAlive_healthLowerZero(void)
 {
     //arrange
     int health = -1;
+    bool result;
     //act
+    result = playerAlive(health);
+
     //assert
-    TEST_ASSERT_FALSE(playerAlive(health));
+    TEST_ASSERT_FALSE(result);
 }
 
 void test_playerIsDamaged(void)
@@ -62,8 +67,9 @@ void test_setEnemyHealth(void){
     //act
     enemy test = {health*2};
     setEnemyHealth(&test.health, health);
+    result = test.health;
     //assert
-    TEST_ASSERT_EQUAL(health, test.health);
+    TEST_ASSERT_EQUAL(health, result);
 }
 
 void test_getEnemyHealth(void){
@@ -77,24 +83,34 @@ void test_getEnemyHealth(void){
 }
 
 void test_setEnemyDamage(void){
+    //arrange
     int damage = 4, result;
     enemy test = {50, damage*2};
+    //act
     setEnemyDamage(&test.damage, damage);
-    TEST_ASSERT_EQUAL(damage, test.damage);
+    result = test.damage;
+    //assert
+    TEST_ASSERT_EQUAL(damage, result);
 }
 
 void test_getEnemyDamage(void){
+    //arrange
     int damage = 4, result;
+    //act
     enemy test = {50, damage};
     result = getEnemyInt(&test.damage);
+    //assert
     TEST_ASSERT_EQUAL(damage, result);
 }
 
 void test_get_setEnemyArmor(void){
+    //arrange
     int armor = 4, result;
     enemy test = {50, 4, armor*2};
+    //act
     setEnemyArmor(&test.armor, armor);
     result = getEnemyInt(&test.armor);
+    //assert
     TEST_ASSERT_EQUAL(armor, result);
 }
 
@@ -131,12 +147,20 @@ void test_PlayerAttacksEnemy_DoesMinDamage(void)
 //A better way to get the value of a struct, REFACTORING if it works
 void test_getterWithParams(void)
 {
+    //arrange
     int health = 50, armor = 4, damage = 4, attack = 5;
+    int healthResult, armorResult, damageResult, attackResult;
     enemy test = {health, damage, armor, attack};
-    TEST_ASSERT_EQUAL(health, getEnemyInt(&test.health));
-    TEST_ASSERT_EQUAL(armor, getEnemyInt(&test.armor));
-    TEST_ASSERT_EQUAL(damage, getEnemyInt(&test.damage));
-    TEST_ASSERT_EQUAL(attack, getEnemyInt(&test.attack));
+    //act
+    healthResult = getEnemyInt(&test.health);
+    armorResult = getEnemyInt(&test.armor);
+    damageResult = getEnemyInt(&test.damage);
+    attackResult = getEnemyInt(&test.attack);
+    //assert
+    TEST_ASSERT_EQUAL(health, healthResult);
+    TEST_ASSERT_EQUAL(armor, armorResult);
+    TEST_ASSERT_EQUAL(damage, damageResult);
+    TEST_ASSERT_EQUAL(attack, attackResult);
 }
 void test_switchingTurns(void)
 {
