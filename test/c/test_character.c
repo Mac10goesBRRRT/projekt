@@ -30,7 +30,7 @@ void test_setCharacterHealthPoints(void)
 }
 
 void test_getCharacterHealthPoints (void) {
-    TEST_ASSERT_EQUAL_INT(15,testCharacter2.healthPoints);
+    TEST_ASSERT_EQUAL_INT(15,getCharacterHealthPoints(&testCharacter2));
 }
 
 void test_setCharacterStrenght(void) {
@@ -40,7 +40,7 @@ void test_setCharacterStrenght(void) {
 }
 
 void test_getCharacterStrength(void) {
-    TEST_ASSERT_EQUAL_INT(5,testCharacter2.strength);
+    TEST_ASSERT_EQUAL_INT(5,getCharacterStrength(&testCharacter2));
 }
 
 void test_setCharacterDexterity(void) {
@@ -50,7 +50,7 @@ void test_setCharacterDexterity(void) {
 }
 
 void test_getCharacterDexterity(void) {
-    TEST_ASSERT_EQUAL_INT(5,testCharacter2.dexterity);
+    TEST_ASSERT_EQUAL_INT(5,getCharacterDexterity(&testCharacter2));
 }
 
 void test_setCharacterIntelligence(void) {
@@ -60,7 +60,7 @@ void test_setCharacterIntelligence(void) {
 }
 
 void test_getCharacterIntelligence(void) {
-    TEST_ASSERT_EQUAL_INT(7,testCharacter2.intelligence);
+    TEST_ASSERT_EQUAL_INT(7,getCharacterIntelligence(&testCharacter2));
 }
 
 void test_setCharacterLevel(void) {
@@ -70,7 +70,7 @@ void test_setCharacterLevel(void) {
 }
 
 void test_getCharacterLevel(void) {
-    TEST_ASSERT_EQUAL_INT(5,testCharacter2.level);
+    TEST_ASSERT_EQUAL_INT(5,getCharacterLevel(&testCharacter2));
 }
 
 void test_increaseStat(void) {
