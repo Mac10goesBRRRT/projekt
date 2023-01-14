@@ -42,6 +42,10 @@ void setCharacterLevel (Character *character, int newLevel) {
     character->level = newLevel;
 }
 
+int getCharacterLevel (Character *character) {
+    return character->level;
+}
+
 
 void increaseStat (Character *character, int stat, int amount) {
     switch (stat)

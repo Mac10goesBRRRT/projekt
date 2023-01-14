@@ -69,6 +69,10 @@ void test_setCharacterLevel(void) {
     TEST_ASSERT_EQUAL_INT(1,testCharacter.level);
 }
 
+void test_getCharacterLevel(void) {
+    TEST_ASSERT_EQUAL_INT(5,testCharacter2.level);
+}
+
 void test_increaseStat(void) {
     increaseStat(&testCharacter2,STRENGTH,15);
     TEST_ASSERT_EQUAL_INT(20,testCharacter2.strength);
