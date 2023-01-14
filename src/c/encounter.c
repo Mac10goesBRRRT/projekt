@@ -4,6 +4,7 @@
 #include <stdbool.h>
 
 #include "encounter.h"
+
 /*Gegner mit AC, damagedealt = damage-AC, kann nicht kleiner 1 sein
 evtl. lair bonus der dem gegner ein wenig mehr/weniger damage erlaubt
 gegner erhalten eine zufällige menge Gold, die beim tod an den spieler gegeben werden
