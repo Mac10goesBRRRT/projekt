@@ -3,6 +3,7 @@
 #include <string.h>
 
 #include "character.h"
+
 Character character;
 
 void setCharacterHealthPoints (Character *character, int newHealthPoints){
@@ -13,20 +14,12 @@ int getCharacterHealthPoints (Character *character) {
     return character->healthPoints;
 }
 
-void addCharacterHealthPoints (Character *character, int addedHealthPoints) {
-    character->healthPoints += addedHealthPoints;
-}
-
 void setCharacterStrength (Character *character, int newStrength) {
    character->strength = newStrength;
 }
 
 int getCharacterStrength (Character *character) {
     return character->strength;
-}
-
-void addCharacterStrength (Character *character, int addStrength) {
-    character->strength += addStrength;
 }
 
 void setCharacterDexterity (Character *character, int newDexterity) {
@@ -43,4 +36,23 @@ void setCharacterIntelligence (Character *character, int newIntelligence) {
 
 int getCharacterIntelligence (Character *character) {
     return character->intelligence;
+}
+
+
+void increaseStat (Character *character, int Stat, int amount) {
+    switch (Stat)
+    {
+    case 1:        
+        character->strength += amount;break;
+    case 2:
+        character->dexterity += amount;break;
+    case 3:
+        character->intelligence += amount;break;
+    case 4:
+        character->healthPoints += amount;break;
+    case 5:
+        character->manaPoints += amount;break;
+    default:
+        break;
+    }
 }
