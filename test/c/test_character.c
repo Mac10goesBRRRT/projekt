@@ -80,4 +80,8 @@ void test_increaseStat(void) {
     TEST_ASSERT_EQUAL_INT(22,testCharacter2.intelligence);
 }
 
+void test_calculateStatIncrease(void) {
+    TEST_ASSERT_EQUAL_INT(5,testCharacter2.level);
+    TEST_ASSERT_EQUAL_INT(25,calculateStatIncrease(&testCharacter2,5));
+}
 #endif // TEST

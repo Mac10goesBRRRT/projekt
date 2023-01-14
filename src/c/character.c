@@ -46,6 +46,10 @@ int getCharacterLevel (Character *character) {
     return character->level;
 }
 
+int calculateStatIncrease (Character *character, int amount) {
+    return character->level*amount;
+}
+
 
 void increaseStat (Character *character, int stat, int amount) {
     switch (stat)

@@ -31,4 +31,6 @@ void setCharacterLevel (Character *character, int newLevel);
 int getCharacterLevel (Character *character);
 
 void increaseStat (Character *character, int stat, int amount);
+
+int calculateStatIncrease (Character *character, int amount);
 #endif
