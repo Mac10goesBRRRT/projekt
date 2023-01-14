@@ -38,9 +38,13 @@ int getCharacterIntelligence (Character *character) {
     return character->intelligence;
 }
 
+void setCharacterLevel (Character *character, int newLevel) {
+    character->level = newLevel;
+}
 
-void increaseStat (Character *character, int Stat, int amount) {
-    switch (Stat)
+
+void increaseStat (Character *character, int stat, int amount) {
+    switch (stat)
     {
     case 1:        
         character->strength += amount;break;
