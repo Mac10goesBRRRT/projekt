@@ -1,0 +1,6 @@
+# LINES WITH '#' AT BEGINNING GET IGNORED
+#ID;NAME ORT;MSG;successor;predeacessor;items(comma seperated)
+0;office;welcome to office;1;-1;1,2
+1;hospital;welcome to the hospital;2;0;3
+2;fire department;welcome to fire department;3;2;4
+3;police station;welcome to police;2;4;5,6

@@ -1,3 +1,5 @@
+
+
 ************************************************************************************************************
                        _____          __  __ ______     _____ _______       _____ _______ 
                       / ____|   /\   |  \/  |  ____|   / ____|__   __|/\   |  __ \__   __|
@@ -14,16 +16,26 @@
  |__/|__/\__/_/\__/\___/_/_/_/\__/  \__/\___/ /_/|_/_/ |_/_/  /_/___/ 
 
 
-Instructions
 /////////////////////////////////////////////////////////////////////////////////////////////
 
-how to move in the game:
-*****
+INSTRUCTIONS:
+
+
+how to move in the game
+enter "north" to go north
+enter "south" to go south
 
 special events:
 *****
 
+CURRENTLY NOT AVAILABLE FEATURES:
+- "use [item]"
+- "find [item]"
+
 WARNING: Pickups are always hidden, find them with "find [item]" and take them with "take [item]"
+
+How to leave the game:
+use "esc", "exit" or "quit" to leave the game
 
 And remember, EVERY point/room has something you can do.
 Have fun!
@@ -33,10 +45,5 @@ Have fun!
 
 ************************************************************************************************************
 
-Agent: Noah Pierce
-Age: 28
 
-11/18/2018
-*TEXT*
-
-However, let's get started.
+did you read our rules and instructions? Yes(y) or No(n)
