@@ -4,6 +4,7 @@
 #include "encounter.h"
 
 
+
 void setUp(void){
 
 }
@@ -16,6 +17,15 @@ void test_isPlayerAlive_healthGreaterZero(void)
 {
     //arrange
     int health = 100;
+    //act
+    //assert
+    TEST_ASSERT_TRUE(playerAlive(health));
+}
+
+void test_isPlayerAlive_healthLowerZero(void)
+{
+    //arrange
+    int health = -1;
     //act
     //assert
     TEST_ASSERT_TRUE(playerAlive(health));
@@ -117,7 +127,8 @@ void test_PlayerAttacksEnemy_DoesMinDamage(void)
 }
 
 //A better way to get the value of a struct, REFACTORING if it works
-void test_getterWithParams(void){
+void test_getterWithParams(void)
+{
     int health = 50, armor = 4, damage = 4, attack = 5;
     enemy test = {health, damage, armor, attack};
     TEST_ASSERT_EQUAL(health, getEnemyInt(&test.health));
@@ -125,4 +136,15 @@ void test_getterWithParams(void){
     TEST_ASSERT_EQUAL(damage, getEnemyInt(&test.damage));
     TEST_ASSERT_EQUAL(attack, getEnemyInt(&test.attack));
 }
+void test_switchingTurns(void)
+{
+    //arrange
+    int currentTurn = 0, result;
+    //act
+    result = switchTurns(currentTurn);
+    //assert
+    TEST_ASSERT_EQUAL(1,result);
+}
+
+
 #endif // TEST
