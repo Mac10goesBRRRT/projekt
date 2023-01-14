@@ -10,6 +10,8 @@ void setCharacterHealthPoints (Character *character, int newHealthPoints);
 
 int getCharacterHealthPoints (Character *character);
 
+void addCharacterHealthPoints (Character *character, int addedHealthPoints);
+
 void setCharacterStrength (Character *character, int newStrength);
 
 int getCharacterStrength (Character *character);

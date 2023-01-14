@@ -30,6 +30,13 @@ void test_setCharacterHealthPoints(void)
 void test_getCharacterHealthPoints (void) {
     TEST_ASSERT_EQUAL_INT(15,testCharacter2.healthPoints);
 }
+
+void test_addCharacterHealthPoints (void) {
+    addCharacterHealthPoints(&testCharacter2,5);
+    TEST_ASSERT_EQUAL_INT(20,testCharacter2.healthPoints);
+
+}
+
 void test_setCharacterStrenght(void) {
     TEST_ASSERT_EQUAL_INT(0,testCharacter.strength);
     setCharacterStrength(&testCharacter,50);
