@@ -8,70 +8,94 @@
 /*Gegner mit AC, damagedealt = damage-AC, kann nicht kleiner 1 sein
 evtl. lair bonus der dem gegner ein wenig mehr/weniger damage erlaubt
 gegner erhalten eine zufällige menge Gold, die beim tod an den spieler gegeben werden
-humanoide gegner haben heiltränke mit denen sie sich ggf heilen. 
-heilung erfolgt dann, wenn bestimmte hp (50%) unterschritten wird. wird allerdings gewürfelt, 
+humanoide gegner haben heiltränke mit denen sie sich ggf heilen.
+heilung erfolgt dann, wenn bestimmte hp (50%) unterschritten wird. wird allerdings gewürfelt,
 je niedriger die hp%, desto höher die chance. */
 
-bool playerAlive(int health){
-    if(health > 0){
+bool playerAlive(int health)
+{
+    if (health > 0)
+    {
         return true;
     }
-    else{
+    else
+    {
         return false;
     }
 }
 
-int playerHealth(int health, int damage){
+int playerHealth(int health, int damage, int armor)
+{
     const int maxhealth = 100;
     health = health - damage;
-    if(health > maxhealth){
+    if (health > maxhealth)
+    {
         health = maxhealth;
     }
     return health;
 }
 
-int enemyDamaged(enemy enemy, int damage){
+int enemyDamaged(enemy enemy, int damage)
+{
     int armor = getEnemyInt(&enemy.armor);
     int damagedealt = damage - armor;
-    if(damagedealt < 1){
+    if (damagedealt < 1)
+    {
         damagedealt = 1;
     }
     enemy.health = enemy.health - damagedealt;
     return enemy.health;
 }
 
-
-
-//Getter/Setter Funktionen
-void *setEnemyHealth(int *num, int health){
+// Getter/Setter Funktionen
+void *setEnemyHealth(int *num, int health)
+{
     *num = health;
-    //return health;
+    // return health;
 }
 
-void *setEnemyDamage(int *num, int damage){
+void *setEnemyDamage(int *num, int damage)
+{
     *num = damage;
 }
 
-void *setEnemyArmor(int *num, int armor){
+void *setEnemyArmor(int *num, int armor)
+{
     *num = armor;
 }
 
-int getEnemyInt(int *structParam){
+int getEnemyInt(int *structParam)
+{
     return *structParam;
 }
 
-int switchTurns(int currentTurn){
+int switchTurns(int currentTurn)
+{
     currentTurn = currentTurn % 2 + 1;
     return currentTurn;
 }
 
-int fight(int playerHealth, int playerDamage, int playerArmor, int playerAttack, enemy enemy){
+int fight(int playerH, int playerDamage, int playerArmor, int playerAttack, enemy enemy)
+{
     int currentTurn = 0;
-    while(playerAlive(playerHealth) && getEnemyInt(&enemy.health) > 0){
-        setEnemyHealth(&enemy.health, enemyDamaged(enemy, playerDamage));
+    while (playerAlive(playerH) && getEnemyInt(&enemy.health) > 0)
+    {
+        if (currentTurn == 0)
+        {
+            setEnemyHealth(&enemy.health, enemyDamaged(enemy, playerDamage));
+        }
+        else
+        {
+            playerH = playerHealth(playerH, getEnemyInt(&enemy.damage), playerArmor);
+        }
+        currentTurn = switchTurns(currentTurn);
     }
-    if(playerAlive(playerHealth)){
+    if (playerAlive(playerH))
+    {
         return 1;
     }
-    return 0;
+    else
+    {
+        return 0;
+    }
 }

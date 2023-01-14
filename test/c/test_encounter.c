@@ -36,9 +36,10 @@ void test_playerIsDamaged(void)
     //arrange
     int health = 100;
     int damage = 10;
+    int armor = 0;
     int expectedHealth = 90;
     //act
-    health = playerHealth(health, damage);
+    health = playerHealth(health, damage, armor);
     //assert
     TEST_ASSERT_EQUAL(expectedHealth, health);
 }
@@ -46,10 +47,11 @@ void test_playerIsDamaged(void)
 void test_playerIsNotOverhealed(void){
     //arrange
     int health = 100;
+    int armor = 0;
     int heal = -10;
     int expectedHealth = 100;
     //act
-    health = playerHealth(health, heal);
+    health = playerHealth(health, heal, armor);
     //assert
     TEST_ASSERT_EQUAL(expectedHealth, health);
 }
@@ -158,4 +160,19 @@ void test_FightPlayerWins(void)
     //assert
     TEST_ASSERT_EQUAL(1, result);
 }
+
+void test_FightEnemyWins(void)
+{
+    //arange
+    int playerHealth = 1, playerDamage = 10, playerArmor = 4, playerAttack = 5;
+    int enemyHealth = 100, enemyDamage = 4, enemyArmor = 4, enemyAttack = 5;
+    int result;
+    //arrange
+    enemy test = {enemyHealth, enemyDamage, enemyArmor, enemyAttack};
+    result = fight(playerHealth, playerDamage, playerArmor, playerAttack, test);
+    //assert
+    TEST_ASSERT_EQUAL(0, result);
+}
+
+
 #endif // TEST
