@@ -21,6 +21,16 @@ void test_isPlayerAlive_healthGreaterZero(void)
     TEST_ASSERT_TRUE(playerAlive(health));
 }
 
+
+void test_isPlayerAlive_healthLowerZero(void)
+{
+    //arrange
+    int health = -1;
+    //act
+    //assert
+    TEST_ASSERT_FALSE(playerAlive(health));
+}
+
 void test_playerIsDamaged(void)
 {
     //arrange
@@ -124,5 +134,15 @@ void test_getterWithParams(void){
     TEST_ASSERT_EQUAL(armor, getEnemyInt(&test.armor));
     TEST_ASSERT_EQUAL(damage, getEnemyInt(&test.damage));
     TEST_ASSERT_EQUAL(attack, getEnemyInt(&test.attack));
+}
+
+void test_switchingTurns(void)
+{
+    //arrange
+    int currentTurn = 0, result;
+    //act
+    result = switchTurns(currentTurn);
+    //assert
+    TEST_ASSERT_EQUAL(1,result);
 }
 #endif // TEST

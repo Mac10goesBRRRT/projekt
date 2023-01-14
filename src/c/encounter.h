@@ -14,7 +14,7 @@ typedef struct {
 bool playerAlive(int health);
 int playerHealth(int health, int damage);
 int enemyDamaged(enemy enemy, int damage);
-
+int switchTurns(int currentTurn);
 
 
 //Getter/Setter Funktionen

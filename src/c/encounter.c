@@ -58,3 +58,8 @@ void *setEnemyArmor(int *num, int armor){
 int getEnemyInt(int *structParam){
     return *structParam;
 }
+
+int switchTurns(int currentTurn){
+    currentTurn = currentTurn % 2 + 1;
+    return currentTurn;
+}
