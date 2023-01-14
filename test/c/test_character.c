@@ -47,6 +47,11 @@ void test_getCharacterStrength(void) {
     TEST_ASSERT_EQUAL_INT(5,testCharacter2.strength);
 }
 
+void test_addCharacterStrength (void) {
+    addCharacterStrength(&testCharacter2,15);
+    TEST_ASSERT_EQUAL_INT(20,testCharacter2.strength);
+}
+
 void test_setCharacterDexterity(void) {
     TEST_ASSERT_EQUAL_INT(0,testCharacter.dexterity);
     setCharacterDexterity(&testCharacter,50);
