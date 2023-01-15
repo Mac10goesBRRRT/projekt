@@ -4,12 +4,12 @@
 
 #include "rockPaperScissors.h"
 
-char getComputerInput(){
+int getComputerInput(){
     int input = rand() % 3;
     return input;
 }
 
-char findWinner(int inputPlayer, int inputComputer){
+int findWinner(int inputPlayer, int inputComputer){
     if (inputPlayer == inputComputer){
         return NOWINNER;
     }
@@ -27,10 +27,13 @@ char findWinner(int inputPlayer, int inputComputer){
     }
 }
 
-char wasGameWon(roundsToWin, playerWins, computerWins){
-    char winner;
+int wasGameWon(roundsToWin, playerWins, computerWins){
+    int winner;
     if (playerWins == roundsToWin){
         winner = PLAYERWINSGAME;
+    }
+    else if (computerWins == roundsToWin){
+        winner = COMPUTERWINSGAME;
     }
     return winner;
 }

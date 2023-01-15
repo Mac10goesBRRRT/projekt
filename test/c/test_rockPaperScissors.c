@@ -17,7 +17,7 @@ void test_rockPaperScissors_sameResult(void)
 {
     /* arrange */
     //Hier die Werte eingeben
-    char result;
+    int result;
     int inputPlayer = ROCK;
     int inputComputer = inputPlayer;
 
@@ -34,7 +34,7 @@ void test_rockPaperScissors_differentResultsPlayerWins(void)
 {
     /* arrange */
     //Hier die Werte eingeben
-    char result;
+    int result;
     int inputPlayer = ROCK;
     int inputComputer = SCISSORS;
 
@@ -77,7 +77,7 @@ void test_rockPaperScissors_differentResultsPlayerLoses(void)
 {
     /* arrange */
     //Hier die Werte eingeben
-    char result;
+    int result;
     int inputPlayer = ROCK;
     int inputComputer = PAPER;
 
@@ -120,7 +120,7 @@ void test_rockPaperScissors_generateComputerInput(void)
 {
     /* arrange */
     //Hier die Werte eingeben
-    char result;
+    int result;
 
     /* act */
     //Die Funktion wird ausgeführt
@@ -135,7 +135,7 @@ void test_rockPaperScissors_playerGetsBestOutOf3(void)
 {
     /* arrange */
     //Hier die Werte eingeben
-    char result;
+    int result;
     int roundsToWin = 2;
     int playerWins = 2, computerWins = 1;
 
@@ -146,6 +146,23 @@ void test_rockPaperScissors_playerGetsBestOutOf3(void)
     /* assert */
     //Vergleichen
     TEST_ASSERT_EQUAL_INT(PLAYERWINSGAME, result);
+}
+
+void test_rockPaperScissors_computerGetsBestOutOf3(void)
+{
+    /* arrange */
+    //Hier die Werte eingeben
+    int result;
+    int roundsToWin = 2;
+    int playerWins = 1, computerWins = 2;
+
+    /* act */
+    //Die Funktion wird ausgeführt
+    result = wasGameWon(roundsToWin, playerWins, computerWins);
+
+    /* assert */
+    //Vergleichen
+    TEST_ASSERT_EQUAL_INT(COMPUTERWINSGAME, result);
 }
 
 #endif // TEST

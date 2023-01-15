@@ -20,8 +20,8 @@ enum gameWinner{
 };
 
 
-char findWinner(int inputPlayer, int inputComputer);
-char getComputerInput();
-char wasGameWon(roundsToWin, playerWins, computerWins);
+int findWinner(int inputPlayer, int inputComputer);
+int getComputerInput();
+int wasGameWon(roundsToWin, playerWins, computerWins);
 
 #endif
