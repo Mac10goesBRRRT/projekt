@@ -13,4 +13,8 @@ bool startsWith(const char *a, const char *b)
     return 0;
 };
 
+
+
+
+
 #endif // HELPER_H

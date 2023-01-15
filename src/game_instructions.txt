@@ -25,8 +25,12 @@ how to move in the game
 enter "north" to go north
 enter "south" to go south
 
-special events:
-*****
+
+alltime commands:
+- 'inventory' -> will show your items that you have bought or found ()
+
+special commands (not available at any time during the game):
+- 'shop' -> opens the shop where you can buy items
 
 CURRENTLY NOT AVAILABLE FEATURES:
 - "use [item]"

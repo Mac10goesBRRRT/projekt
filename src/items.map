@@ -1,0 +1,8 @@
+# LINES WITH '#' AT BEGINNING GET IGNORED
+#ID;NAME;inShopAvailable
+1;healing potion;1
+2;shield;1
+3;UV flashlight;1
+4;key for police station;0
+5;acid;1
+6;gun;0
