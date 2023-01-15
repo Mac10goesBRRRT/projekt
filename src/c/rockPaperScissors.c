@@ -35,6 +35,9 @@ int wasGameWon(roundsToWin, playerWins, computerWins){
     else if (computerWins == roundsToWin){
         winner = COMPUTERWINSGAME;
     }
+    else {
+        winner = NOTWONYET;
+    }
     return winner;
 }
 
