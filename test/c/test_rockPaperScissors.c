@@ -131,6 +131,23 @@ void test_rockPaperScissors_generateComputerInput(void)
     TEST_ASSERT_EQUAL_INT(ROCK || PAPER || SCISSORS, result);
 }
 
+void test_rockPaperScissors_playerGetsBestOutOf3(void)
+{
+    /* arrange */
+    //Hier die Werte eingeben
+    char result;
+    int roundsToWin = 2;
+    int playerWins = 2, computerWins = 1;
+
+    /* act */
+    //Die Funktion wird ausgeführt
+    result = wasGameWon(roundsToWin, playerWins, computerWins);
+
+    /* assert */
+    //Vergleichen
+    TEST_ASSERT_EQUAL_INT(PLAYERWINSGAME, result);
+}
+
 #endif // TEST
 
 /*Testcases:

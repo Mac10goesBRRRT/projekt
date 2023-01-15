@@ -26,3 +26,12 @@ char findWinner(int inputPlayer, int inputComputer){
         return COMPUTERWINSROUND;
     }
 }
+
+char wasGameWon(roundsToWin, playerWins, computerWins){
+    char winner;
+    if (playerWins == roundsToWin){
+        winner = PLAYERWINSGAME;
+    }
+    return winner;
+}
+
