@@ -77,7 +77,7 @@ void test_getEnemyHealth(void){
     int health = 50, result;
     //act
     enemy test = {health};
-    result = getEnemyInt(&test.health);
+    result = getEnemyHealth(&test);
     //assert
     TEST_ASSERT_EQUAL(health, result);
 }
@@ -98,7 +98,7 @@ void test_getEnemyDamage(void){
     int damage = 4, result;
     //act
     enemy test = {50, damage};
-    result = getEnemyInt(&test.damage);
+    result = getEnemyDamage(&test);
     //assert
     TEST_ASSERT_EQUAL(damage, result);
 }
@@ -109,7 +109,7 @@ void test_get_setEnemyArmor(void){
     enemy test = {50, 4, armor*2};
     //act
     setEnemyArmor(&test.armor, armor);
-    result = getEnemyInt(&test.armor);
+    result = getEnemyArmor(&test);
     //assert
     TEST_ASSERT_EQUAL(armor, result);
 }
@@ -152,10 +152,10 @@ void test_getterWithParams(void)
     int healthResult, armorResult, damageResult, attackResult;
     enemy test = {health, damage, armor, attack};
     //act
-    healthResult = getEnemyInt(&test.health);
-    armorResult = getEnemyInt(&test.armor);
-    damageResult = getEnemyInt(&test.damage);
-    attackResult = getEnemyInt(&test.attack);
+    healthResult = getEnemyHealth(&test);
+    armorResult = getEnemyArmor(&test);
+    damageResult = getEnemyDamage(&test);
+    attackResult = getEnemyAttack(&test);
     //assert
     TEST_ASSERT_EQUAL(health, healthResult);
     TEST_ASSERT_EQUAL(armor, armorResult);

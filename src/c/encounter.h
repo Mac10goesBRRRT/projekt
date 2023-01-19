@@ -28,6 +28,9 @@ void *setEnemyDamage(int *num, int damage);
 //setEnemyArmor(&enemy.armor, armor);
 void *setEnemyArmor(int *num, int damage);
 //Function to get the value of Data in a struct, needs a pointer to the struct
-int getEnemyInt(int *structParam);
+int getEnemyAttack(enemy* enemy);
+int getEnemyHealth(enemy* enemy);
+int getEnemyArmor(enemy* enemy);
+int getEnemyDamage(enemy* enemy);
 
 #endif
