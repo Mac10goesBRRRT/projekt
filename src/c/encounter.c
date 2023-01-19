@@ -46,8 +46,6 @@ void enemyDamaged(enemy *enemy, int damage)
         damagedealt = 1;
     }
     setEnemyHealth(enemy, currentHealth - damagedealt);
-    //enemy->health -= damagedealt;
-    //return enemy->health; 
 }
 
 
@@ -60,15 +58,19 @@ int switchTurns(int currentTurn)
 
 int fight(int playerH, int playerDamage, int playerArmor, int playerAttack, enemy* enemy)
 {
-     int currentTurn = 0;
+    int currentTurn = 0;
+    char decision;
     while (playerAlive(playerH) && getEnemyHealth(enemy) > 0)
     {
-        if (currentTurn == 0)
+        if (currentTurn != 1)
         {
-            char decision = playerInput();
+            decision = playerInput();
             switch(decision){
                 case 'a':
                     enemyDamaged(enemy, playerDamage);
+                    break;
+                case 'h':
+                    playerH = playerHealth(playerH, -10, playerArmor);
                     break;
             }
             
