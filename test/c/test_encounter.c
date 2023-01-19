@@ -2,6 +2,8 @@
 #include "unity.h"
 
 #include "encounter.h"
+#include "playerinput.h"
+#include "mock_playerinput.h"
 
 
 
@@ -124,7 +126,7 @@ void test_PlayerAttacksEnemy_DoesDamage(void)
     int expectedEnemyHealth = 44;
     //act
     enemy test = {enemyHealth, 4, enemyArmor};
-    test.health = enemyDamaged(test, playerDamage);
+    enemyDamaged(&test, playerDamage);
     //assert
     TEST_ASSERT_EQUAL(expectedEnemyHealth, test.health);
 }
@@ -139,7 +141,7 @@ void test_PlayerAttacksEnemy_DoesMinDamage(void)
     int expectedEnemyHealth = 49;
     //act
     enemy test = {enemyHealth, 4, enemyArmor};
-    test.health = enemyDamaged(test, playerDamage);
+    enemyDamaged(&test, playerDamage);
     //assert
     TEST_ASSERT_EQUAL(expectedEnemyHealth, test.health);
 }
@@ -178,9 +180,10 @@ void test_FightPlayerWins(void)
     int playerHealth = 100, playerDamage = 10, playerArmor = 4, playerAttack = 5;
     int enemyHealth = 1, enemyDamage = 4, enemyArmor = 4, enemyAttack = 5;
     int result;
-    //arrange
+    //aCt
+    playerInput_ExpectAndReturn('a');
     enemy test = {enemyHealth, enemyDamage, enemyArmor, enemyAttack};
-    result = fight(playerHealth, playerDamage, playerArmor, playerAttack, test);
+    result = fight(playerHealth, playerDamage, playerArmor, playerAttack, &test);
     //assert
     TEST_ASSERT_EQUAL(1, result);
 }
@@ -191,11 +194,27 @@ void test_FightEnemyWins(void)
     int playerHealth = 1, playerDamage = 10, playerArmor = 4, playerAttack = 5;
     int enemyHealth = 100, enemyDamage = 4, enemyArmor = 4, enemyAttack = 5;
     int result;
-    //arrange
+    //act
+    playerInput_ExpectAndReturn('a');
     enemy test = {enemyHealth, enemyDamage, enemyArmor, enemyAttack};
-    result = fight(playerHealth, playerDamage, playerArmor, playerAttack, test);
+    result = fight(playerHealth, playerDamage, playerArmor, playerAttack, &test);
     //assert
     TEST_ASSERT_EQUAL(0, result);
+}
+
+void test_FightPlayerChoosesAttack(void){
+    //arrange
+    int playerHealth = 100, playerDamage = 10, playerArmor = 4, playerAttack = 5;
+    int enemyHealth = 100, enemyDamage = 4, enemyArmor = 4, enemyAttack = 5;
+    int result;
+    //act
+    playerInput_ExpectAndReturn('a');
+    enemy test = {enemyHealth, enemyDamage, enemyArmor, enemyAttack};
+    fight(playerHealth, playerDamage, playerArmor, playerAttack, &test);
+    result = getEnemyHealth(&test);
+    //assert
+    TEST_ASSERT_EQUAL(94, result);
+    
 }
 
 

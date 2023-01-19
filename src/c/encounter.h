@@ -3,7 +3,7 @@
 
 #include <stdbool.h>
 
-typedef struct {
+typedef struct enemy{
     int health;
     int damage;
     int armor;
@@ -13,9 +13,9 @@ typedef struct {
 
 bool playerAlive(int health);
 int playerHealth(int health, int damage, int armor);
-int enemyDamaged(enemy enemy, int damage);
+void enemyDamaged(enemy* enemy, int damage);
 int switchTurns(int currentTurn);
-int fight(int playerH, int playerDamage, int playerArmor, int playerAttack, enemy enemy);
+int fight(int playerH, int playerDamage, int playerArmor, int playerAttack, enemy* enemy);
 
 
 //Getter/Setter Funktionen

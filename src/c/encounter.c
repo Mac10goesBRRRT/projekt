@@ -4,6 +4,7 @@
 #include <stdbool.h>
 
 #include "encounter.h"
+#include "playerinput.h"
 
 /*Gegner mit AC, damagedealt = damage-AC, kann nicht kleiner 1 sein
 evtl. lair bonus der dem gegner ein wenig mehr/weniger damage erlaubt
@@ -35,16 +36,18 @@ int playerHealth(int health, int damage, int armor)
     return health;
 }
 
-int enemyDamaged(enemy enemy, int damage)
+void enemyDamaged(enemy *enemy, int damage)
 {
-    int armor = getEnemyArmor(&enemy);
+    int armor = getEnemyArmor(enemy);
+    int currentHealth = getEnemyHealth(enemy);
     int damagedealt = damage - armor;
     if (damagedealt < 1)
     {
         damagedealt = 1;
     }
-    enemy.health = enemy.health - damagedealt;
-    return enemy.health;
+    setEnemyHealth(enemy, currentHealth - damagedealt);
+    //enemy->health -= damagedealt;
+    //return enemy->health; 
 }
 
 
@@ -55,18 +58,24 @@ int switchTurns(int currentTurn)
     return currentTurn;
 }
 
-int fight(int playerH, int playerDamage, int playerArmor, int playerAttack, enemy enemy)
+int fight(int playerH, int playerDamage, int playerArmor, int playerAttack, enemy* enemy)
 {
-    int currentTurn = 0;
-    while (playerAlive(playerH) && getEnemyHealth(&enemy) > 0)
+     int currentTurn = 0;
+    while (playerAlive(playerH) && getEnemyHealth(enemy) > 0)
     {
         if (currentTurn == 0)
         {
-            setEnemyHealth(&enemy.health, enemyDamaged(enemy, playerDamage));
+            char decision = playerInput();
+            switch(decision){
+                case 'a':
+                    enemyDamaged(enemy, playerDamage);
+                    break;
+            }
+            
         }
         else
         {
-            playerH = playerHealth(playerH, getEnemyDamage(&enemy), playerArmor);
+            playerH = playerHealth(playerH, getEnemyDamage(enemy), playerArmor);
         }
         currentTurn = switchTurns(currentTurn);
     }
@@ -77,7 +86,7 @@ int fight(int playerH, int playerDamage, int playerArmor, int playerAttack, enem
     else
     {
         return 0;
-    }
+    } 
 }
 
 
