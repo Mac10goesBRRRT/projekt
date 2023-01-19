@@ -82,20 +82,19 @@ int fight(int playerH, int playerDamage, int playerArmor, int playerAttack, enem
 
 
 // Getter/Setter Funktionen
-void *setEnemyHealth(int *num, int health)
+void setEnemyHealth(enemy* enemy, int newhealth)
 {
-    *num = health;
-    // return health;
+    enemy->health = newhealth;
 }
 
-void *setEnemyDamage(int *num, int damage)
+void setEnemyDamage(enemy* enemy, int newdamage)
 {
-    *num = damage;
+    enemy->damage = newdamage;
 }
 
-void *setEnemyArmor(int *num, int armor)
+void setEnemyArmor(enemy* enemy, int newarmor)
 {
-    *num = armor;
+    enemy->armor = newarmor;
 }
 
 int getEnemyHealth(enemy* enemy)

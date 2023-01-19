@@ -20,13 +20,13 @@ int fight(int playerH, int playerDamage, int playerArmor, int playerAttack, enem
 
 //Getter/Setter Funktionen
 
-//setEnemyHealth(&enemy.health, health);
-void *setEnemyHealth(int *num, int health);
+//setEnemyHealth(&enemy, health);
+void setEnemyHealth(enemy* enemy, int newhealth);
 
 //setEnemyDamage(&enemy.damage, damage);
-void *setEnemyDamage(int *num, int damage);
+void setEnemyDamage(enemy* enemy, int newdamage);
 //setEnemyArmor(&enemy.armor, armor);
-void *setEnemyArmor(int *num, int damage);
+void setEnemyArmor(enemy* enemy, int newarmor);
 //Function to get the value of Data in a struct, needs a pointer to the struct
 int getEnemyAttack(enemy* enemy);
 int getEnemyHealth(enemy* enemy);
