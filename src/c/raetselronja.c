@@ -24,6 +24,23 @@ int zahlenraetsel(int input[], int loesung) {
 
 }
 
+int raetselaufruf(){
+
+    int auswahl = 1;
+    int loesung = 0;
+
+    switch (auswahl) {
+        case 1: 
+            int input[] = {25, 50, 54, 49, 98, 102, 97, 194}; 
+            loesung = 198;
+            zahlenraetsel(input, loesung);
+            break;
+        default: return -1;
+    }
+
+    return auswahl;
+}
+
 
 //Zahlenrätsel : 25,50,54,49,98,102,97,194
 //256,289,324,361,
