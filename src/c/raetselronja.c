@@ -5,12 +5,21 @@
 #include "raetselronja.h"
 #include "userinput.h"
 
-int input[] = { 17, 19, 23, 29 };
 
-int zahlenraetsel(int input[], int loesung) {
+
+int zahlenraetsel(int input[], int loesung, int n) {
 	//gegebene zahlen printne und nach ölösungun fragen
     int eingabe = 0;
-    printf("%d %d %d %d\n", input[0], input[1], input[2], input[3]);
+    
+    for(int i = 0; i < n; i++){
+        printf("%d", input[i]);
+        if (i < n -1){
+            printf(",");
+        }
+        printf(" ");
+    }
+    printf("\n");
+    
     printf("Bitte geben Sie die Loesung ein.\n");
     eingabe = userInput(); //hier stand mal scanf,jetzt kommt das in eine Funktion zum testen
     if (eingabe == loesung){
@@ -32,8 +41,9 @@ int raetselaufruf(){
     switch (auswahl) {
         case 1: 
             int input[] = {25, 50, 54, 49, 98, 102, 97, 194}; 
+            int n = 8;
             loesung = 198;
-            zahlenraetsel(input, loesung);
+            zahlenraetsel(input, loesung, n);
             break;
         default: return -1;
     }
