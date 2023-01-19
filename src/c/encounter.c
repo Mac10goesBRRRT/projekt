@@ -37,7 +37,7 @@ int playerHealth(int health, int damage, int armor)
 
 int enemyDamaged(enemy enemy, int damage)
 {
-    int armor = getEnemyInt(&enemy.armor);
+    int armor = getEnemyArmor(&enemy);
     int damagedealt = damage - armor;
     if (damagedealt < 1)
     {
@@ -46,6 +46,40 @@ int enemyDamaged(enemy enemy, int damage)
     enemy.health = enemy.health - damagedealt;
     return enemy.health;
 }
+
+
+
+int switchTurns(int currentTurn)
+{
+    currentTurn = currentTurn % 2 + 1;
+    return currentTurn;
+}
+
+int fight(int playerH, int playerDamage, int playerArmor, int playerAttack, enemy enemy)
+{
+    int currentTurn = 0;
+    while (playerAlive(playerH) && getEnemyHealth(&enemy) > 0)
+    {
+        if (currentTurn == 0)
+        {
+            setEnemyHealth(&enemy.health, enemyDamaged(enemy, playerDamage));
+        }
+        else
+        {
+            playerH = playerHealth(playerH, getEnemyDamage(&enemy), playerArmor);
+        }
+        currentTurn = switchTurns(currentTurn);
+    }
+    if (playerAlive(playerH))
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+}
+
 
 // Getter/Setter Funktionen
 void *setEnemyHealth(int *num, int health)
@@ -64,38 +98,22 @@ void *setEnemyArmor(int *num, int armor)
     *num = armor;
 }
 
-int getEnemyInt(int *structParam)
+int getEnemyHealth(enemy* enemy)
 {
-    return *structParam;
+    return enemy->health;
 }
 
-int switchTurns(int currentTurn)
+int getEnemyArmor(enemy* enemy)
 {
-    currentTurn = currentTurn % 2 + 1;
-    return currentTurn;
+    return enemy->armor;
 }
 
-int fight(int playerH, int playerDamage, int playerArmor, int playerAttack, enemy enemy)
+int getEnemyDamage(enemy* enemy)
 {
-    int currentTurn = 0;
-    while (playerAlive(playerH) && getEnemyInt(&enemy.health) > 0)
-    {
-        if (currentTurn == 0)
-        {
-            setEnemyHealth(&enemy.health, enemyDamaged(enemy, playerDamage));
-        }
-        else
-        {
-            playerH = playerHealth(playerH, getEnemyInt(&enemy.damage), playerArmor);
-        }
-        currentTurn = switchTurns(currentTurn);
-    }
-    if (playerAlive(playerH))
-    {
-        return 1;
-    }
-    else
-    {
-        return 0;
-    }
+    return enemy->damage;
+}
+
+int getEnemyAttack(enemy* enemy)
+{
+    return enemy->attack;
 }
