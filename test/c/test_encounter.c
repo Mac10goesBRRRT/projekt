@@ -266,7 +266,7 @@ void test_randomIntRange(void)
 void test_enemyCanHeal(void)
 {
     //arrange
-    int enemyHealth = 1, enemyDamage = 4, enemyArmor = 4, enemyMaxHealth = 5;
+    int enemyHealth = 1, enemyDamage = 4, enemyArmor = 4, enemyMaxHealth = 20;
     int healAmount= 10, expectedHealth = 11;
     int result;
     //act
@@ -277,5 +277,18 @@ void test_enemyCanHeal(void)
     TEST_ASSERT_EQUAL(expectedHealth, result);
 }
 
+void test_enemyNoOverheal(void)
+{
+    //arrange
+    int enemyHealth = 1, enemyDamage = 4, enemyArmor = 4, enemyMaxHealth = 5;
+    int healAmount= 10, expectedHealth = 5;
+    int result;
+    //act
+    enemy test = {enemyHealth, enemyDamage, enemyArmor, enemyMaxHealth};
+    enemyHeal(&test, healAmount);
+    result = getEnemyHealth(&test);
+    //assert
+    TEST_ASSERT_EQUAL(expectedHealth, result);
+}
 
 #endif // TEST

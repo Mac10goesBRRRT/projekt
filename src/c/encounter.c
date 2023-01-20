@@ -40,6 +40,11 @@ int playerHealth(int health, int damage, int armor)
 void enemyHeal(enemy *enemy, int healAmount)
 {
     int currentHealth = getEnemyHealth(enemy);
+    int maxHealth = getEnemyMaxHealth(enemy);
+    if (currentHealth + healAmount > maxHealth)
+    {
+        healAmount = maxHealth - currentHealth;
+    }
     setEnemyHealth(enemy, currentHealth + healAmount);
 }
 
