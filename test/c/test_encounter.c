@@ -4,9 +4,13 @@
 #include "encounter.h"
 #include "playerinput.h"
 #include "mock_playerinput.h"
+#include "helper.h"
+#include "mock_helper.h"
+
 
 void setUp(void)
 {
+   
 }
 
 void teardown(void)
@@ -250,5 +254,14 @@ void test_FightPlayerFlees(void)
     //assert
     TEST_ASSERT_EQUAL(2, result);
 }
+
+void test_randomIntRange(void)
+{
+    int expected = 4;
+    randomInt_ExpectAndReturn(15);
+    int result = randomIntRange(1, 6);
+    TEST_ASSERT_EQUAL_INT(expected, result);
+}
+
 
 #endif // TEST

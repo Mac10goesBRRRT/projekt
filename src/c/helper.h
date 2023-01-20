@@ -2,6 +2,7 @@
 #define HELPER_H
 //erlaubt es z.b. rand() zu mocken
 
-int randomInt;
+int randomInt();
+
 
 #endif

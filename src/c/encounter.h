@@ -18,6 +18,8 @@ int switchTurns(int currentTurn);
 int fight(int playerH, int playerDamage, int playerArmor, int playerAttack, enemy* enemy);
 
 
+
+int randomIntRange(int min, int max);
 //Getter/Setter Funktionen
 
 //setEnemyHealth(&enemy, health);
