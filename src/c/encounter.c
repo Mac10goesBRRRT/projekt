@@ -132,7 +132,7 @@ int getEnemyDamage(enemy* enemy)
     return enemy->damage;
 }
 
-int getEnemyAttack(enemy* enemy)
+int getEnemyMaxHealth(enemy* enemy)
 {
-    return enemy->attack;
+    return enemy->maxHealth;
 }

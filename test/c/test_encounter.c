@@ -158,19 +158,19 @@ void test_PlayerAttacksEnemy_DoesMinDamage(void)
 void test_getterWithParams(void)
 {
     // arrange
-    int health = 50, armor = 4, damage = 4, attack = 5;
-    int healthResult, armorResult, damageResult, attackResult;
-    enemy test = {health, damage, armor, attack};
+    int health = 50, armor = 4, damage = 4, maxHealth = 5;
+    int healthResult, armorResult, damageResult, maxHealthResult;
+    enemy test = {health, damage, armor, maxHealth};
     // act
     healthResult = getEnemyHealth(&test);
     armorResult = getEnemyArmor(&test);
     damageResult = getEnemyDamage(&test);
-    attackResult = getEnemyAttack(&test);
+    maxHealthResult = getEnemyMaxHealth(&test);
     // assert
     TEST_ASSERT_EQUAL(health, healthResult);
     TEST_ASSERT_EQUAL(armor, armorResult);
     TEST_ASSERT_EQUAL(damage, damageResult);
-    TEST_ASSERT_EQUAL(attack, attackResult);
+    TEST_ASSERT_EQUAL(maxHealth, maxHealthResult);
 }
 void test_switchingTurns(void)
 {
@@ -186,11 +186,11 @@ void test_FightPlayerWins(void)
 {
     // arange
     int playerHealth = 100, playerDamage = 10, playerArmor = 4, playerAttack = 5;
-    int enemyHealth = 1, enemyDamage = 4, enemyArmor = 4, enemyAttack = 5;
+    int enemyHealth = 1, enemyDamage = 4, enemyArmor = 4, enemyMaxHealth = 5;
     int result;
     // aCt
     playerInput_ExpectAndReturn('a');
-    enemy test = {enemyHealth, enemyDamage, enemyArmor, enemyAttack};
+    enemy test = {enemyHealth, enemyDamage, enemyArmor, enemyMaxHealth};
     result = fight(playerHealth, playerDamage, playerArmor, playerAttack, &test);
     // assert
     TEST_ASSERT_EQUAL(1, result);
@@ -200,11 +200,11 @@ void test_FightEnemyWins(void)
 {
     // arange
     int playerHealth = 1, playerDamage = 10, playerArmor = 4, playerAttack = 5;
-    int enemyHealth = 100, enemyDamage = 4, enemyArmor = 4, enemyAttack = 5;
+    int enemyHealth = 100, enemyDamage = 4, enemyArmor = 4, enemyMaxHealth = 5;
     int result;
     // act
     playerInput_ExpectAndReturn('a');
-    enemy test = {enemyHealth, enemyDamage, enemyArmor, enemyAttack};
+    enemy test = {enemyHealth, enemyDamage, enemyArmor, enemyMaxHealth};
     result = fight(playerHealth, playerDamage, playerArmor, playerAttack, &test);
     // assert
     TEST_ASSERT_EQUAL(0, result);
@@ -214,11 +214,11 @@ void test_FightPlayerChoosesAttack(void)
 {
     // arrange
     int playerHealth = 100, playerDamage = 10, playerArmor = 4, playerAttack = 5;
-    int enemyHealth = 6, enemyDamage = 4, enemyArmor = 4, enemyAttack = 5;
+    int enemyHealth = 6, enemyDamage = 4, enemyArmor = 4, enemyMaxHealth = 5;
     int result;
     // act
     playerInput_ExpectAndReturn('a');
-    enemy test = {enemyHealth, enemyDamage, enemyArmor, enemyAttack};
+    enemy test = {enemyHealth, enemyDamage, enemyArmor, enemyMaxHealth};
     fight(playerHealth, playerDamage, playerArmor, playerAttack, &test);
     result = getEnemyHealth(&test);
     // assert
@@ -229,10 +229,10 @@ void test_FightPlayerHeals_thenAttacks_Wins(void)
 {
     //arrange
     int playerHealth = 2, playerDamage = 10, playerArmor = 4, playerAttack = 10;
-    int enemyHealth = 11, enemyDamage = 4, enemyArmor = 4, enemyAttack = 5;
+    int enemyHealth = 11, enemyDamage = 4, enemyArmor = 4, enemyMaxHealth = 5;
     int result;
     //act
-    enemy test = {enemyHealth, enemyDamage, enemyArmor, enemyAttack};
+    enemy test = {enemyHealth, enemyDamage, enemyArmor, enemyMaxHealth};
     playerInput_ExpectAndReturn('h');
     playerInput_ExpectAndReturn('a');
     playerInput_ExpectAndReturn('a');
@@ -245,10 +245,10 @@ void test_FightPlayerFlees(void)
 {
     //arrange
     int playerHealth = 10, playerDamage = 10, playerArmor = 4, playerAttack = 10;
-    int enemyHealth = 11, enemyDamage = 4, enemyArmor = 4, enemyAttack = 5;
+    int enemyHealth = 11, enemyDamage = 4, enemyArmor = 4, enemyMaxHealth = 5;
     int result;
     //act
-    enemy test = {enemyHealth, enemyDamage, enemyArmor, enemyAttack};
+    enemy test = {enemyHealth, enemyDamage, enemyArmor, enemyMaxHealth};
     playerInput_ExpectAndReturn('f');
     result = fight(playerHealth, playerDamage, playerArmor, playerAttack, &test);
     //assert

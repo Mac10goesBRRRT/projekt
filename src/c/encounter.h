@@ -7,7 +7,7 @@ typedef struct enemy{
     int health;
     int damage;
     int armor;
-    int attack;
+    int maxHealth;
 } enemy; 
 
 
@@ -30,7 +30,7 @@ void setEnemyDamage(enemy* enemy, int newdamage);
 //setEnemyArmor(&enemy.armor, armor);
 void setEnemyArmor(enemy* enemy, int newarmor);
 //Function to get the value of Data in a struct, needs a pointer to the struct
-int getEnemyAttack(enemy* enemy);
+int getEnemyMaxHealth(enemy* enemy);
 int getEnemyHealth(enemy* enemy);
 int getEnemyArmor(enemy* enemy);
 int getEnemyDamage(enemy* enemy);
