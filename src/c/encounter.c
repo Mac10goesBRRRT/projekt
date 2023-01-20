@@ -37,6 +37,12 @@ int playerHealth(int health, int damage, int armor)
     return health;
 }
 
+void enemyHeal(enemy *enemy, int healAmount)
+{
+    int currentHealth = getEnemyHealth(enemy);
+    setEnemyHealth(enemy, currentHealth + healAmount);
+}
+
 void enemyDamaged(enemy *enemy, int damage)
 {
     int armor = getEnemyArmor(enemy);

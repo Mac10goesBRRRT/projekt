@@ -13,6 +13,7 @@ typedef struct enemy{
 
 bool playerAlive(int health);
 int playerHealth(int health, int damage, int armor);
+void enemyHeal(enemy *enemy, int healAmount);
 void enemyDamaged(enemy* enemy, int damage);
 int switchTurns(int currentTurn);
 int fight(int playerH, int playerDamage, int playerArmor, int playerAttack, enemy* enemy);
