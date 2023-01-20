@@ -4,4 +4,4 @@ builld/logs
 build/temp
 build/test
 .vscode
-encounter_test.sh
+#encounter_test.sh
