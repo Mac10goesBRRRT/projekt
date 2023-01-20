@@ -47,12 +47,13 @@ TEST_ASSERT_EQUAL_INT(0, result);
 
 }
 
-void test_runRaetselTestrichrig(void){
+void test_runRaetselTestrichtig(void){
 
 userInput_ExpectAndReturn(198);
-int result = raetselaufruf(1); //hier wird rätsel 1 aufgerufen
+int result = raetselaufruf(1);
 
 TEST_ASSERT_EQUAL_INT(1, result);
 
 }
+
 #endif // TEST

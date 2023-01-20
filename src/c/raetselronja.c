@@ -35,15 +35,30 @@ int zahlenraetsel(int input[], int loesung, int n) {
 
 int raetselaufruf(){
 
-    int auswahl = 1;
     int loesung = 0;
+    int n = 0;
+    int auswahl = 1;
+
+   // int auswahl = userInput();
 
     switch (auswahl) {
         case 1: 
-            int input[] = {25, 50, 54, 49, 98, 102, 97, 194}; 
-            int n = 8;
+            int input1[] = {25, 50, 54, 49, 98, 102, 97, 194}; 
+            n = 8;
             loesung = 198;
-            zahlenraetsel(input, loesung, n);
+            zahlenraetsel(input1, loesung, n);
+            break;
+        case 2:
+            int input2[] = {17, 19, 23, 29, 37};
+            n = 5;
+            loesung = 47;
+            zahlenraetsel(input2, loesung, n);
+            break;
+        case 3:
+            int input3[] = {256, 289, 324, 361};
+            n = 4;
+            loesung = 400;
+            zahlenraetsel(input3, loesung, n);
             break;
         default: return -1;
     }
