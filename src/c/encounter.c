@@ -72,6 +72,8 @@ int fight(int playerH, int playerDamage, int playerArmor, int playerAttack, enem
                 case 'h':
                     playerH = playerHealth(playerH, -10, playerArmor);
                     break;
+                case 'f':
+                    return 2;
             }
             
         }

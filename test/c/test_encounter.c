@@ -237,4 +237,18 @@ void test_FightPlayerHeals_thenAttacks_Wins(void)
     TEST_ASSERT_EQUAL(1, result);
 }
 
+void test_FightPlayerFlees(void)
+{
+    //arrange
+    int playerHealth = 10, playerDamage = 10, playerArmor = 4, playerAttack = 10;
+    int enemyHealth = 11, enemyDamage = 4, enemyArmor = 4, enemyAttack = 5;
+    int result;
+    //act
+    enemy test = {enemyHealth, enemyDamage, enemyArmor, enemyAttack};
+    playerInput_ExpectAndReturn('f');
+    result = fight(playerHealth, playerDamage, playerArmor, playerAttack, &test);
+    //assert
+    TEST_ASSERT_EQUAL(2, result);
+}
+
 #endif // TEST
