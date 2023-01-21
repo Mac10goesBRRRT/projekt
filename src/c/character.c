@@ -46,6 +46,22 @@ int getCharacterLevel (Character *character) {
     return character->level;
 }
 
+void setCharacterExp (Character *character, int newExp) {
+    character->exp = newExp;
+}
+
+int getCharacterExp (Character *character) {
+    return character->exp;
+}
+
+void setCharacterMaxExp (Character *character, int newMaxExp) {
+    character->maxExp = newMaxExp;
+}
+
+int getCharacterMaxExp (Character *character) {
+    return character->maxExp;
+}
+
 int calculateStatIncrease (Character *character, int amount) {
     return character->level*amount;
 }
