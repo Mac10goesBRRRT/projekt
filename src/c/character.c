@@ -92,5 +92,6 @@ void increaseStat (Character *character, int stat, int amount) {
 void levelUp (Character *character) {
    if (getCharacterExp(character) > getCharacterMaxExp(character)) {
         increaseStat(character,LEVEL,1);
+        setCharacterExp(character,getCharacterExp(character)-getCharacterMaxExp(character));
    }
 }

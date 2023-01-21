@@ -92,20 +92,29 @@ void test_calculateStatIncrease(void) {
 }
 
 void test_levelUp_enoughExp (void) {
-    TEST_ASSERT_EQUAL_INT(110,testCharacter2.exp);
-    TEST_ASSERT_EQUAL_INT(100,testCharacter2.maxExp);
     TEST_ASSERT_EQUAL_INT(5,testCharacter2.level);
     levelUp(&testCharacter2);
     TEST_ASSERT_EQUAL_INT(6,testCharacter2.level);
 }
 
+void test_levelUp_enoughExp_loseExp (void) {
+    TEST_ASSERT_EQUAL_INT(110,testCharacter2.exp);
+    TEST_ASSERT_EQUAL_INT(100,testCharacter2.maxExp);
+    levelUp(&testCharacter2);
+    TEST_ASSERT_EQUAL_INT(10,testCharacter2.exp);
+}
+
 void test_levelUp_notEnoughExp (void) {
-    TEST_ASSERT_EQUAL_INT(50,testCharacter.exp);
-    TEST_ASSERT_EQUAL_INT(100,testCharacter.maxExp);
     TEST_ASSERT_EQUAL_INT(0,testCharacter.level);
     levelUp(&testCharacter);
     TEST_ASSERT_EQUAL_INT(0,testCharacter.level);
 }
 
+void test_levelUp_notEnoughExp_loseExp (void) {
+    TEST_ASSERT_EQUAL_INT(50,testCharacter.exp);
+    TEST_ASSERT_EQUAL_INT(100,testCharacter.maxExp);
+    levelUp(&testCharacter);
+    TEST_ASSERT_EQUAL_INT(50,testCharacter.exp);
+}
 
 #endif // TEST
