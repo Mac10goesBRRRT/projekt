@@ -62,6 +62,14 @@ int getCharacterMaxExp (Character *character) {
     return character->maxExp;
 }
 
+void setCharacterStatPoints (Character *character, int newStatPoints) {
+    character->statPoints = newStatPoints;
+}
+
+int getCharacterStatPoints (Character *character) {
+    return character->statPoints;
+}
+
 int calculateStatIncrease (Character *character, int amount) {
     return character->level*amount;
 }
@@ -85,6 +93,8 @@ void increaseStat (Character *character, int stat, int amount) {
         character->exp += amount;break;
     case 8:
         character->maxExp += amount;break;
+    case 9:
+        character->statPoints += amount;break;
     default:
         break;
     }
@@ -93,5 +103,7 @@ void levelUp (Character *character) {
    if (getCharacterExp(character) > getCharacterMaxExp(character)) {
         increaseStat(character,LEVEL,1);
         setCharacterExp(character,getCharacterExp(character)-getCharacterMaxExp(character));
-   }
+   }else {
+        printf("You don't have enough Exp to Level Up.\n");
+    }
 }

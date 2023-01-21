@@ -2,12 +2,12 @@
 #define CHARACTER_H
 
 typedef struct {
-    int strength,dexterity,intelligence,healthPoints,manaPoints,level,exp,maxExp;
+    int strength,dexterity,intelligence,healthPoints,manaPoints,level,exp,maxExp,statPoints;
     char name [50];
 } Character;
 
 enum {
-    STRENGTH = 1, DEXTERITY = 2, INTELLIGENCE = 3, HEALTHPOINTS = 4, MANAPOINTS = 5, LEVEL = 6, EXP = 7, MAXEXP = 8
+    STRENGTH = 1, DEXTERITY = 2, INTELLIGENCE = 3, HEALTHPOINTS = 4, MANAPOINTS = 5, LEVEL = 6, EXP = 7, MAXEXP = 8,STATPOINTS = 9
 };
 
 void setCharacterHealthPoints (Character *character, int newHealthPoints);
@@ -37,6 +37,10 @@ int getCharacterExp (Character *character);
 void setCharacterMaxExp (Character *character, int newMaxExp);
 
 int getCharacterMaxExp (Character *character);
+
+void setCharacterStatPoints (Character *character, int newStatPoints);
+
+int getCharacterStatPoints (Character *character);
 
 void increaseStat (Character *character, int stat, int amount);
 
