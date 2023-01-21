@@ -7,7 +7,7 @@ typedef struct {
 } Character;
 
 enum {
-    STRENGTH = 1, DEXTERITY = 2, INTELLIGENCE = 3, HEALTHPOINTS = 4, MANAPOINTS = 5, LEVEL = 6
+    STRENGTH = 1, DEXTERITY = 2, INTELLIGENCE = 3, HEALTHPOINTS = 4, MANAPOINTS = 5, LEVEL = 6, EXP = 7, MAXEXP = 8
 };
 
 void setCharacterHealthPoints (Character *character, int newHealthPoints);
@@ -41,4 +41,6 @@ int getCharacterMaxExp (Character *character);
 void increaseStat (Character *character, int stat, int amount);
 
 int calculateStatIncrease (Character *character, int amount);
+
+void levelUp (Character *character);
 #endif

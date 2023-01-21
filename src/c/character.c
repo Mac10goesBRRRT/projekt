@@ -66,7 +66,6 @@ int calculateStatIncrease (Character *character, int amount) {
     return character->level*amount;
 }
 
-
 void increaseStat (Character *character, int stat, int amount) {
     switch (stat)
     {
@@ -80,7 +79,18 @@ void increaseStat (Character *character, int stat, int amount) {
         character->healthPoints += amount;break;
     case 5:
         character->manaPoints += amount;break;
+    case 6:
+        character->level += amount;break;
+    case 7:
+        character->exp += amount;break;
+    case 8:
+        character->maxExp += amount;break;
     default:
         break;
     }
+}
+void levelUp (Character *character) {
+   if (getCharacterExp(character) > getCharacterMaxExp(character)) {
+        increaseStat(character,LEVEL,1);
+   }
 }

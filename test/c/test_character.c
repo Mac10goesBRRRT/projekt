@@ -16,6 +16,10 @@ void setUp(void)
     testCharacter2.intelligence = 7;
     testCharacter.level = 0;
     testCharacter2.level = 5;
+    testCharacter.exp = 50;
+    testCharacter2.exp = 110;
+    testCharacter.maxExp = 100;
+    testCharacter2.maxExp = 100;
 }
 
 void tearDown(void)
@@ -78,10 +82,30 @@ void test_increaseStat(void) {
     TEST_ASSERT_EQUAL_INT(20,testCharacter2.strength);
     increaseStat(&testCharacter2,INTELLIGENCE,15);
     TEST_ASSERT_EQUAL_INT(22,testCharacter2.intelligence);
+    increaseStat(&testCharacter2,LEVEL,15);
+    TEST_ASSERT_EQUAL_INT(20,testCharacter2.level);
 }
 
 void test_calculateStatIncrease(void) {
     TEST_ASSERT_EQUAL_INT(5,testCharacter2.level);
     TEST_ASSERT_EQUAL_INT(25,calculateStatIncrease(&testCharacter2,5));
 }
+
+void test_levelUp_enoughExp (void) {
+    TEST_ASSERT_EQUAL_INT(110,testCharacter2.exp);
+    TEST_ASSERT_EQUAL_INT(100,testCharacter2.maxExp);
+    TEST_ASSERT_EQUAL_INT(5,testCharacter2.level);
+    levelUp(&testCharacter2);
+    TEST_ASSERT_EQUAL_INT(6,testCharacter2.level);
+}
+
+void test_levelUp_notEnoughExp (void) {
+    TEST_ASSERT_EQUAL_INT(50,testCharacter.exp);
+    TEST_ASSERT_EQUAL_INT(100,testCharacter.maxExp);
+    TEST_ASSERT_EQUAL_INT(0,testCharacter.level);
+    levelUp(&testCharacter);
+    TEST_ASSERT_EQUAL_INT(0,testCharacter.level);
+}
+
+
 #endif // TEST
