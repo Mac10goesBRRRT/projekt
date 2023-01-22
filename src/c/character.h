@@ -44,7 +44,7 @@ int getCharacterStatPoints (Character *character);
 
 void increaseStat (Character *character, int stat, int amount);
 
-int calculateStatIncrease (Character *character, int amount);
+int calculateStatIncrease (Character *character);
 
 void levelUp (Character *character);
 #endif

@@ -70,8 +70,13 @@ int getCharacterStatPoints (Character *character) {
     return character->statPoints;
 }
 
-int calculateStatIncrease (Character *character, int amount) {
-    return character->level*amount;
+int calculateStatIncrease (Character *character) {
+    if(character->statPoints > 0) {
+        setCharacterStatPoints(character,getCharacterStatPoints(character)-1);
+        return 5;
+    } else {
+        return 0;
+    }
 }
 
 void increaseStat (Character *character, int stat, int amount) {
