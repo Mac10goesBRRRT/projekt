@@ -3,6 +3,7 @@
 
 int zahlenraetsel(int input[], int loesung, int n);
 int raetselaufruf();
+int armdruecken(int gegner, int spieler);
 
 
 

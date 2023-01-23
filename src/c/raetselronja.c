@@ -67,6 +67,25 @@ int raetselaufruf() {
 }
 
 
+int armdruecken(int gegner, int spieler){
+
+int differenz = 0;
+
+if (gegner > spieler){
+    differenz = gegner - spieler;
+    printf("Der Gegner ist um %d stärker\n", differenz);
+    printf("Niederlage");
+    return 0;
+}
+if (gegner < spieler){
+    differenz = spieler - gegner;
+    printf("Der Gegner ist um %d schwächer\n", differenz);
+    printf("Sieg");
+    return 1;
+}
+
+}
+
 
 
 

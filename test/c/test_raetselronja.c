@@ -72,6 +72,17 @@ TEST_ASSERT_EQUAL_INT(1, result);
 }
 
 
+void test_runRaetselTestArmduecken(void){
+
+int spieler = 10;
+int gegner = 25;
+int result = armdruecken(gegner, spieler);
+
+TEST_ASSERT_EQUAL_INT(0, result);
+
+}
+
+
 
 
 #endif // TEST
