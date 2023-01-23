@@ -1,25 +1,7 @@
 #ifndef SHOP_H
 #define SHOP_H
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
-#include <string.h>
-#include <ctype.h>
-
-#include "/root/game/src/helper.h"
-
-#define itemsMax 6
-#define itemAttributesMax 2
-#define maxItems 100
-
-int itemsCounter = 0;
-
-struct item
-{
-    int id;
-    char itemName[20];
-};
+#include "helper.h"
 
 int openShop(struct item itemList[itemsMax])
 {
@@ -56,6 +38,5 @@ int openShop(struct item itemList[itemsMax])
     }
 
 }
-
 
 #endif // SHOP_H
