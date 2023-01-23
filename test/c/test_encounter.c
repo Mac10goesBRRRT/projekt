@@ -198,10 +198,11 @@ void test_FightEnemyWins(void)
 {
     // arange
     int playerHealth = 1, playerDamage = 10, playerArmor = 4, playerAttack = 5;
-    int enemyHealth = 100, enemyDamage = 4, enemyArmor = 4, enemyMaxHealth = 5;
+    int enemyHealth = 100, enemyDamage = 4, enemyArmor = 4, enemyMaxHealth = 100;
     int result;
     // act
     playerInput_ExpectAndReturn('a');
+    randomInt_ExpectAndReturn(1);
     enemy test = {enemyHealth, enemyDamage, enemyArmor, enemyMaxHealth};
     result = fight(playerHealth, playerDamage, playerArmor, playerAttack, &test);
     // assert
@@ -212,7 +213,7 @@ void test_FightPlayerChoosesAttack(void)
 {
     // arrange
     int playerHealth = 100, playerDamage = 10, playerArmor = 4, playerAttack = 5;
-    int enemyHealth = 6, enemyDamage = 4, enemyArmor = 4, enemyMaxHealth = 5;
+    int enemyHealth = 6, enemyDamage = 4, enemyArmor = 4, enemyMaxHealth = 100;
     int result;
     // act
     playerInput_ExpectAndReturn('a');
@@ -227,12 +228,14 @@ void test_FightPlayerHeals_thenAttacks_Wins(void)
 {
     // arrange
     int playerHealth = 2, playerDamage = 10, playerArmor = 4, playerAttack = 10;
-    int enemyHealth = 11, enemyDamage = 4, enemyArmor = 4, enemyMaxHealth = 5;
+    int enemyHealth = 11, enemyDamage = 4, enemyArmor = 4, enemyMaxHealth = 100;
     int result;
     // act
     enemy test = {enemyHealth, enemyDamage, enemyArmor, enemyMaxHealth};
     playerInput_ExpectAndReturn('h');
+    randomInt_ExpectAndReturn(1);
     playerInput_ExpectAndReturn('a');
+    randomInt_ExpectAndReturn(1);
     playerInput_ExpectAndReturn('a');
     result = fight(playerHealth, playerDamage, playerArmor, playerAttack, &test);
     // assert
@@ -243,7 +246,7 @@ void test_FightPlayerFlees(void)
 {
     // arrange
     int playerHealth = 10, playerDamage = 10, playerArmor = 4, playerAttack = 10;
-    int enemyHealth = 11, enemyDamage = 4, enemyArmor = 4, enemyMaxHealth = 5;
+    int enemyHealth = 11, enemyDamage = 4, enemyArmor = 4, enemyMaxHealth = 100;
     int result;
     // act
     enemy test = {enemyHealth, enemyDamage, enemyArmor, enemyMaxHealth};
@@ -348,6 +351,24 @@ void test_enemyDoesNotChoosesHeal(void)
     result = enemyChoosesHeal(&test);
     //assert
     TEST_ASSERT_FALSE(result);
+
+}
+
+void test_enemyChoosesHeal_ThenAttackWins(void)
+{
+    //arange
+    int result;
+    int enemyHealth = 6, enemyDamage = 10, enemyArmor = 5, enemyMaxHealth = 100;
+    int playerHealth = 10, playerDamage = 10, playerArmor = 5, playerAttack = 10;
+    enemy test2 = {enemyHealth, enemyDamage, enemyArmor, enemyMaxHealth};
+    //act
+    playerInput_ExpectAndReturn('a');
+    randomInt_ExpectAndReturn(39); //39%20 = 19 , 19 + 1 = 20
+    playerInput_ExpectAndReturn('a');
+    randomInt_ExpectAndReturn(0); //0%20 = 0 , 0 + 1 = 1
+    result = fight(playerHealth, playerDamage, playerArmor, playerAttack, &test2);
+    //assert
+    TEST_ASSERT_EQUAL(0, result);
 
 }
 

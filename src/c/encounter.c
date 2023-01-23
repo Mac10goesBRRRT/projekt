@@ -70,7 +70,7 @@ int switchTurns(int currentTurn)
 
 int fight(int playerH, int playerDamage, int playerArmor, int playerAttack, enemy* enemy)
 {
-    int currentTurn = 0;
+    int currentTurn = 2;
     char decision;
     while (playerAlive(playerH) && getEnemyHealth(enemy) > 0)
     {
@@ -91,7 +91,14 @@ int fight(int playerH, int playerDamage, int playerArmor, int playerAttack, enem
         }
         else
         {
-            playerH = playerHealth(playerH, getEnemyDamage(enemy), playerArmor);
+            if(enemyChoosesHeal(enemy))
+            {
+                enemyHeal(enemy, 10);
+            }
+            else
+            {
+                playerH = playerHealth(playerH, getEnemyDamage(enemy), playerArmor);
+            }
         }
         currentTurn = switchTurns(currentTurn);
     }
