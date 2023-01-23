@@ -1,6 +1,8 @@
 #ifndef ROCKPAPERSCISSORS_H
 #define ROCKPAPERSCISSORS_H
 
+#include <stdbool.h>
+
 enum inputOptions{
     ROCK,
     PAPER,
@@ -22,6 +24,7 @@ enum gameWinner{
 
 int findWinner(int inputPlayer, int inputComputer);
 int getComputerInput();
-int wasGameWon(roundsToWin, playerWins, computerWins);
+int wasGameWon(int roundsToWin, int playerWins, int computerWins);
+bool validatePlayerInput(int playerInput);
 
 #endif

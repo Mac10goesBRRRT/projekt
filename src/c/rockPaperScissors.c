@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
 
 #include "rockPaperScissors.h"
 
@@ -41,3 +42,10 @@ int wasGameWon(roundsToWin, playerWins, computerWins){
     return winner;
 }
 
+bool validatePlayerInput(int playerInput){
+    bool inputValid;
+    if (playerInput == ROCK || PAPER || SCISSORS){
+        inputValid = true;
+    }
+    return inputValid;
+}

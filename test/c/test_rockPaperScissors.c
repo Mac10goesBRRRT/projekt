@@ -182,11 +182,25 @@ void test_rockPaperScissors_gameWasNotWon(void)
     TEST_ASSERT_EQUAL_INT(NOTWONYET, result);
 }
 
+void test_rockPaperScissors_validPlayerInput(void)
+{
+    /* arrange */
+    //Hier die Werte eingeben
+    bool result;
+    int playerInput = 1;
+
+    /* act */
+    //Die Funktion wird ausgeführt
+    result = validatePlayerInput(playerInput);
+
+    /* assert */
+    //Vergleichen
+    TEST_ASSERT_EQUAL_INT(true, result);
+}
+
 #endif // TEST
 
 /*Testcases:
-rockPaperScissors_playerGetsBestOutOf3
-rockPaperScissors_computerGetsBestOutOf3
 rockPaperScissors_outputResult
 rockPaperScissors_invalidInput
 */
