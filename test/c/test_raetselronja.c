@@ -104,6 +104,22 @@ void test_runRaetselTestBJ(void){
     TEST_ASSERT_EQUAL_INT(1, result);
 }
 
+void test_runRaetselTestBJif(void){
+
+int spieler = 0;
+    int geber = 0;
+    int janein = 0;
+
+    userInput_ExpectAndReturn(1);
+    randnum_ExpectAndReturn(10);
+    randnum_ExpectAndReturn(8);
+    userInput_ExpectAndReturn(2);
+ 
+
+    int result = blackjack(spieler, geber, janein);
+    TEST_ASSERT_EQUAL_INT(1, result);
+
+}
 
 
 

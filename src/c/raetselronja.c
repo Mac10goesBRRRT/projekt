@@ -115,9 +115,24 @@ int blackjack(int spieler, int geber, int janein){
             printf("Wollen Sie eine weitere Karte?\nJA(1), NEIN(2)\n");
             janein = userInput();
         }
+        else {
+            if (spieler <= 0) {
+            printf("Auf Wiedersehen");
+            return 0;
+            break;//wer hat gewonnen
+            }
+            else if (spieler > geber) {
+                printf("Spieler hat gewonnen.");
+                return 1;
+                break;
+            }
+            else if (spieler < geber) {
+                printf("Geber hat gewonnen.");
+                return 2;
+                break;
+            }
+        }  
     }
-    return 1;
-
 }
 
 
