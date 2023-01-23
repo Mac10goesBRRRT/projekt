@@ -119,7 +119,7 @@ int blackjack(int spieler, int geber, int janein){
             if (spieler <= 0) {
             printf("Auf Wiedersehen");
             return 0;
-            break;//wer hat gewonnen
+            break;
             }
             else if (spieler > geber) {
                 printf("Spieler hat gewonnen.");
@@ -132,6 +132,10 @@ int blackjack(int spieler, int geber, int janein){
                 break;
             }
         }  
+    }
+    if (janein == 1 && (spieler >= 21 || geber >= 21)) {
+        
+        return 0;
     }
 }
 
