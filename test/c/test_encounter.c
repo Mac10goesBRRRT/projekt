@@ -1,14 +1,16 @@
 #ifdef TEST
 #include "unity.h"
 
+#include "character.h"
 #include "encounter.h"
 #include "playerinput.h"
 #include "mock_playerinput.h"
 #include "helper.h"
 #include "mock_helper.h"
 
+
 void setUp(void)
-{
+{   
 }
 
 void teardown(void)
@@ -186,10 +188,12 @@ void test_FightPlayerWins(void)
     int playerHealth = 100, playerDamage = 10, playerArmor = 4, playerAttack = 5;
     int enemyHealth = 1, enemyDamage = 4, enemyArmor = 4, enemyMaxHealth = 5;
     int result;
-    // aCt
+    // act
+    //strength,dexterity,intelligence,healthPoints,manaPoints,level,exp,maxExp,attack,armor,maxHealthPoints;
+    Character testChar = {10,10,10,playerHealth,100,1,0,100,playerDamage,playerArmor,100};
     playerInputChar_ExpectAndReturn('a');
     enemy test = {enemyHealth, enemyDamage, enemyArmor, enemyMaxHealth};
-    result = fight(playerHealth, playerDamage, playerArmor, playerAttack, &test);
+    result = fight(&testChar, &test);
     // assert
     TEST_ASSERT_EQUAL(1, result);
 }
@@ -201,10 +205,11 @@ void test_FightEnemyWins(void)
     int enemyHealth = 100, enemyDamage = 4, enemyArmor = 4, enemyMaxHealth = 100;
     int result;
     // act
+    Character testChar = {10,10,10,playerHealth,100,1,0,100,playerDamage,playerArmor,100};
     playerInputChar_ExpectAndReturn('a');
     randomInt_ExpectAndReturn(1);
     enemy test = {enemyHealth, enemyDamage, enemyArmor, enemyMaxHealth};
-    result = fight(playerHealth, playerDamage, playerArmor, playerAttack, &test);
+    result = fight(&testChar, &test);
     // assert
     TEST_ASSERT_EQUAL(0, result);
 }
@@ -216,9 +221,10 @@ void test_FightPlayerChoosesAttack(void)
     int enemyHealth = 6, enemyDamage = 4, enemyArmor = 4, enemyMaxHealth = 100;
     int result;
     // act
+    Character testChar = {10,10,10,playerHealth,100,1,0,100,playerDamage,playerArmor,100};
     playerInputChar_ExpectAndReturn('a');
     enemy test = {enemyHealth, enemyDamage, enemyArmor, enemyMaxHealth};
-    fight(playerHealth, playerDamage, playerArmor, playerAttack, &test);
+    fight(&testChar, &test);
     result = getEnemyHealth(&test);
     // assert
     TEST_ASSERT_EQUAL(0, result);
@@ -231,13 +237,14 @@ void test_FightPlayerHeals_thenAttacks_Wins(void)
     int enemyHealth = 11, enemyDamage = 4, enemyArmor = 4, enemyMaxHealth = 100;
     int result;
     // act
+    Character testChar = {10,10,10,playerHealth,100,1,0,100,playerDamage,playerArmor,100};
     enemy test = {enemyHealth, enemyDamage, enemyArmor, enemyMaxHealth};
     playerInputChar_ExpectAndReturn('h');
     randomInt_ExpectAndReturn(1);
     playerInputChar_ExpectAndReturn('a');
     randomInt_ExpectAndReturn(1);
     playerInputChar_ExpectAndReturn('a');
-    result = fight(playerHealth, playerDamage, playerArmor, playerAttack, &test);
+    result = fight(&testChar, &test);
     // assert
     TEST_ASSERT_EQUAL(1, result);
 }
@@ -249,9 +256,10 @@ void test_FightPlayerFlees(void)
     int enemyHealth = 11, enemyDamage = 4, enemyArmor = 4, enemyMaxHealth = 100;
     int result;
     // act
+    Character testChar = {10,10,10,playerHealth,100,1,0,100,playerDamage,playerArmor,100};
     enemy test = {enemyHealth, enemyDamage, enemyArmor, enemyMaxHealth};
     playerInputChar_ExpectAndReturn('f');
-    result = fight(playerHealth, playerDamage, playerArmor, playerAttack, &test);
+    result = fight(&testChar, &test);
     // assert
     TEST_ASSERT_EQUAL(2, result);
 }
@@ -362,11 +370,12 @@ void test_enemyChoosesHeal_ThenAttackWins(void)
     int playerHealth = 10, playerDamage = 10, playerArmor = 5, playerAttack = 10;
     enemy test2 = {enemyHealth, enemyDamage, enemyArmor, enemyMaxHealth};
     //act
+    Character testChar = {10,10,10,playerHealth,100,1,0,100,playerDamage,playerArmor,100};
     playerInputChar_ExpectAndReturn('a');
     randomInt_ExpectAndReturn(39); //39%20 = 19 , 19 + 1 = 20
     playerInputChar_ExpectAndReturn('a');
     randomInt_ExpectAndReturn(0); //0%20 = 0 , 0 + 1 = 1
-    result = fight(playerHealth, playerDamage, playerArmor, playerAttack, &test2);
+    result = fight(&testChar, &test2);
     //assert
     TEST_ASSERT_EQUAL(0, result);
 

@@ -17,7 +17,7 @@ void enemyHeal(enemy *enemy, int healAmount);
 void enemyDamaged(enemy* enemy, int damage);
 bool enemyChoosesHeal(enemy* enemy);
 int switchTurns(int currentTurn);
-int fight(int playerH, int playerDamage, int playerArmor, int playerAttack, enemy* enemy);
+int fight(Character *character, enemy* enemy);
 
 //Funktionen die Mathematische Berechnungen durchführen
 int map(int x, int in_min, int in_max, int out_min, int out_max);

@@ -3,7 +3,9 @@
 #include <string.h>
 #include <stdbool.h>
 
+#include "character.h"
 #include "encounter.h"
+
 #include "playerinput.h"
 #include "helper.h"
 
@@ -68,8 +70,11 @@ int switchTurns(int currentTurn)
     return currentTurn;
 }
 
-int fight(int playerH, int playerDamage, int playerArmor, int playerAttack, enemy* enemy)
+int fight(Character *character, enemy* enemy)
 {
+    int playerH = getCharacterHealthPoints(character);
+    int playerDamage = getCharacterAttack(character);
+    int playerArmor = getCharacterArmor(character);
     int currentTurn = 2;
     char decision;
     while (playerAlive(playerH) && getEnemyHealth(enemy) > 0)
