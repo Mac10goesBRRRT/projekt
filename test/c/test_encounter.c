@@ -7,10 +7,8 @@
 #include "helper.h"
 #include "mock_helper.h"
 
-
 void setUp(void)
 {
-   
 }
 
 void teardown(void)
@@ -223,35 +221,35 @@ void test_FightPlayerChoosesAttack(void)
     result = getEnemyHealth(&test);
     // assert
     TEST_ASSERT_EQUAL(0, result);
-} 
+}
 
-void test_FightPlayerHeals_thenAttacks_Wins(void) 
+void test_FightPlayerHeals_thenAttacks_Wins(void)
 {
-    //arrange
+    // arrange
     int playerHealth = 2, playerDamage = 10, playerArmor = 4, playerAttack = 10;
     int enemyHealth = 11, enemyDamage = 4, enemyArmor = 4, enemyMaxHealth = 5;
     int result;
-    //act
+    // act
     enemy test = {enemyHealth, enemyDamage, enemyArmor, enemyMaxHealth};
     playerInput_ExpectAndReturn('h');
     playerInput_ExpectAndReturn('a');
     playerInput_ExpectAndReturn('a');
     result = fight(playerHealth, playerDamage, playerArmor, playerAttack, &test);
-    //assert
+    // assert
     TEST_ASSERT_EQUAL(1, result);
 }
 
 void test_FightPlayerFlees(void)
 {
-    //arrange
+    // arrange
     int playerHealth = 10, playerDamage = 10, playerArmor = 4, playerAttack = 10;
     int enemyHealth = 11, enemyDamage = 4, enemyArmor = 4, enemyMaxHealth = 5;
     int result;
-    //act
+    // act
     enemy test = {enemyHealth, enemyDamage, enemyArmor, enemyMaxHealth};
     playerInput_ExpectAndReturn('f');
     result = fight(playerHealth, playerDamage, playerArmor, playerAttack, &test);
-    //assert
+    // assert
     TEST_ASSERT_EQUAL(2, result);
 }
 
@@ -265,30 +263,52 @@ void test_randomIntRange(void)
 
 void test_enemyCanHeal(void)
 {
-    //arrange
+    // arrange
     int enemyHealth = 1, enemyDamage = 4, enemyArmor = 4, enemyMaxHealth = 20;
-    int healAmount= 10, expectedHealth = 11;
+    int healAmount = 10, expectedHealth = 11;
     int result;
-    //act
+    // act
     enemy test = {enemyHealth, enemyDamage, enemyArmor, enemyMaxHealth};
     enemyHeal(&test, healAmount);
     result = getEnemyHealth(&test);
-    //assert
+    // assert
     TEST_ASSERT_EQUAL(expectedHealth, result);
 }
 
 void test_enemyNoOverheal(void)
 {
-    //arrange
+    // arrange
     int enemyHealth = 1, enemyDamage = 4, enemyArmor = 4, enemyMaxHealth = 5;
-    int healAmount= 10, expectedHealth = 5;
+    int healAmount = 10, expectedHealth = 5;
     int result;
-    //act
+    // act
     enemy test = {enemyHealth, enemyDamage, enemyArmor, enemyMaxHealth};
     enemyHeal(&test, healAmount);
     result = getEnemyHealth(&test);
-    //assert
+    // assert
     TEST_ASSERT_EQUAL(expectedHealth, result);
+}
+
+void test_roll_20()
+{
+    int expected = 20;
+    int result;
+
+    randomInt_ExpectAndReturn(39);
+    result = randomIntRange(1, 20);
+
+    TEST_ASSERT_EQUAL(expected, result);
+}
+
+void test_roll_01()
+{
+    int expected = 1;
+    int result;
+
+    randomInt_ExpectAndReturn(40);
+    result = randomIntRange(1, 20);
+
+    TEST_ASSERT_EQUAL(expected, result);
 }
 
 #endif // TEST
