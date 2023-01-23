@@ -330,9 +330,24 @@ void test_enemyChoosesHeal(void)
     int enemyHealth = 50, enemyDamage = 4, enemyArmor = 4, enemyMaxHealth = 100;
     enemy test = {enemyHealth, enemyDamage, enemyArmor, enemyMaxHealth};
     //act
+    randomInt_ExpectAndReturn(39); //39%20 = 19 , 19 + 1 = 20
     result = enemyChoosesHeal(&test);
     //assert
     TEST_ASSERT_TRUE(result);
+
+}
+
+void test_enemyDoesNotChoosesHeal(void)
+{
+    //arange
+    bool result;
+    int enemyHealth = 50, enemyDamage = 4, enemyArmor = 4, enemyMaxHealth = 100;
+    enemy test = {enemyHealth, enemyDamage, enemyArmor, enemyMaxHealth};
+    //act
+    randomInt_ExpectAndReturn(14); //14%20 = 14 , 14 + 1 = 15
+    result = enemyChoosesHeal(&test);
+    //assert
+    TEST_ASSERT_FALSE(result);
 
 }
 

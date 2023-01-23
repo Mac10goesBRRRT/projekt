@@ -122,8 +122,9 @@ bool enemyChoosesHeal(enemy* enemy)
 {
     int currentHealth = getEnemyHealth(enemy);
     int maxHealth = getEnemyMaxHealth(enemy);
-    int healthd20 = map(currentHealth, 0, maxHealth, 0, 20);
-    return healthd20 <= 10;
+    int healthd20 = 20 - map(currentHealth, 0, maxHealth, 0, 20);
+    int rolld20 = randomIntRange(1, 20);
+    return (healthd20 + rolld20) >= 30;
 }
 
 // Getter/Setter Funktionen
