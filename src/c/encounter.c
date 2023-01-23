@@ -112,9 +112,18 @@ int randomIntRange(int min, int max)
 }
 
 
-int map(int x, int in_min, int in_max, int out_min, int out_max){
+int map(int x, int in_min, int in_max, int out_min, int out_max)
+{
     //vgl Arduino map() https://www.arduino.cc/reference/en/language/functions/math/map/
     return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+}
+
+bool enemyChoosesHeal(enemy* enemy)
+{
+    int currentHealth = getEnemyHealth(enemy);
+    int maxHealth = getEnemyMaxHealth(enemy);
+    int healthd20 = map(currentHealth, 0, maxHealth, 0, 20);
+    return healthd20 <= 10;
 }
 
 // Getter/Setter Funktionen

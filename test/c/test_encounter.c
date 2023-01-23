@@ -323,4 +323,17 @@ void test_map10(){
     TEST_ASSERT_EQUAL(expected3, result);
 }
 
+void test_enemyChoosesHeal(void)
+{
+    //arange
+    bool result;
+    int enemyHealth = 50, enemyDamage = 4, enemyArmor = 4, enemyMaxHealth = 100;
+    enemy test = {enemyHealth, enemyDamage, enemyArmor, enemyMaxHealth};
+    //act
+    result = enemyChoosesHeal(&test);
+    //assert
+    TEST_ASSERT_TRUE(result);
+
+}
+
 #endif // TEST
