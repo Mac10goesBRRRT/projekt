@@ -1,6 +1,6 @@
 #include "playerinput.h"
 
-char playerInput(){
+char playerInputChar(){
     char c;
     return c;
 }

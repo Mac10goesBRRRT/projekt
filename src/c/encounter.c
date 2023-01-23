@@ -76,7 +76,7 @@ int fight(int playerH, int playerDamage, int playerArmor, int playerAttack, enem
     {
         if (currentTurn != 1)
         {
-            decision = playerInput();
+            decision = playerInputChar();
             switch(decision){
                 case 'a':
                     enemyDamaged(enemy, playerDamage);
