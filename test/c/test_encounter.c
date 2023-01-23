@@ -311,4 +311,16 @@ void test_roll_01()
     TEST_ASSERT_EQUAL(expected, result);
 }
 
+void test_map10(){
+    int expected1 = 10, expected2 = 0, expected3 = 20;
+    int result;
+    
+    result = map(50, 0, 100, 0, 20);
+    TEST_ASSERT_EQUAL(expected1, result);
+    result = map(0, 0, 100, 0, 20);
+    TEST_ASSERT_EQUAL(expected2, result);
+    result = map(100, 0, 100, 0, 20);
+    TEST_ASSERT_EQUAL(expected3, result);
+}
+
 #endif // TEST
