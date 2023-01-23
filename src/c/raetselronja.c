@@ -1,9 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 
 #include "raetselronja.h"
 #include "userinput.h"
+#include "randomnumber.h"
 
 
 
@@ -83,6 +85,38 @@ if (gegner < spieler){
     printf("Sieg");
     return 1;
 }
+
+}
+
+int blackjack(int spieler, int geber, int janein){
+
+    int lower = 1, upper = 11, count = 1, num = 0, num2 = 0;
+
+    srand(time(NULL));
+
+    printf("Wollen Sie das Spiel starten?\nJA(1), NEIN(2)\n");
+    janein = userInput();
+
+    while (spieler < 21 && geber < 21) {
+
+        if (janein == 1) {
+            for (int i = 1; i <= count; i++) {
+                int num = (randnum() % (upper - lower + 1)) + lower;
+                printf("Sie haben eine %d bekommen\n", num);
+                spieler += num;
+                printf("Nun haben Sie: %d\n", spieler);
+            }
+            for (int i = 1; i <= count; i++) {
+                int num = (randnum() % (upper - lower + 1)) + lower;
+                printf("Der Geber hat eine %d bekommen\n", num);
+                geber += num;
+                printf("Nun hat der Geber: %d\n", geber);
+            }
+            printf("Wollen Sie eine weitere Karte?\nJA(1), NEIN(2)\n");
+            janein = userInput();
+        }
+    }
+    return 1;
 
 }
 

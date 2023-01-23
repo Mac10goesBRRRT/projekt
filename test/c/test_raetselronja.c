@@ -4,6 +4,8 @@
 #include "raetselronja.h"
 #include "userinput.h"
 #include "mock_userinput.h"
+#include "randomnumber.h"
+#include "mock_randomnumber.h"
 
 //Vor- bzw. Nachbereitung
 void setUp(void)
@@ -80,6 +82,26 @@ int result = armdruecken(gegner, spieler);
 
 TEST_ASSERT_EQUAL_INT(0, result);
 
+}
+
+void test_runRaetselTestBJ(void){
+
+    int spieler = 0;
+    int geber = 0;
+    int janein = 0;
+
+    userInput_ExpectAndReturn(1);
+    randnum_ExpectAndReturn(10);
+    randnum_ExpectAndReturn(8);
+    userInput_ExpectAndReturn(1);
+    randnum_ExpectAndReturn(10);
+    randnum_ExpectAndReturn(10);
+    userInput_ExpectAndReturn(1);
+    
+    
+
+    int result = blackjack(spieler, geber, janein);
+    TEST_ASSERT_EQUAL_INT(1, result);
 }
 
 
