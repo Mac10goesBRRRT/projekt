@@ -135,7 +135,10 @@ int blackjack(int spieler, int geber, int janein){
     }
     if (janein == 1 && (spieler >= 21 || geber >= 21)) {
         
-        return 0;
+        if ((geber > 21 || geber < 21) && spieler == 21) {
+            printf("Spieler hat gewonnen.");
+            return 1;
+        }
     }
 }
 
