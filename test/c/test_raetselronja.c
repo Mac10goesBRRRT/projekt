@@ -49,11 +49,29 @@ TEST_ASSERT_EQUAL_INT(0, result);
 
 void test_runRaetselTestrichtig(void){
 
+int input[] = {1,2};
+int loesung = 198;
+int n = 2;
+
 userInput_ExpectAndReturn(198);
-int result = raetselaufruf(1);
+int result = zahlenraetsel(input, loesung, n); 
 
 TEST_ASSERT_EQUAL_INT(1, result);
 
 }
+
+
+void test_runRaetselTestAufruf(void){
+
+    userInput_ExpectAndReturn(1);
+    userInput_ExpectAndReturn(1);
+    int result = raetselaufruf();
+
+TEST_ASSERT_EQUAL_INT(1, result);
+
+}
+
+
+
 
 #endif // TEST

@@ -33,13 +33,13 @@ int zahlenraetsel(int input[], int loesung, int n) {
 
 }
 
-int raetselaufruf(){
+int raetselaufruf() {
 
     int loesung = 0;
     int n = 0;
-    int auswahl = 1;
+    //int auswahl = 1;
 
-   // int auswahl = userInput();
+   int auswahl = userInput();
 
     switch (auswahl) {
         case 1: 
@@ -60,12 +60,13 @@ int raetselaufruf(){
             loesung = 400;
             zahlenraetsel(input3, loesung, n);
             break;
-        default: return -1;
+        //default: return -1;
     }
 
     return auswahl;
 }
 
 
-//Zahlenrätsel : 25,50,54,49,98,102,97,194
-//256,289,324,361,
+
+
+
