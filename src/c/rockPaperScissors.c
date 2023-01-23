@@ -44,8 +44,11 @@ int wasGameWon(roundsToWin, playerWins, computerWins){
 
 bool validatePlayerInput(int playerInput){
     bool inputValid;
-    if (playerInput == ROCK || PAPER || SCISSORS){
+    if (playerInput == ROCK || playerInput == PAPER || playerInput == SCISSORS){
         inputValid = true;
+    }
+    else {
+        inputValid = false;
     }
     return inputValid;
 }

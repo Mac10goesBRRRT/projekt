@@ -187,7 +187,7 @@ void test_rockPaperScissors_validPlayerInput(void)
     /* arrange */
     //Hier die Werte eingeben
     bool result;
-    int playerInput = 1;
+    int playerInput = 2;
 
     /* act */
     //Die Funktion wird ausgeführt
@@ -196,6 +196,22 @@ void test_rockPaperScissors_validPlayerInput(void)
     /* assert */
     //Vergleichen
     TEST_ASSERT_EQUAL_INT(true, result);
+}
+
+void test_rockPaperScissors_invalidPlayerInput(void)
+{
+    /* arrange */
+    //Hier die Werte eingeben
+    bool result;
+    int playerInput = 5;
+
+    /* act */
+    //Die Funktion wird ausgeführt
+    result = validatePlayerInput(playerInput);
+
+    /* assert */
+    //Vergleichen
+    TEST_ASSERT_EQUAL_INT(false, result);
 }
 
 #endif // TEST
