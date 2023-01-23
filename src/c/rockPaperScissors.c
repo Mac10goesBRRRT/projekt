@@ -28,7 +28,7 @@ int findWinner(int inputPlayer, int inputComputer){
     }
 }
 
-int wasGameWon(roundsToWin, playerWins, computerWins){
+int wasGameWon(int roundsToWin, int playerWins, int computerWins){
     int winner;
     if (playerWins == roundsToWin){
         winner = PLAYERWINSGAME;
@@ -51,4 +51,16 @@ bool validatePlayerInput(int playerInput){
         inputValid = false;
     }
     return inputValid;
+}
+
+int getPlayerInput(){
+    bool inputValid = false;
+    int inputPlayer;
+    while(!inputValid){
+        printf("Enter your choice:\n1 for Rock\n2 for Paper\n3 for Scissors\n");
+        scanf("%d", &inputPlayer);
+        inputPlayer -= 1;
+        inputValid = validatePlayerInput(inputPlayer);
+    }
+    return inputPlayer;
 }

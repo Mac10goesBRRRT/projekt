@@ -26,5 +26,6 @@ int findWinner(int inputPlayer, int inputComputer);
 int getComputerInput();
 int wasGameWon(int roundsToWin, int playerWins, int computerWins);
 bool validatePlayerInput(int playerInput);
+int getPlayerInput();
 
 #endif
