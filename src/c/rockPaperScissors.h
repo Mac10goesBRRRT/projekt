@@ -27,5 +27,6 @@ int getComputerInput();
 int wasGameWon(int roundsToWin, int playerWins, int computerWins);
 bool validatePlayerInput(int playerInput);
 int getPlayerInput();
+int play(int rounds);
 
 #endif

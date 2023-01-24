@@ -215,8 +215,3 @@ void test_rockPaperScissors_invalidPlayerInput(void)
 }
 
 #endif // TEST
-
-/*Testcases:
-rockPaperScissors_outputResult
-rockPaperScissors_invalidInput
-*/

@@ -64,3 +64,27 @@ int getPlayerInput(){
     }
     return inputPlayer;
 }
+
+int play(int rounds){
+    int playerWins = 0, computerWins = 0;
+    int roundsToWin = (rounds/2)+1;
+    int computerInput, playerInput;
+    int roundwinner = NOWINNER;
+    int winner = NOTWONYET;
+
+    printf("Lets play a game\n");
+    while (winner == NOTWONYET){
+        playerInput = getPlayerInput();
+        computerInput = getComputerInput();
+        roundwinner = findWinner(playerInput, computerInput);
+        if (roundwinner == PLAYERWINSROUND){
+            playerWins += 1;
+        }
+        else if (roundwinner == COMPUTERWINSROUND){
+            computerWins += 1;
+        }
+        winner = wasGameWon(roundsToWin, playerWins, computerWins);
+        printf("Something happened\n");
+    }
+    printf("Someone won\n");
+}
