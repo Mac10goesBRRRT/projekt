@@ -94,7 +94,7 @@ void test_runRaetselTestBJ(void){
     randnum_ExpectAndReturn(10);
     randnum_ExpectAndReturn(8);
     userInput_ExpectAndReturn(1);
-    randnum_ExpectAndReturn(10);
+    randnum_ExpectAndReturn(9);
     randnum_ExpectAndReturn(10);
     userInput_ExpectAndReturn(1);
     
@@ -131,7 +131,7 @@ void test_runRaetselTestBJifende(void){
     randnum_ExpectAndReturn(10);
     randnum_ExpectAndReturn(8);
     userInput_ExpectAndReturn(1);
-    randnum_ExpectAndReturn(10);
+    randnum_ExpectAndReturn(9);
     randnum_ExpectAndReturn(7);
     userInput_ExpectAndReturn(1);
  
@@ -200,5 +200,26 @@ void test_runRaetselTestBJifende3(void){
     TEST_ASSERT_EQUAL_INT(0, result);
 
 }
+
+void test_runRaetselTestBJifende4(void){
+
+    int spieler = 0;
+    int geber = 0;
+    int janein = 0;
+
+    userInput_ExpectAndReturn(1);
+    randnum_ExpectAndReturn(10);
+    randnum_ExpectAndReturn(10);
+    userInput_ExpectAndReturn(1);
+    randnum_ExpectAndReturn(9);
+    randnum_ExpectAndReturn(9);
+    userInput_ExpectAndReturn(1);
+ 
+
+    int result = blackjack(spieler, geber, janein);
+    TEST_ASSERT_EQUAL_INT(0, result);
+
+}
+
 
 #endif // TEST

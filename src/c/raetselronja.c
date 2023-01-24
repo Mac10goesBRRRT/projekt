@@ -90,7 +90,7 @@ if (gegner < spieler){
 
 int blackjack(int spieler, int geber, int janein){
 
-    int lower = 1, upper = 11, count = 1, num = 0, num2 = 0;
+    int lower = 1, upper = 11, count = 1, num = 0, num2 = 0; //num2 nicht notwendig
 
     srand(time(NULL));
 
@@ -139,17 +139,23 @@ int blackjack(int spieler, int geber, int janein){
             printf("Spieler hat gewonnen.");
             return 1;
         }
-        if (geber == 21 && (spieler > 21 || spieler < 21)) {
+        else if (geber == 21 && (spieler > 21 || spieler < 21)) {
             printf("Geber hat gewonnen.");
             return 2;
         }
-        if (geber > 21 && spieler > 21) {
+        else if (geber > 21 && spieler > 21) {
             printf("Verloren");
+            return 0;
+        }
+        else if (geber == spieler && geber == 21) {
+            printf("Unentschienden.");
             return 0;
         }
     }
 }
 
 
+//geber größer 21 spieler kleinr 21
+// einer über 21 der andere drunter
 
 
