@@ -67,20 +67,23 @@ void test_runRaetselTestAufruf(void){
 
     userInput_ExpectAndReturn(1);
     userInput_ExpectAndReturn(1);
-    int result = raetselaufruf();
 
-TEST_ASSERT_EQUAL_INT(1, result);
+
+    int result = raetselaufruf();
+    TEST_ASSERT_EQUAL_INT(1, result);
 
 }
 
 
 void test_runRaetselTestArmduecken(void){
 
-int spieler = 10;
-int gegner = 25;
-int result = armdruecken(gegner, spieler);
+    int spieler = 10;
+    int gegner = 25;
 
-TEST_ASSERT_EQUAL_INT(0, result);
+    printf("-----------------------------------------------\n");
+
+    int result = armdruecken(gegner, spieler);
+    TEST_ASSERT_EQUAL_INT(0, result);
 
 }
 
@@ -245,6 +248,27 @@ void test_runRaetselTestBJifende5(void){
 
     int result = blackjack(spieler, geber, janein);
     TEST_ASSERT_EQUAL_INT(1, result);
+
+}
+
+void test_runRaetselTestBJifende6(void){
+
+    int spieler = 0;
+    int geber = 0;
+    int janein = 0;
+
+    userInput_ExpectAndReturn(1);
+    randnum_ExpectAndReturn(10);
+    randnum_ExpectAndReturn(10);
+    userInput_ExpectAndReturn(1);
+    randnum_ExpectAndReturn(10);
+    randnum_ExpectAndReturn(7);
+    userInput_ExpectAndReturn(1);
+ 
+    printf("-----------------------6------------------------\n");
+
+    int result = blackjack(spieler, geber, janein);
+    TEST_ASSERT_EQUAL_INT(2, result);
 
 }
 
