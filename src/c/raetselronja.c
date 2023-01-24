@@ -39,7 +39,6 @@ int raetselaufruf() {
 
     int loesung = 0;
     int n = 0;
-    //int auswahl = 1;
 
    int auswahl = userInput();
 
@@ -62,7 +61,7 @@ int raetselaufruf() {
             loesung = 400;
             zahlenraetsel(input3, loesung, n);
             break;
-        //default: return -1;
+        default: return -1;
     }
 
     return auswahl;
@@ -73,18 +72,18 @@ int armdruecken(int gegner, int spieler){
 
 int differenz = 0;
 
-if (gegner > spieler){
-    differenz = gegner - spieler;
-    printf("Der Gegner ist um %d stärker\n", differenz);
-    printf("Niederlage");
-    return 0;
-}
-if (gegner < spieler){
-    differenz = spieler - gegner;
-    printf("Der Gegner ist um %d schwächer\n", differenz);
-    printf("Sieg");
-    return 1;
-}
+    if (gegner > spieler){
+        differenz = gegner - spieler;
+        printf("The opponent is around %d stronger.\n", differenz);
+        printf("Defeat.");
+        return 0;
+    }
+    if (gegner < spieler){
+        differenz = spieler - gegner;
+        printf("The opponent is around %d weaker.\n", differenz);
+        printf("Victory.");
+        return 1;
+    }
 
 }
 
