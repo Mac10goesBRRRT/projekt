@@ -12,7 +12,7 @@ int playRockPaperScissors(int rounds){
     int roundwinner = NOWINNER;
     int winner = NOTWONYET;
 
-    printf("Lets play a game\n");
+    printPrompt(roundsToWin);
     while (winner == NOTWONYET){
         playerInput = getPlayerInput();
         computerInput = getComputerInput();
@@ -92,4 +92,9 @@ int wasGameWon(int roundsToWin, int playerWins, int computerWins){
         winner = NOTWONYET;
     }
     return winner;
+}
+
+
+void printPrompt(int roundsToWin){
+    printf("Hello NAME.\nLet us play a game, shall we? I assume you are familiar with Rock-Paper-Scissors?\nIf not, here are the rules:\nThe first one to win %d rounds wins the game. Rock beats scissors, scissors beats paper and paper beats rock.\nThey are quite simple, even you should understand. Got it?\n", roundsToWin);
 }

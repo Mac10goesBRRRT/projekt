@@ -28,5 +28,6 @@ int wasGameWon(int roundsToWin, int playerWins, int computerWins);
 bool validatePlayerInput(int playerInput);
 int getPlayerInput();
 int playRockPaperScissors(int rounds);
+void printPrompt(int roundsToWin);
 
 #endif
