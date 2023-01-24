@@ -24,9 +24,9 @@ int playRockPaperScissors(int rounds){
             computerWins += 1;
         }
         winner = wasGameWon(roundsToWin, playerWins, computerWins);
-        printf("Something happened\n");
+        printResult(playerInput, computerInput, roundwinner, playerWins, computerWins);
     }
-    printf("Someone won\n");
+    printWinner(winner);
 }
 
 
@@ -122,4 +122,13 @@ void printResult(int playerInput, int computerInput, int roundWinner, int player
     }
 
     printf("With this, you are at %d wins and I am at %d.\n", playerWins, computerWins);
+}
+
+void printWinner(int winner){
+    if (winner == PLAYERWINSGAME){
+        printf("Damn you, you beat me! You actually won! Oh well, I stand by my word. You may pass.\n");
+    }
+    else if (winner == COMPUTERWINSGAME){
+        printf("Oh poor you, seems like I won. You're gomma have to try again. Do better next time.\n");
+    }
 }
