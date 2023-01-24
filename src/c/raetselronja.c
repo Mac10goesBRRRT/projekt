@@ -10,7 +10,7 @@
 
 
 int zahlenraetsel(int input[], int loesung, int n) {
-	//gegebene zahlen printne und nach ölösungun fragen
+	
     int eingabe = 0;
     
     for(int i = 0; i < n; i++){
@@ -22,15 +22,15 @@ int zahlenraetsel(int input[], int loesung, int n) {
     }
     printf("\n");
     
-    printf("Bitte geben Sie die Loesung ein.\n");
+    printf("Please enter a solution.\n");
     eingabe = userInput(); //hier stand mal scanf,jetzt kommt das in eine Funktion zum testen
     if (eingabe == loesung){
+        printf("The answer is right.\n");
         return 1;
-        printf("Die Antwort ist richtig.\n");
     }
     else{
+        printf("The answer is wrong.\n");
         return 0;
-        printf("Die Antwort ist falsch.\n");
     }
 
 }
@@ -161,9 +161,4 @@ int blackjack(int spieler, int geber, int janein){
         }
     }
 }
-
-
-//geber größer 21 spieler kleinr 21
-// einer über 21 der andere drunter
-
 
