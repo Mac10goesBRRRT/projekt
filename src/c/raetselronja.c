@@ -87,75 +87,76 @@ int differenz = 0;
 
 }
 
-int blackjack(int spieler, int geber, int janein){
+int blackjack(int spieler, int gegner, int janein){
 
     int lower = 1, upper = 11, count = 1, num = 0, num2 = 0; //num2 nicht notwendig
 
     srand(time(NULL));
 
-    printf("Wollen Sie das Spiel starten?\nJA(1), NEIN(2)\n");
+    printf("Do you want to start the game?\nYES(1), NO(2)\n");
     janein = userInput();
 
-    while (spieler < 21 && geber < 21) {
+    while (spieler < 21 && gegner < 21) {
 
         if (janein == 1) {
             for (int i = 1; i <= count; i++) {
                 int num = (randnum() % (upper - lower + 1)) + lower;
-                printf("Sie haben eine %d bekommen\n", num);
+                printf("You got a: %d.\n", num);
                 spieler += num;
-                printf("Nun haben Sie: %d\n", spieler);
+                printf("Now you have: %d\n", spieler);
             }
             for (int i = 1; i <= count; i++) {
                 int num = (randnum() % (upper - lower + 1)) + lower;
-                printf("Der Geber hat eine %d bekommen\n", num);
-                geber += num;
-                printf("Nun hat der Geber: %d\n", geber);
+                printf("The opponent got a: %d.\n", num);
+                gegner += num;
+                printf("Now the opponent has: %d\n", gegner);
             }
-            printf("Wollen Sie eine weitere Karte?\nJA(1), NEIN(2)\n");
+            printf("Do you want another card?\nYES(1), NO(2)\n");
             janein = userInput();
         }
         else {
             if (spieler <= 0) {
-            printf("Auf Wiedersehen");
+            printf("Goodbye");
             return 0;
             break;
             }
-            else if (spieler > geber) {
-                printf("Spieler hat gewonnen.");
+            else if (spieler > gegner) {
+                printf("Player wins.");
                 return 1;
                 break;
             }
-            else if (spieler < geber) {
-                printf("Geber hat gewonnen.");
+            else if (spieler < gegner) {
+                printf("Opponent wins.");
                 return 2;
                 break;
             }
         }  
     }
-    if (janein == 1 && (spieler >= 21 || geber >= 21)) {
+    if (janein == 1 && (spieler >= 21 || gegner >= 21)) {
         
-        if ((geber > 21 || geber < 21) && spieler == 21) {
-            printf("Spieler hat gewonnen.");
+        if ((gegner > 21 || gegner < 21) && spieler == 21) {
+            printf("Player wins.");
             return 1;
         }
-        else if (geber == 21 && (spieler > 21 || spieler < 21)) {
-            printf("Geber hat gewonnen.");
+        else if (gegner == 21 && (spieler > 21 || spieler < 21)) {
+            printf("Opponent wins.");
             return 2;
         }
-        else if (geber > 21 && spieler > 21) {
-            printf("Verloren");
+        else if (gegner > 21 && spieler > 21) {
+            printf("No one wins.");
+            return 0;
+            
+        }
+        else if (gegner == spieler && gegner == 21) {
+            printf("Tie.");
             return 0;
         }
-        else if (geber == spieler && geber == 21) {
-            printf("Unentschienden.");
-            return 0;
-        }
-         if (geber > 21 && spieler < 21) {
-            printf("Spieler hat gewonnen.");
+         if (gegner > 21 && spieler < 21) {
+            printf("Player wins.");
             return 1;
         }
-        if (geber < 21 && spieler > 21) {
-            printf("Geber hat gewonnen.");
+        if (gegner < 21 && spieler > 21) {
+            printf("Opponent wins.");
             return 2;
         }
     }
