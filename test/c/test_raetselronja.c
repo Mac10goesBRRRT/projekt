@@ -98,7 +98,7 @@ void test_runRaetselTestBJ(void){
     randnum_ExpectAndReturn(10);
     userInput_ExpectAndReturn(1);
     
-    
+    printf("-----------------------------------------------\n");
 
     int result = blackjack(spieler, geber, janein);
     TEST_ASSERT_EQUAL_INT(1, result);
@@ -115,6 +115,7 @@ void test_runRaetselTestBJif(void){
     randnum_ExpectAndReturn(8);
     userInput_ExpectAndReturn(2);
  
+    printf("-----------------------------------------------\n");
 
     int result = blackjack(spieler, geber, janein);
     TEST_ASSERT_EQUAL_INT(1, result);
@@ -135,6 +136,7 @@ void test_runRaetselTestBJifende(void){
     randnum_ExpectAndReturn(7);
     userInput_ExpectAndReturn(1);
  
+    printf("-----------------------------------------------\n");
 
     int result = blackjack(spieler, geber, janein);
     TEST_ASSERT_EQUAL_INT(1, result);
@@ -155,6 +157,7 @@ void test_runRaetselTestBJifende1(void){
     randnum_ExpectAndReturn(7);
     userInput_ExpectAndReturn(1);
  
+    printf("-----------------------1------------------------\n");
 
     int result = blackjack(spieler, geber, janein);
     TEST_ASSERT_EQUAL_INT(1, result);
@@ -175,6 +178,7 @@ void test_runRaetselTestBJifende2(void){
     randnum_ExpectAndReturn(9);
     userInput_ExpectAndReturn(1);
  
+    printf("-----------------------2------------------------\n");
 
     int result = blackjack(spieler, geber, janein);
     TEST_ASSERT_EQUAL_INT(2, result);
@@ -195,6 +199,7 @@ void test_runRaetselTestBJifende3(void){
     randnum_ExpectAndReturn(10);
     userInput_ExpectAndReturn(1);
  
+    printf("-----------------------3------------------------\n");
 
     int result = blackjack(spieler, geber, janein);
     TEST_ASSERT_EQUAL_INT(0, result);
@@ -215,9 +220,31 @@ void test_runRaetselTestBJifende4(void){
     randnum_ExpectAndReturn(9);
     userInput_ExpectAndReturn(1);
  
+    printf("-----------------------4------------------------\n");
 
     int result = blackjack(spieler, geber, janein);
     TEST_ASSERT_EQUAL_INT(0, result);
+
+}
+
+void test_runRaetselTestBJifende5(void){
+
+    int spieler = 0;
+    int geber = 0;
+    int janein = 0;
+
+    userInput_ExpectAndReturn(1);
+    randnum_ExpectAndReturn(10);
+    randnum_ExpectAndReturn(10);
+    userInput_ExpectAndReturn(1);
+    randnum_ExpectAndReturn(7);
+    randnum_ExpectAndReturn(10);
+    userInput_ExpectAndReturn(1);
+ 
+    printf("-----------------------5------------------------\n");
+
+    int result = blackjack(spieler, geber, janein);
+    TEST_ASSERT_EQUAL_INT(1, result);
 
 }
 

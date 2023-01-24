@@ -151,6 +151,10 @@ int blackjack(int spieler, int geber, int janein){
             printf("Unentschienden.");
             return 0;
         }
+         if (geber > 21 && spieler < 21) {
+            printf("Spieler hat gewonnen.");
+            return 1;
+        }
     }
 }
 
