@@ -6,9 +6,13 @@
 #include "mock_playerinput.h"
 #include "helper.h"
 #include "mock_helper.h"
+#include "character.h"
+
+Character testcharacter;
 
 void setUp(void)
 {
+    testcharacter.dexterity = 5;
 }
 
 void teardown(void)
@@ -372,4 +376,7 @@ void test_enemyChoosesHeal_ThenAttackWins(void)
 
 }
 
+int test_rollInitiative (void) {
+    TEST_ASSERT(testcharacter.dexterity + 1 <= rollInitiative(&testcharacter) && testcharacter.dexterity + 20 >= rollInitiative(&testcharacter));
+}
 #endif // TEST

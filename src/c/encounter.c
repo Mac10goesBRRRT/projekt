@@ -6,6 +6,9 @@
 #include "encounter.h"
 #include "playerinput.h"
 #include "helper.h"
+#include "character.h"
+
+Character character;
 
 /*Gegner mit AC, damagedealt = damage-AC, kann nicht kleiner 1 sein
 evtl. lair bonus der dem gegner ein wenig mehr/weniger damage erlaubt
@@ -132,6 +135,10 @@ bool enemyChoosesHeal(enemy* enemy)
     int healthd20 = 20 - map(currentHealth, 0, maxHealth, 0, 20);
     int rolld20 = randomIntRange(1, 20);
     return (healthd20 + rolld20) >= 30;
+}
+
+int rollInitiative (Character *character) {
+    return randomIntRange(1,20) + character->dexterity;
 }
 
 // Getter/Setter Funktionen
