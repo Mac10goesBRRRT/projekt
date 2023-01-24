@@ -3,30 +3,30 @@
 
 #include <stdbool.h>
 
-enum inputOptions{
+enum InputOptions{
     ROCK,
     PAPER,
     SCISSORS
 };
     
-enum roundWinner{
+enum RoundWinner{
     PLAYERWINSROUND,
     COMPUTERWINSROUND,
     NOWINNER
 };
 
-enum gameWinner{
+enum GameWinner{
     PLAYERWINSGAME,
     COMPUTERWINSGAME,
     NOTWONYET
 };
 
 
-int findWinner(int inputPlayer, int inputComputer);
+int findWinner(int playerInput, int computerInput);
 int getComputerInput();
 int wasGameWon(int roundsToWin, int playerWins, int computerWins);
 bool validatePlayerInput(int playerInput);
 int getPlayerInput();
-int play(int rounds);
+int playRockPaperScissors(int rounds);
 
 #endif
