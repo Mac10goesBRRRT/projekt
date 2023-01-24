@@ -31,7 +31,7 @@ void test_rockPaperScissors_playerWinsRound(void)
 {
     /* arrange */
     int result;
-    
+
     int inputPlayer = ROCK;
     int inputComputer = SCISSORS;
 
@@ -111,7 +111,7 @@ void test_rockPaperScissors_generateComputerInput(void)
     result = getComputerInput();
 
     /* assert */
-    TEST_ASSERT_EQUAL_INT(ROCK || PAPER || SCISSORS, result);
+    TEST_ASSERT_INT_WITHIN(1, 1, result);
 }
 
 
