@@ -24,17 +24,22 @@ int playRockPaperScissors(int rounds){
 void runGame(int *playerWins, int *computerWins){
     int computerInput, playerInput;
     int roundwinner = NOWINNER;
-
+    
     playerInput = getPlayerInput();
     computerInput = getComputerInput();
     roundwinner = findWinner(playerInput, computerInput);
+    setScore(roundwinner, playerWins, computerWins);
+    printResult(playerInput, computerInput, roundwinner, *playerWins, *computerWins);
+}
+
+
+void setScore(int roundwinner, int *playerWins, int *computerWins){
     if (roundwinner == PLAYERWINSROUND){
         *playerWins += 1;
     }
     else if (roundwinner == COMPUTERWINSROUND){
         *computerWins += 1;
     }
-    printResult(playerInput, computerInput, roundwinner, *playerWins, *computerWins);
 }
 
 
