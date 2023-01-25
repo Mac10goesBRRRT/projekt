@@ -8,6 +8,7 @@
 
 #include "playerinput.h"
 #include "helper.h"
+#include "utils.h"
 
 /*Gegner mit AC, damagedealt = damage-AC, kann nicht kleiner 1 sein
 evtl. lair bonus der dem gegner ein wenig mehr/weniger damage erlaubt
@@ -128,18 +129,7 @@ int fight(Character *character, enemy* enemy)
     }
 }
 
-int randomIntRange(int min, int max)
-{
-    int value = randomInt();
-    return (value % (max - min + 1)) + min;
-}
 
-
-int map(int x, int in_min, int in_max, int out_min, int out_max)
-{
-    //vgl Arduino map() https://www.arduino.cc/reference/en/language/functions/math/map/
-    return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
-}
 
 bool enemyChoosesHeal(enemy* enemy)
 {

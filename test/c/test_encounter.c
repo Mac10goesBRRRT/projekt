@@ -7,6 +7,7 @@
 #include "mock_playerinput.h"
 #include "helper.h"
 #include "mock_helper.h"
+#include "utils.h"
 
 
 void setUp(void)
