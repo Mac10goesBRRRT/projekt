@@ -57,13 +57,13 @@ void test_playerIsDamaged(void)
 void test_playerIsNotOverhealed(void)
 {
     // arrange
-    int health = 100;
+    int health = 95;
     int armor = 0;
-    int heal = -10;
+    int heal = 10;
     int expectedHealth = 100;
     // act
     Character testChar = {10,10,10,health,100,1,0,100,10,armor,100};
-    health = playerHeal(health, heal, armor, &testChar);
+    health = playerHeal(health, heal, &testChar);
     // assert
     TEST_ASSERT_EQUAL(expectedHealth, health);
 }
@@ -369,7 +369,7 @@ void test_enemyChoosesHeal_ThenAttackWins(void)
     //arange
     int result;
     int enemyHealth = 6, enemyDamage = 10, enemyArmor = 5, enemyMaxHealth = 100;
-    int playerHealth = 10, playerDamage = 10, playerArmor = 5, playerMaxHealth = 10;
+    int playerHealth = 10, playerDamage = 10, playerArmor = 0, playerMaxHealth = 10;
     enemy test = {enemyHealth, enemyDamage, enemyArmor, enemyMaxHealth};
     //act
     Character testChar = {10,10,10,playerHealth,100,1,0,100,playerDamage,playerArmor,playerMaxHealth};

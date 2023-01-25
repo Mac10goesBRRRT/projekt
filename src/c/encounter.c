@@ -28,10 +28,10 @@ bool playerAlive(int health)
     }
 }
 
-int playerHeal(int health, int damage, int armor, Character* character)
+int playerHeal(int health, int damage, Character* character)
 {
     int maxhealth = getCharacterMaxHealthPoints(character);
-    health = health - damage;
+    health = health + damage;
     if (health > maxhealth)
     {
         health = maxhealth;
@@ -41,13 +41,12 @@ int playerHeal(int health, int damage, int armor, Character* character)
 
 int playerDamaged(int health, int damage, int armor, Character* character)
 {
-    int maxhealth = getCharacterMaxHealthPoints(character);
-    health = health - damage;
-    if (health > maxhealth)
+    int damagedealt = damage - armor;
+    if (damagedealt < 1)
     {
-        health = maxhealth;
+        damagedealt = 1;
     }
-    return health;
+    return health - damagedealt;
 }
 
 void enemyHeal(enemy *enemy, int healAmount)
@@ -96,7 +95,7 @@ int fight(Character *character, enemy* enemy)
                     enemyDamaged(enemy, getCharacterAttack(character));
                     break;
                 case 'h':
-                    playerH = playerHeal(getCharacterHealthPoints(character), -10, getCharacterArmor(character), character);
+                    playerH = playerHeal(getCharacterHealthPoints(character), 10, character);
                     setCharacterHealthPoints(character, playerH);
                     break;
                 case 'f':
