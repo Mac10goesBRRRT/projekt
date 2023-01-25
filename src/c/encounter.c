@@ -146,7 +146,15 @@ bool enemyChoosesHeal(enemy* enemy)
     int maxHealth = getEnemyMaxHealth(enemy);
     int healthd20 = 20 - map(currentHealth, 0, maxHealth, 0, 20);
     int rolld20 = randomIntRange(1, 20);
-    return (healthd20 + rolld20) >= 30;
+    if((healthd20 + rolld20) >= 30 && getEnemyHealPotions(enemy) > 0)
+    {
+        setEnemyHealPotions(enemy, getEnemyHealPotions(enemy) - 1);
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }
 
 // Getter/Setter Funktionen
@@ -183,4 +191,14 @@ int getEnemyDamage(enemy* enemy)
 int getEnemyMaxHealth(enemy* enemy)
 {
     return enemy->maxHealth;
+}
+
+int getEnemyHealPotions(enemy* enemy)
+{
+    return enemy->healPotions;
+}
+
+void setEnemyHealPotions(enemy* enemy, int newPotions)
+{
+    enemy->healPotions = newPotions;
 }

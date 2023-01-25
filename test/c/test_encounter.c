@@ -341,7 +341,7 @@ void test_enemyChoosesHeal(void)
     //arange
     bool result;
     int enemyHealth = 50, enemyDamage = 4, enemyArmor = 4, enemyMaxHealth = 100;
-    enemy test = {enemyHealth, enemyDamage, enemyArmor, enemyMaxHealth};
+    enemy test = {enemyHealth, enemyDamage, enemyArmor, enemyMaxHealth, 1};
     //act
     randomInt_ExpectAndReturn(39); //39%20 = 19 , 19 + 1 = 20
     result = enemyChoosesHeal(&test);
@@ -370,7 +370,7 @@ void test_enemyChoosesHeal_ThenAttackWins(void)
     int result;
     int enemyHealth = 6, enemyDamage = 10, enemyArmor = 5, enemyMaxHealth = 100;
     int playerHealth = 10, playerDamage = 10, playerArmor = 0, playerMaxHealth = 10;
-    enemy test = {enemyHealth, enemyDamage, enemyArmor, enemyMaxHealth};
+    enemy test = {enemyHealth, enemyDamage, enemyArmor, enemyMaxHealth,1 };
     //act
     Character testChar = {10,10,10,playerHealth,100,1,0,100,playerDamage,playerArmor,playerMaxHealth};
     playerInputChar_ExpectAndReturn('a');
@@ -382,5 +382,17 @@ void test_enemyChoosesHeal_ThenAttackWins(void)
     TEST_ASSERT_EQUAL(0, result);
 
 }
+
+void test_enemyHealsNoPotion(void)
+{
+    int enemyHealth = 6, enemyDamage = 10, enemyArmor = 5, enemyMaxHealth = 100;
+    enemy test = {enemyHealth, enemyDamage, enemyArmor, enemyMaxHealth, 0};
+
+    randomInt_ExpectAndReturn(39); //39%20 = 19 , 19 + 1 = 20
+    bool result = enemyChoosesHeal(&test);
+    
+    TEST_ASSERT_FALSE(result);
+}
+
 
 #endif // TEST

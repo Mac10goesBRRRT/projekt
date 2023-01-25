@@ -8,6 +8,7 @@ typedef struct enemy{
     int damage;
     int armor;
     int maxHealth;
+    int healPotions;
 } enemy; 
 
 
@@ -37,5 +38,8 @@ int getEnemyMaxHealth(enemy* enemy);
 int getEnemyHealth(enemy* enemy);
 int getEnemyArmor(enemy* enemy);
 int getEnemyDamage(enemy* enemy);
+
+int getEnemyHealPotions(enemy* enemy);
+void setEnemyHealPotions(enemy* enemy, int newPotions);
 
 #endif
