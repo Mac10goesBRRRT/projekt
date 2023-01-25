@@ -72,22 +72,21 @@ int switchTurns(int currentTurn)
 
 int fight(Character *character, enemy* enemy)
 {
-    int playerH = getCharacterHealthPoints(character);
-    int playerDamage = getCharacterAttack(character);
-    int playerArmor = getCharacterArmor(character);
+    int playerH = 0;
     int currentTurn = 2;
     char decision;
-    while (playerAlive(playerH) && getEnemyHealth(enemy) > 0)
+    while (playerAlive(getCharacterHealthPoints(character)) && getEnemyHealth(enemy) > 0)
     {
         if (currentTurn != 1)
         {
             decision = playerInputChar();
             switch(decision){
                 case 'a':
-                    enemyDamaged(enemy, playerDamage);
+                    enemyDamaged(enemy, getCharacterAttack(character));
                     break;
                 case 'h':
-                    playerH = playerHealth(playerH, -10, playerArmor, character);
+                    playerH = playerHealth(getCharacterHealthPoints(character), -10, getCharacterArmor(character), character);
+                    setCharacterHealthPoints(character, playerH);
                     break;
                 case 'f':
                     return 2;
@@ -102,19 +101,20 @@ int fight(Character *character, enemy* enemy)
             }
             else
             {
-                playerH = playerHealth(playerH, getEnemyDamage(enemy), playerArmor, character);
+                playerH = playerHealth(getCharacterHealthPoints(character), getEnemyDamage(enemy), getCharacterArmor(character), character);
+                setCharacterHealthPoints(character, playerH);
             }
         }
         currentTurn = switchTurns(currentTurn);
     }
-    if (playerAlive(playerH))
+    if (playerAlive(getCharacterHealthPoints(character)))
     {
         return 1;
     }
     else
     {
         return 0;
-    } 
+    }
 }
 
 int randomIntRange(int min, int max)
