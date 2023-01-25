@@ -21,6 +21,11 @@ int playRockPaperScissors(int rounds){
 }
 
 
+void printPrompt(int roundsToWin){
+    printf("Hello NAME.\nLet us play a game, shall we? I assume you are familiar with Rock-Paper-Scissors?\nIf not, here are the rules:\nThe first one to win %d rounds wins the game. Rock beats scissors, scissors beats paper and paper beats rock.\nThey are quite simple, even you should understand. Got it?\n", roundsToWin);
+}
+
+
 void runGame(int *playerWins, int *computerWins){
     int computerInput, playerInput;
     int roundwinner = NOWINNER;
@@ -30,16 +35,6 @@ void runGame(int *playerWins, int *computerWins){
     roundwinner = findWinner(playerInput, computerInput);
     setScore(roundwinner, playerWins, computerWins);
     printResult(playerInput, computerInput, roundwinner, *playerWins, *computerWins);
-}
-
-
-void setScore(int roundwinner, int *playerWins, int *computerWins){
-    if (roundwinner == PLAYERWINSROUND){
-        *playerWins += 1;
-    }
-    else if (roundwinner == COMPUTERWINSROUND){
-        *computerWins += 1;
-    }
 }
 
 
@@ -94,23 +89,13 @@ int findWinner(int playerInput, int computerInput){
 }
 
 
-int wasGameWon(int roundsToWin, int playerWins, int computerWins){
-    int winner;
-    if (playerWins == roundsToWin){
-        winner = PLAYERWINSGAME;
+void setScore(int roundwinner, int *playerWins, int *computerWins){
+    if (roundwinner == PLAYERWINSROUND){
+        *playerWins += 1;
     }
-    else if (computerWins == roundsToWin){
-        winner = COMPUTERWINSGAME;
+    else if (roundwinner == COMPUTERWINSROUND){
+        *computerWins += 1;
     }
-    else {
-        winner = NOTWONYET;
-    }
-    return winner;
-}
-
-
-void printPrompt(int roundsToWin){
-    printf("Hello NAME.\nLet us play a game, shall we? I assume you are familiar with Rock-Paper-Scissors?\nIf not, here are the rules:\nThe first one to win %d rounds wins the game. Rock beats scissors, scissors beats paper and paper beats rock.\nThey are quite simple, even you should understand. Got it?\n", roundsToWin);
 }
 
 
@@ -136,6 +121,21 @@ void printResult(int playerInput, int computerInput, int roundWinner, int player
     }
 
     printf("With this, you are at %d wins and I am at %d.\n", playerWins, computerWins);
+}
+
+
+int wasGameWon(int roundsToWin, int playerWins, int computerWins){
+    int winner;
+    if (playerWins == roundsToWin){
+        winner = PLAYERWINSGAME;
+    }
+    else if (computerWins == roundsToWin){
+        winner = COMPUTERWINSGAME;
+    }
+    else {
+        winner = NOTWONYET;
+    }
+    return winner;
 }
 
 
