@@ -48,7 +48,8 @@ void test_playerIsDamaged(void)
     int armor = 0;
     int expectedHealth = 90;
     // act
-    health = playerHealth(health, damage, armor);
+    Character testChar = {10,10,10,health,100,1,0,100,damage,armor,100};
+    health = playerHealth(health, damage, armor, &testChar);
     // assert
     TEST_ASSERT_EQUAL(expectedHealth, health);
 }
@@ -61,7 +62,8 @@ void test_playerIsNotOverhealed(void)
     int heal = -10;
     int expectedHealth = 100;
     // act
-    health = playerHealth(health, heal, armor);
+    Character testChar = {10,10,10,health,100,1,0,100,10,armor,100};
+    health = playerHealth(health, heal, armor, &testChar);
     // assert
     TEST_ASSERT_EQUAL(expectedHealth, health);
 }

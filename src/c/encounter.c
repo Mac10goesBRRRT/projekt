@@ -28,9 +28,9 @@ bool playerAlive(int health)
     }
 }
 
-int playerHealth(int health, int damage, int armor)
+int playerHealth(int health, int damage, int armor, Character* character)
 {
-    const int maxhealth = 100;
+    int maxhealth = getCharacterMaxHealthPoints(character);
     health = health - damage;
     if (health > maxhealth)
     {
@@ -87,7 +87,7 @@ int fight(Character *character, enemy* enemy)
                     enemyDamaged(enemy, playerDamage);
                     break;
                 case 'h':
-                    playerH = playerHealth(playerH, -10, playerArmor);
+                    playerH = playerHealth(playerH, -10, playerArmor, character);
                     break;
                 case 'f':
                     return 2;
@@ -102,7 +102,7 @@ int fight(Character *character, enemy* enemy)
             }
             else
             {
-                playerH = playerHealth(playerH, getEnemyDamage(enemy), playerArmor);
+                playerH = playerHealth(playerH, getEnemyDamage(enemy), playerArmor, character);
             }
         }
         currentTurn = switchTurns(currentTurn);
