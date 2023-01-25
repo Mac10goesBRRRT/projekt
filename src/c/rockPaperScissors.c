@@ -7,27 +7,34 @@
 #include "rockPaperScissors.h"
 
 int playRockPaperScissors(int rounds){
-    int playerWins = 0, computerWins = 0;
     int roundsToWin = (rounds/2)+1;
-    int computerInput, playerInput;
-    int roundwinner = NOWINNER;
     int winner = NOTWONYET;
+    int playerWins = 0, computerWins = 0, *playerPt = &playerWins, *computerPt = &computerWins;
 
     printPrompt(roundsToWin);
     while (winner == NOTWONYET){
-        playerInput = getPlayerInput();
-        computerInput = getComputerInput();
-        roundwinner = findWinner(playerInput, computerInput);
-        if (roundwinner == PLAYERWINSROUND){
-            playerWins += 1;
-        }
-        else if (roundwinner == COMPUTERWINSROUND){
-            computerWins += 1;
-        }
+        runGame(playerPt, computerPt);
         winner = wasGameWon(roundsToWin, playerWins, computerWins);
-        printResult(playerInput, computerInput, roundwinner, playerWins, computerWins);
     }
     printWinner(winner);
+    return winner;
+}
+
+
+void runGame(int *playerWins, int *computerWins){
+    int computerInput, playerInput;
+    int roundwinner = NOWINNER;
+
+    playerInput = getPlayerInput();
+    computerInput = getComputerInput();
+    roundwinner = findWinner(playerInput, computerInput);
+    if (roundwinner == PLAYERWINSROUND){
+        *playerWins += 1;
+    }
+    else if (roundwinner == COMPUTERWINSROUND){
+        *computerWins += 1;
+    }
+    printResult(playerInput, computerInput, roundwinner, *playerWins, *computerWins);
 }
 
 
@@ -57,7 +64,7 @@ bool validatePlayerInput(int playerInput){
 
 
 int getComputerInput(){
-    srand(rand() % 300);
+    srand(time(0));
     int input = rand() % 3;
     return input;
 }
@@ -125,6 +132,7 @@ void printResult(int playerInput, int computerInput, int roundWinner, int player
 
     printf("With this, you are at %d wins and I am at %d.\n", playerWins, computerWins);
 }
+
 
 void printWinner(int winner){
     if (winner == PLAYERWINSGAME){

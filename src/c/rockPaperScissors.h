@@ -31,5 +31,6 @@ int playRockPaperScissors(int rounds);
 void printPrompt(int roundsToWin);
 void printResult(int playerInput, int computerInput, int roundWinner, int playerWins, int computerWins);
 void printWinner(int winner);
+void runGame(int *playerWins, int *computerWins);
 
 #endif
