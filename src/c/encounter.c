@@ -119,6 +119,7 @@ int fight(Character *character, enemy* enemy)
     }
     if (playerAlive(getCharacterHealthPoints(character)))
     {
+        setCharacterExp(character, getCharacterExp(character) + getEnemyExp(enemy));
         return 1;
     }
     else
@@ -201,4 +202,11 @@ int getEnemyHealPotions(enemy* enemy)
 void setEnemyHealPotions(enemy* enemy, int newPotions)
 {
     enemy->healPotions = newPotions;
+}
+
+int getEnemyExp(enemy* enemy){
+    return enemy->exp;
+}
+void setEnemyExp(enemy* enemy, int newExp){
+    enemy->exp = newExp;
 }
