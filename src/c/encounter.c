@@ -121,6 +121,7 @@ int fight(Character *character, enemy* enemy)
     if (playerAlive(getCharacterHealthPoints(character)))
     {
         setCharacterExp(character, getCharacterExp(character) + getEnemyExp(enemy));
+        setCharacterGold(character, getCharacterGold(character) + getEnemyGold(enemy));
         return 1;
     }
     else
@@ -199,4 +200,8 @@ int getEnemyExp(enemy* enemy){
 }
 void setEnemyExp(enemy* enemy, int newExp){
     enemy->exp = newExp;
+}
+
+int getEnemyGold(enemy* enemy){
+    return enemy->gold;
 }

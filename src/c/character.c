@@ -90,6 +90,15 @@ int getCharacterArmor (Character *character){
     return character->armor;
 }
 
+void setCharacterGold (Character *character, int newGold){
+    character->gold = newGold;
+}
+
+int getCharacterGold (Character *character){
+    return character->gold;
+}
+
+
 void increaseStat (Character *character, int stat, int amount) {
     switch (stat)
     {
