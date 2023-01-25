@@ -12,7 +12,8 @@ typedef struct enemy{
 
 
 bool playerAlive(int health);
-int playerHealth(int health, int damage, int armor, Character* character);
+int playerHeals(int health, int damage, int armor, Character* character);
+int playerDamaged(int health, int damage, int armor, Character* character);
 void enemyHeal(enemy *enemy, int healAmount);
 void enemyDamaged(enemy* enemy, int damage);
 bool enemyChoosesHeal(enemy* enemy);
