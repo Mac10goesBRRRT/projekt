@@ -3,9 +3,12 @@
 #include <string.h>
 #include <stdbool.h>
 
+#include "character.h"
 #include "encounter.h"
+
 #include "playerinput.h"
 #include "helper.h"
+#include "utils.h"
 
 /*Gegner mit AC, damagedealt = damage-AC, kann nicht kleiner 1 sein
 evtl. lair bonus der dem gegner ein wenig mehr/weniger damage erlaubt
@@ -26,15 +29,25 @@ bool playerAlive(int health)
     }
 }
 
-int playerHealth(int health, int damage, int armor)
+int playerHeal(int health, int damage, Character* character)
 {
-    const int maxhealth = 100;
-    health = health - damage;
+    int maxhealth = getCharacterMaxHealthPoints(character);
+    health = health + damage;
     if (health > maxhealth)
     {
         health = maxhealth;
     }
     return health;
+}
+
+int playerDamaged(int health, int damage, int armor, Character* character)
+{
+    int damagedealt = damage - armor;
+    if (damagedealt < 1)
+    {
+        damagedealt = 1;
+    }
+    return health - damagedealt;
 }
 
 void enemyHeal(enemy *enemy, int healAmount)
@@ -68,21 +81,23 @@ int switchTurns(int currentTurn)
     return currentTurn;
 }
 
-int fight(int playerH, int playerDamage, int playerArmor, int playerAttack, enemy* enemy)
+int fight(Character *character, enemy* enemy)
 {
+    int playerH = 0;
     int currentTurn = 2;
     char decision;
-    while (playerAlive(playerH) && getEnemyHealth(enemy) > 0)
+    while (playerAlive(getCharacterHealthPoints(character)) && getEnemyHealth(enemy) > 0)
     {
         if (currentTurn != 1)
         {
             decision = playerInputChar();
             switch(decision){
                 case 'a':
-                    enemyDamaged(enemy, playerDamage);
+                    enemyDamaged(enemy, getCharacterAttack(character));
                     break;
                 case 'h':
-                    playerH = playerHealth(playerH, -10, playerArmor);
+                    playerH = playerHeal(getCharacterHealthPoints(character), 10, character);
+                    setCharacterHealthPoints(character, playerH);
                     break;
                 case 'f':
                     return 2;
@@ -97,33 +112,25 @@ int fight(int playerH, int playerDamage, int playerArmor, int playerAttack, enem
             }
             else
             {
-                playerH = playerHealth(playerH, getEnemyDamage(enemy), playerArmor);
+                playerH = playerDamaged(getCharacterHealthPoints(character), getEnemyDamage(enemy), getCharacterArmor(character), character);
+                setCharacterHealthPoints(character, playerH);
             }
         }
         currentTurn = switchTurns(currentTurn);
     }
-    if (playerAlive(playerH))
+    if (playerAlive(getCharacterHealthPoints(character)))
     {
+        setCharacterExp(character, getCharacterExp(character) + getEnemyExp(enemy));
+        setCharacterGold(character, getCharacterGold(character) + getEnemyGold(enemy));
         return 1;
     }
     else
     {
         return 0;
-    } 
-}
-
-int randomIntRange(int min, int max)
-{
-    int value = randomInt();
-    return (value % (max - min + 1)) + min;
+    }
 }
 
 
-int map(int x, int in_min, int in_max, int out_min, int out_max)
-{
-    //vgl Arduino map() https://www.arduino.cc/reference/en/language/functions/math/map/
-    return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
-}
 
 bool enemyChoosesHeal(enemy* enemy)
 {
@@ -131,7 +138,15 @@ bool enemyChoosesHeal(enemy* enemy)
     int maxHealth = getEnemyMaxHealth(enemy);
     int healthd20 = 20 - map(currentHealth, 0, maxHealth, 0, 20);
     int rolld20 = randomIntRange(1, 20);
-    return (healthd20 + rolld20) >= 30;
+    if((healthd20 + rolld20) >= 30 && getEnemyHealPotions(enemy) > 0)
+    {
+        setEnemyHealPotions(enemy, getEnemyHealPotions(enemy) - 1);
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }
 
 // Getter/Setter Funktionen
@@ -168,4 +183,25 @@ int getEnemyDamage(enemy* enemy)
 int getEnemyMaxHealth(enemy* enemy)
 {
     return enemy->maxHealth;
+}
+
+int getEnemyHealPotions(enemy* enemy)
+{
+    return enemy->healPotions;
+}
+
+void setEnemyHealPotions(enemy* enemy, int newPotions)
+{
+    enemy->healPotions = newPotions;
+}
+
+int getEnemyExp(enemy* enemy){
+    return enemy->exp;
+}
+void setEnemyExp(enemy* enemy, int newExp){
+    enemy->exp = newExp;
+}
+
+int getEnemyGold(enemy* enemy){
+    return enemy->gold;
 }

@@ -66,6 +66,39 @@ int calculateStatIncrease (Character *character, int amount) {
     return character->level*amount;
 }
 
+void setCharacterMaxHealthPoints (Character *character, int newMaxHealthPoints){
+    character->maxHealthPoints = newMaxHealthPoints;
+}
+
+int getCharacterMaxHealthPoints (Character *character){
+    return character->maxHealthPoints;
+}
+
+void setCharacterAttack (Character *character, int newAttack){
+    character->attack = newAttack;
+}
+
+int getCharacterAttack (Character *character){
+    return character->attack;
+}
+
+void setCharacterArmor (Character *character, int newArmor){
+    character->armor = newArmor;
+}
+
+int getCharacterArmor (Character *character){
+    return character->armor;
+}
+
+void setCharacterGold (Character *character, int newGold){
+    character->gold = newGold;
+}
+
+int getCharacterGold (Character *character){
+    return character->gold;
+}
+
+
 void increaseStat (Character *character, int stat, int amount) {
     switch (stat)
     {

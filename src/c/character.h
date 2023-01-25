@@ -2,7 +2,7 @@
 #define CHARACTER_H
 
 typedef struct {
-    int strength,dexterity,intelligence,healthPoints,manaPoints,level,exp,maxExp;
+    int strength,dexterity,intelligence,healthPoints,manaPoints,level,exp,maxExp,attack,armor,maxHealthPoints,gold;
     char name [50];
 } Character;
 
@@ -41,6 +41,22 @@ int getCharacterMaxExp (Character *character);
 void increaseStat (Character *character, int stat, int amount);
 
 int calculateStatIncrease (Character *character, int amount);
+
+void setCharacterMaxHealthPoints (Character *character, int newMaxHealthPoints);
+
+int getCharacterMaxHealthPoints (Character *character);
+
+void setCharacterAttack (Character *character, int newAttack);
+
+int getCharacterAttack (Character *character);
+
+void setCharacterArmor (Character *character, int newArmor);
+
+int getCharacterArmor (Character *character);
+
+void setCharacterGold (Character *character, int newGold);
+
+int getCharacterGold (Character *character);
 
 void levelUp (Character *character);
 #endif

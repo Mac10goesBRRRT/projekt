@@ -8,33 +8,41 @@ typedef struct enemy{
     int damage;
     int armor;
     int maxHealth;
+    int healPotions;
+    int exp;
+    int gold;
 } enemy; 
 
 
 bool playerAlive(int health);
-int playerHealth(int health, int damage, int armor);
+int playerHeal(int health, int damage, Character* character);
+int playerDamaged(int health, int damage, int armor, Character* character);
 void enemyHeal(enemy *enemy, int healAmount);
 void enemyDamaged(enemy* enemy, int damage);
 bool enemyChoosesHeal(enemy* enemy);
 int switchTurns(int currentTurn);
-int fight(int playerH, int playerDamage, int playerArmor, int playerAttack, enemy* enemy);
+int fight(Character *character, enemy* enemy);
 
-//Funktionen die Mathematische Berechnungen durchführen
-int map(int x, int in_min, int in_max, int out_min, int out_max);
-int randomIntRange(int min, int max);
+
+
 //Getter/Setter Funktionen
+int getEnemyMaxHealth(enemy* enemy);
 
-//setEnemyHealth(&enemy, health);
+int getEnemyGold(enemy* enemy);
+
+int getEnemyHealth(enemy* enemy);
 void setEnemyHealth(enemy* enemy, int newhealth);
 
-//setEnemyDamage(&enemy.damage, damage);
-void setEnemyDamage(enemy* enemy, int newdamage);
-//setEnemyArmor(&enemy.armor, armor);
-void setEnemyArmor(enemy* enemy, int newarmor);
-//Function to get the value of Data in a struct, needs a pointer to the struct
-int getEnemyMaxHealth(enemy* enemy);
-int getEnemyHealth(enemy* enemy);
 int getEnemyArmor(enemy* enemy);
+void setEnemyArmor(enemy* enemy, int newarmor);
+
 int getEnemyDamage(enemy* enemy);
+void setEnemyDamage(enemy* enemy, int newdamage);
+
+int getEnemyHealPotions(enemy* enemy);
+void setEnemyHealPotions(enemy* enemy, int newPotions);
+
+int getEnemyExp(enemy* enemy);
+void setEnemyExp(enemy* enemy, int newExp);
 
 #endif
