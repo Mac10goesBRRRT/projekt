@@ -102,7 +102,7 @@ void setCharacterName (Character *character, char *newName) {
     strcpy(character->name,newName);
 }
 
-char getCharacterName (Character *character) {
+char* getCharacterName (Character *character) {
     return character->name;
 }
 

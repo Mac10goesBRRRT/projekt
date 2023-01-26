@@ -62,6 +62,6 @@ void levelUp (Character *character);
 
 void setCharacterName (Character *character, char newName[]);
 
-char getCharacterName (Character *character);
+char* getCharacterName (Character *character);
 
 #endif
