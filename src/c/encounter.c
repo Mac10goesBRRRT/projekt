@@ -28,18 +28,6 @@ bool playerAlive(Character* character)
         return false;
     }
 }
-
-int playerHealth(int health, int damage, int armor)
-{
-    const int maxhealth = 100;
-    health = health - damage;
-    if (health > maxhealth)
-    {
-        health = maxhealth;
-    }
-    return health;
-}
-
 int playerHealed(Character* character, int amount) {
     int health = getCharacterHealthPoints(character);
     health = health + amount;
