@@ -106,7 +106,7 @@ char* getCharacterName (Character *character) {
     return character->name;
 }
 
-int getWaponAttack (Weapon *weapon) {
+int getWeaponAttack (Weapon *weapon) {
     return weapon->attack;
 }
 
@@ -120,6 +120,14 @@ int getWeaponDurability (Weapon *weapon) {
 
 int setWeaponDurability (Weapon *weapon, int newDurability) {
     weapon->durability = newDurability;
+}
+
+void setWeaponClass (Character* character, int weaponClass) {
+    character->weapon = weaponClass;
+}
+
+int getWeaponClass (Character* character) {
+    return character->weapon;
 }
 
 void increaseStat (Character *character, int stat, int amount) {

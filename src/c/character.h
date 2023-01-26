@@ -3,7 +3,7 @@
 
 typedef struct {
     int strength,dexterity,intelligence,healthPoints,manaPoints,level,exp,maxExp;
-    int attack,armor,maxHealthPoints,gold,items[10];
+    int attack,armor,maxHealthPoints,gold,items[10],weapon;
     char name [50];
 } Character;
 typedef struct {
@@ -11,6 +11,9 @@ typedef struct {
     char name [50];
 } Weapon;
 
+enum {
+    SWORD = 1, BOW = 2, STAFF = 3
+};
 enum {
     STRENGTH = 1, DEXTERITY = 2, INTELLIGENCE = 3, HEALTHPOINTS = 4, MANAPOINTS = 5, LEVEL = 6, EXP = 7, MAXEXP = 8
 };
@@ -69,7 +72,7 @@ void setCharacterName (Character *character, char newName[]);
 
 char* getCharacterName (Character *character);
 
-int getWaponAttack (Weapon *weapon);
+int getWeaponAttack (Weapon *weapon);
 
 void setWeaponAttack (Weapon *weapon, int newAttack);
 
