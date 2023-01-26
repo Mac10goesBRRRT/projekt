@@ -40,6 +40,20 @@ int playerHealth(int health, int damage, int armor)
     return health;
 }
 
+int playerHealed(Character* character, int amount) {
+    int health = getCharacterHealthPoints(character);
+    health = health + amount;
+    if (health > getCharacterMaxHealthPoints(character)) {
+        health = getCharacterMaxHealthPoints(character);
+    }
+    return health;    
+}
+int playerDamaged(Character* character, int amount) {
+    int health = getCharacterHealthPoints(character);
+    health = health - amount;
+    return health;    
+}
+
 void enemyHeal(enemy *enemy, int healAmount)
 {
     int currentHealth = getEnemyHealth(enemy);
@@ -85,7 +99,7 @@ int fight(Character* character, enemy* enemy)
                     enemyDamaged(enemy, getCharacterWeaponDamage(character));
                     break;
                 case 'h':
-                    setCharacterHealthPoints(character, playerHealth(getCharacterHealthPoints(character), -10, getCharacterArmor(character)));
+                    setCharacterHealthPoints(character, playerHealed(character, 10));
                     break;
                 case 'f':
                     return 2;
@@ -100,7 +114,7 @@ int fight(Character* character, enemy* enemy)
             }
             else
             {
-                setCharacterHealthPoints(character, playerHealth(getCharacterHealthPoints(character), getEnemyDamage(enemy), getCharacterArmor(character)));
+                setCharacterHealthPoints(character, playerDamaged(character, getEnemyDamage(enemy)));
             }
         }
         currentTurn = switchTurns(currentTurn);

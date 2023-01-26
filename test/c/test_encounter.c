@@ -16,6 +16,7 @@ void setUp(void)
     //int playerHealth = 100, playerDamage = 10, playerArmor = 4, playerAttack = 5;
     testcharacter.dexterity = 5;
     testcharacter.healthPoints = 100;
+    testcharacter.maxHealthPoints = 100;
     testcharacter.weaponDamage = 10;
     testcharacter.armor = 4;
     //testcharacter.characterAttack = 5;
