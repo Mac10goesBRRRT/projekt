@@ -98,6 +98,13 @@ int getCharacterGold (Character *character){
     return character->gold;
 }
 
+void setCharacterName (Character *character, char *newName) {
+    strcpy(character->name,newName);
+}
+
+char getCharacterName (Character *character) {
+    return character->name;
+}
 
 void increaseStat (Character *character, int stat, int amount) {
     switch (stat)

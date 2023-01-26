@@ -59,4 +59,9 @@ void setCharacterGold (Character *character, int newGold);
 int getCharacterGold (Character *character);
 
 void levelUp (Character *character);
+
+void setCharacterName (Character *character, char newName[]);
+
+char getCharacterName (Character *character);
+
 #endif
