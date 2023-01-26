@@ -16,8 +16,11 @@ void setUp(void)
     testcharacter.dexterity = 5;
     testcharacter.healthPoints = 100;
     testcharacter.maxHealthPoints = 100;
+    testcharacter.attack = 10;
 
     testenemy.damage = 10;
+    testenemy.health = 50;
+    testenemy.armor = 10;
 }
 
 void teardown(void)
@@ -127,31 +130,24 @@ void test_get_setEnemyArmor(void)
 void test_PlayerAttacksEnemy_DoesDamage(void)
 {
     // arrange
-    int playerDamage = 10;
-    int enemyHealth = 50;
-    int enemyArmor = 4;
+    setEnemyArmor(&testenemy, 4);
     // health - (damage - armor)
     int expectedEnemyHealth = 44;
     // act
-    enemy test = {enemyHealth, 4, enemyArmor};
-    enemyDamaged(&test, playerDamage);
+    enemyDamaged(&testenemy, &testcharacter);
     // assert
-    TEST_ASSERT_EQUAL(expectedEnemyHealth, test.health);
+    TEST_ASSERT_EQUAL(expectedEnemyHealth, getEnemyHealth(&testenemy));
 }
 
 void test_PlayerAttacksEnemy_DoesMinDamage(void)
 {
     // arrange
-    int playerDamage = 10;
-    int enemyHealth = 50;
-    int enemyArmor = 10;
     // health - (damage - armor)
     int expectedEnemyHealth = 49;
     // act
-    enemy test = {enemyHealth, 4, enemyArmor};
-    enemyDamaged(&test, playerDamage);
+    enemyDamaged(&testenemy,&testcharacter);
     // assert
-    TEST_ASSERT_EQUAL(expectedEnemyHealth, test.health);
+    TEST_ASSERT_EQUAL(expectedEnemyHealth, getEnemyHealth(&testenemy));
 }
 
 // A better way to get the value of a struct, REFACTORING if it works

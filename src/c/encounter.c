@@ -58,16 +58,14 @@ void enemyHeal(enemy *enemy, int healAmount)
     setEnemyHealth(enemy, getEnemyHealth(enemy) + healAmount);
 }
 
-void enemyDamaged(enemy *enemy, int damage)
+void enemyDamaged(enemy *enemy,Character* character)
 {
-    int armor = getEnemyArmor(enemy);
-    int currentHealth = getEnemyHealth(enemy);
-    int damagedealt = damage - armor;
+    int damagedealt = getCharacterAttack(character) - getEnemyArmor(enemy);
     if (damagedealt < 1)
     {
         damagedealt = 1;
     }
-    setEnemyHealth(enemy, currentHealth - damagedealt);
+    setEnemyHealth(enemy, getEnemyHealth(enemy) - damagedealt);
 }
 
 
@@ -90,7 +88,7 @@ int fight(Character *character, enemy* enemy)
             decision = playerInputChar();
             switch(decision){
                 case 'a':
-                    enemyDamaged(enemy, getCharacterAttack(character));
+                    enemyDamaged(enemy, character);
                     break;
                 case 'h':
                     playerH = playerHeal(character,10);
