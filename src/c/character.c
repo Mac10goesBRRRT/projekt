@@ -106,6 +106,22 @@ char* getCharacterName (Character *character) {
     return character->name;
 }
 
+int getWaponAttack (Weapon *weapon) {
+    return weapon->attack;
+}
+
+void setWeaponAttack (Weapon *weapon, int newAttack) {
+    weapon->attack = newAttack;
+}
+
+int getWeaponDurability (Weapon *weapon) {
+    return weapon->durability;
+}
+
+int setWeaponDurability (Weapon *weapon, int newDurability) {
+    weapon->durability = newDurability;
+}
+
 void increaseStat (Character *character, int stat, int amount) {
     switch (stat)
     {
