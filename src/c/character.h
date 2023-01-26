@@ -3,7 +3,7 @@
 
 typedef struct {
     int strength,dexterity,intelligence,healthPoints,manaPoints,level,exp,maxExp;
-    int attack,armor,maxHealthPoints,gold,items[10],weapon;
+    int attack,armor,maxHealthPoints,gold,items[10],weaponClass;
     char name [50];
 } Character;
 typedef struct {
@@ -72,6 +72,10 @@ void setCharacterName (Character *character, char newName[]);
 
 char* getCharacterName (Character *character);
 
+void setCharacterWeaponClass (Character *character, int newWeaponClass);
+
+int getCharacterWeaponClass (Character *character);
+
 int getWeaponAttack (Weapon *weapon);
 
 void setWeaponAttack (Weapon *weapon, int newAttack);
@@ -80,4 +84,5 @@ int getWeaponDurability (Weapon *weapon);
 
 int setWeaponDurability (Weapon *weapon, int newDurability);
 
+int calculateDamage (Character *character,Weapon *weapon);
 #endif

@@ -122,12 +122,12 @@ int setWeaponDurability (Weapon *weapon, int newDurability) {
     weapon->durability = newDurability;
 }
 
-void setWeaponClass (Character* character, int weaponClass) {
-    character->weapon = weaponClass;
+void setCharacterWeaponClass (Character* character, int weaponClass) {
+    character->weaponClass = weaponClass;
 }
 
-int getWeaponClass (Character* character) {
-    return character->weapon;
+int getCharacterWeaponClass (Character* character) {
+    return character->weaponClass;
 }
 
 void increaseStat (Character *character, int stat, int amount) {
@@ -158,4 +158,18 @@ void levelUp (Character *character) {
         increaseStat(character,LEVEL,1);
         setCharacterExp(character,getCharacterExp(character)-getCharacterMaxExp(character));
    }
+}
+
+int calculateDamage (Character *character,Weapon *weapon) {
+    switch (character->weaponClass)
+    {
+        case 1:
+            return character->strength*weapon->attack;
+        case 2:
+            return character->dexterity*weapon->attack;
+        case 3:
+            return character->intelligence*weapon->attack;
+        default:
+            return 1;
+    }
 }
