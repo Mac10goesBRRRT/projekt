@@ -17,9 +17,9 @@ humanoide gegner haben heiltränke mit denen sie sich ggf heilen.
 heilung erfolgt dann, wenn bestimmte hp (50%) unterschritten wird. wird allerdings gewürfelt,
 je niedriger die hp%, desto höher die chance. */
 
-bool playerAlive(int health)
+bool playerAlive(Character* character)
 {
-    if (health > 0)
+    if (character->healthPoints > 0)
     {
         return true;
     }
@@ -71,21 +71,21 @@ int switchTurns(int currentTurn)
     return currentTurn;
 }
 
-int fight(int playerH, int playerDamage, int playerArmor, int playerAttack, enemy* enemy)
+int fight(Character* character, enemy* enemy)
 {
     int currentTurn = 2;
     char decision;
-    while (playerAlive(playerH) && getEnemyHealth(enemy) > 0)
+    while (playerAlive(character) && getEnemyHealth(enemy) > 0)
     {
         if (currentTurn != 1)
         {
             decision = playerInputChar();
             switch(decision){
                 case 'a':
-                    enemyDamaged(enemy, playerDamage);
+                    enemyDamaged(enemy, getCharacterWeaponDamage(character));
                     break;
                 case 'h':
-                    playerH = playerHealth(playerH, -10, playerArmor);
+                    setCharacterHealthPoints(character, playerHealth(getCharacterHealthPoints(character), -10, getCharacterArmor(character)));
                     break;
                 case 'f':
                     return 2;
@@ -100,12 +100,12 @@ int fight(int playerH, int playerDamage, int playerArmor, int playerAttack, enem
             }
             else
             {
-                playerH = playerHealth(playerH, getEnemyDamage(enemy), playerArmor);
+                setCharacterHealthPoints(character, playerHealth(getCharacterHealthPoints(character), getEnemyDamage(enemy), getCharacterArmor(character)));
             }
         }
         currentTurn = switchTurns(currentTurn);
     }
-    if (playerAlive(playerH))
+    if (playerAlive(character))
     {
         return 1;
     }
@@ -176,3 +176,4 @@ int getEnemyMaxHealth(enemy* enemy)
 {
     return enemy->maxHealth;
 }
+

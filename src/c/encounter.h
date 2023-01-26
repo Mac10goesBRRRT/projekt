@@ -12,14 +12,14 @@ typedef struct enemy{
 } enemy; 
 
 
-bool playerAlive(int health);
+bool playerAlive(Character* character);
 int playerHealth(int health, int damage, int armor);
 void enemyHeal(enemy *enemy, int healAmount);
 void enemyDamaged(enemy* enemy, int damage);
 bool enemyChoosesHeal(enemy* enemy);
 int rollInitiative (Character *character);
 int switchTurns(int currentTurn);
-int fight(int playerH, int playerDamage, int playerArmor, int playerAttack, enemy* enemy);
+int fight(Character* character, enemy* enemy);
 
 //Funktionen die Mathematische Berechnungen durchführen
 int map(int x, int in_min, int in_max, int out_min, int out_max);
