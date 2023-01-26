@@ -10,11 +10,14 @@
 #include "utils.h"
 
 Character testcharacter;
+enemy testenemy;
 void setUp(void)
 {   
     testcharacter.dexterity = 5;
     testcharacter.healthPoints = 100;
     testcharacter.maxHealthPoints = 100;
+
+    testenemy.damage = 10;
 }
 
 void teardown(void)
@@ -47,15 +50,10 @@ void test_isPlayerAlive_healthLowerZero(void)
 void test_playerIsDamaged(void)
 {
     // arrange
-    int health = 100;
-    int damage = 10;
-    int armor = 0;
     int expectedHealth = 90;
     // act
-    Character testChar = {10,10,10,health,100,1,0,100,damage,armor,100};
-    health = playerDamaged(health, damage, armor, &testChar);
     // assert
-    TEST_ASSERT_EQUAL(expectedHealth, health);
+    TEST_ASSERT_EQUAL(expectedHealth, playerDamaged(&testenemy, &testcharacter));
 }
 
 void test_playerIsNotOverhealed(void)

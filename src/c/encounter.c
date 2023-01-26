@@ -39,14 +39,14 @@ int playerHeal(Character* character, int amount)
     return getCharacterHealthPoints(character);
 }
 
-int playerDamaged(int health, int damage, int armor, Character* character)
+int playerDamaged(enemy* enemy, Character* character)
 {
-    int damagedealt = damage - armor;
+    int damagedealt = getEnemyDamage(enemy) - getCharacterArmor(character);
     if (damagedealt < 1)
     {
         damagedealt = 1;
     }
-    return health - damagedealt;
+    return getCharacterHealthPoints(character) - damagedealt;
 }
 
 void enemyHeal(enemy *enemy, int healAmount)
@@ -111,7 +111,7 @@ int fight(Character *character, enemy* enemy)
             }
             else
             {
-                playerH = playerDamaged(getCharacterHealthPoints(character), getEnemyDamage(enemy), getCharacterArmor(character), character);
+                playerH = playerDamaged(enemy, character);
                 setCharacterHealthPoints(character, playerH);
             }
         }
