@@ -9,9 +9,10 @@
 #include "mock_helper.h"
 #include "utils.h"
 
-
+Character testcharacter;
 void setUp(void)
 {   
+    testcharacter.dexterity = 5;
 }
 
 void teardown(void)
@@ -395,5 +396,7 @@ void test_enemyHealsNoPotion(void)
     TEST_ASSERT_FALSE(result);
 }
 
-
+int test_rollInitiative (void) {
+    TEST_ASSERT(testcharacter.dexterity + 1 <= rollInitiative(&testcharacter) && testcharacter.dexterity + 20 >= rollInitiative(&testcharacter));
+}
 #endif // TEST

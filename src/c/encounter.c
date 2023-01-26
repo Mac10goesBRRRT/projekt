@@ -130,7 +130,9 @@ int fight(Character *character, enemy* enemy)
     }
 }
 
-
+int rollInitiative (Character *character) {
+    return randomIntRange(1,20) + character->dexterity;
+}
 
 bool enemyChoosesHeal(enemy* enemy)
 {
