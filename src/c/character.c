@@ -62,6 +62,50 @@ int getCharacterMaxExp (Character *character) {
     return character->maxExp;
 }
 
+void setCharacterArmor (Character *character, int newArmor) {
+    character->armor = newArmor;
+}
+
+int getCharacterArmor (Character *character) {
+    return character->armor;
+}
+
+void setCharacterWeaponDamage (Character *character, int newWeaponDamage) {
+    character->weaponDamage = newWeaponDamage;
+}
+
+int getCharacterWeaponDamage (Character *character) {
+    return character->weaponDamage;
+}
+
+void setCharacterMaxHealthPoints (Character *character, int newMaxHealthPoints) {
+    character->maxHealthPoints = newMaxHealthPoints;
+}
+
+int getCharacterMaxHealthPoints (Character *character) {
+    return character->maxHealthPoints;
+}
+
+void setCharacterMaxManaPoints (Character *character, int newMaxManaPoints) {
+    character->maxManaPoints = newMaxManaPoints;
+}
+
+int getCharacterMaxManaPoints (Character *character) {
+    return character->maxManaPoints;
+}
+
+void setCharacterManaPoints (Character *character, int newManaPoints) {
+    character->manaPoints = newManaPoints;
+}
+
+int getCharacterManaPoints (Character *character) {
+    return character->manaPoints;
+}
+
+void setCharacterName (Character *character, char newName[50]) {
+    strcpy(character->name,newName);
+}
+
 int calculateStatIncrease (Character *character, int amount) {
     return character->level*amount;
 }
