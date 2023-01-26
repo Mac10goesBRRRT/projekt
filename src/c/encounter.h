@@ -14,7 +14,7 @@ typedef struct enemy{
 } enemy; 
 
 
-bool playerAlive(int health);
+bool playerAlive(Character *character);
 int playerHeal(int health, int damage, Character* character);
 int playerDamaged(int health, int damage, int armor, Character* character);
 int rollInitiative (Character *character);

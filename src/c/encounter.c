@@ -17,9 +17,9 @@ humanoide gegner haben heiltränke mit denen sie sich ggf heilen.
 heilung erfolgt dann, wenn bestimmte hp (50%) unterschritten wird. wird allerdings gewürfelt,
 je niedriger die hp%, desto höher die chance. */
 
-bool playerAlive(int health)
+bool playerAlive(Character *character)
 {
-    if (health > 0)
+    if (getCharacterHealthPoints(character) > 0)
     {
         return true;
     }
@@ -86,7 +86,7 @@ int fight(Character *character, enemy* enemy)
     int playerH = 0;
     int currentTurn = 2;
     char decision;
-    while (playerAlive(getCharacterHealthPoints(character)) && getEnemyHealth(enemy) > 0)
+    while (playerAlive(character) && getEnemyHealth(enemy) > 0)
     {
         if (currentTurn != 1)
         {
@@ -118,7 +118,7 @@ int fight(Character *character, enemy* enemy)
         }
         currentTurn = switchTurns(currentTurn);
     }
-    if (playerAlive(getCharacterHealthPoints(character)))
+    if (playerAlive(character))
     {
         setCharacterExp(character, getCharacterExp(character) + getEnemyExp(enemy));
         setCharacterGold(character, getCharacterGold(character) + getEnemyGold(enemy));

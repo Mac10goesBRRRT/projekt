@@ -13,6 +13,7 @@ Character testcharacter;
 void setUp(void)
 {   
     testcharacter.dexterity = 5;
+    testcharacter.healthPoints = 100;
 }
 
 void teardown(void)
@@ -25,7 +26,7 @@ void test_isPlayerAlive_healthGreaterZero(void)
     int health = 100;
     bool result;
     // act
-    result = playerAlive(health);
+    result = playerAlive(&testcharacter);
     // assert
     TEST_ASSERT_TRUE(result);
 }
@@ -33,10 +34,10 @@ void test_isPlayerAlive_healthGreaterZero(void)
 void test_isPlayerAlive_healthLowerZero(void)
 {
     // arrange
-    int health = -1;
+    setCharacterHealthPoints(&testcharacter, -1);
     bool result;
     // act
-    result = playerAlive(health);
+    result = playerAlive(&testcharacter);
 
     // assert
     TEST_ASSERT_FALSE(result);
