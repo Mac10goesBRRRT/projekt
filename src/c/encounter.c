@@ -51,13 +51,11 @@ int playerDamaged(enemy* enemy, Character* character)
 
 void enemyHeal(enemy *enemy, int healAmount)
 {
-    int currentHealth = getEnemyHealth(enemy);
-    int maxHealth = getEnemyMaxHealth(enemy);
-    if (currentHealth + healAmount > maxHealth)
+    if (getEnemyHealth(enemy) + healAmount > getEnemyMaxHealth(enemy))
     {
-        healAmount = maxHealth - currentHealth;
+        healAmount = getEnemyMaxHealth(enemy) - getEnemyHealth(enemy);
     }
-    setEnemyHealth(enemy, currentHealth + healAmount);
+    setEnemyHealth(enemy, getEnemyHealth(enemy) + healAmount);
 }
 
 void enemyDamaged(enemy *enemy, int damage)
