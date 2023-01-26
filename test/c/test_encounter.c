@@ -14,6 +14,7 @@ void setUp(void)
 {   
     testcharacter.dexterity = 5;
     testcharacter.healthPoints = 100;
+    testcharacter.maxHealthPoints = 100;
 }
 
 void teardown(void)
@@ -60,15 +61,11 @@ void test_playerIsDamaged(void)
 void test_playerIsNotOverhealed(void)
 {
     // arrange
-    int health = 95;
-    int armor = 0;
+    setCharacterHealthPoints(&testcharacter, 95);
     int heal = 10;
-    int expectedHealth = 100;
     // act
-    Character testChar = {10,10,10,health,100,1,0,100,10,armor,100};
-    health = playerHeal(health, heal, &testChar);
     // assert
-    TEST_ASSERT_EQUAL(expectedHealth, health);
+    TEST_ASSERT_EQUAL(getCharacterMaxHealthPoints(&testcharacter), playerHeal(&testcharacter,heal));
 }
 
 void test_setEnemyHealth(void)

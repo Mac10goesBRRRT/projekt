@@ -2,7 +2,8 @@
 #define CHARACTER_H
 
 typedef struct {
-    int strength,dexterity,intelligence,healthPoints,manaPoints,level,exp,maxExp,attack,armor,maxHealthPoints,gold;
+    int strength,dexterity,intelligence,healthPoints,manaPoints,level,exp,maxExp;
+    int attack,armor,maxHealthPoints,gold;
     char name [50];
 } Character;
 
