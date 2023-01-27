@@ -89,7 +89,7 @@ int differenz = 0;
 
 int blackjack(int spieler, int gegner, int janein){
 
-    int lower = 1, upper = 11, count = 1, num = 0, num2 = 0; //num2 nicht notwendig
+    int lower = 1, upper = 11, count = 1, num = 0, ergebnis = 0;
 
     srand(time(NULL));
 
@@ -117,17 +117,20 @@ int blackjack(int spieler, int gegner, int janein){
         else {
             if (spieler <= 0) {
             printf("Goodbye");
-            return 0;
+            ergebnis = 0;
+            return ergebnis;
             break;
             }
             else if (spieler > gegner) {
                 printf("Player wins.");
-                return 1;
+                ergebnis = 1;
+                return ergebnis;
                 break;
             }
             else if (spieler < gegner) {
                 printf("Opponent wins.");
-                return 2;
+                ergebnis = 2;
+                return ergebnis;
                 break;
             }
         }  
@@ -136,29 +139,36 @@ int blackjack(int spieler, int gegner, int janein){
         
         if ((gegner > 21 || gegner < 21) && spieler == 21) {
             printf("Player wins.");
-            return 1;
+            ergebnis = 1;
+            return ergebnis;
         }
         else if (gegner == 21 && (spieler > 21 || spieler < 21)) {
             printf("Opponent wins.");
-            return 2;
+            ergebnis = 2;
+            return ergebnis;
         }
         else if (gegner > 21 && spieler > 21) {
             printf("No one wins.");
-            return 0;
+            ergebnis = 0;
+            return ergebnis;
             
         }
         else if (gegner == spieler && gegner == 21) {
             printf("Tie.");
-            return 0;
+            ergebnis = 0;
+            return ergebnis;
         }
          if (gegner > 21 && spieler < 21) {
             printf("Player wins.");
-            return 1;
+            ergebnis = 1;
+            return ergebnis;
         }
         if (gegner < 21 && spieler > 21) {
             printf("Opponent wins.");
-            return 2;
+            ergebnis = 2;
+            return ergebnis;
         }
     }
+    //if ergenis == 0 dann blackjack(spieler, gegner)
 }
 
