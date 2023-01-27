@@ -116,19 +116,19 @@ int blackjack(int spieler, int gegner, int janein){
         }
         else {
             if (spieler <= 0) {
-            printf("Goodbye");
+            printf("Goodbye\n");
             ergebnis = 0;
             return ergebnis;
             break;
             }
             else if (spieler > gegner) {
-                printf("Player wins.");
+                printf("Player wins.\n");
                 ergebnis = 1;
                 return ergebnis;
                 break;
             }
             else if (spieler < gegner) {
-                printf("Opponent wins.");
+                printf("Opponent wins\n.");
                 ergebnis = 2;
                 return ergebnis;
                 break;
@@ -138,37 +138,40 @@ int blackjack(int spieler, int gegner, int janein){
     if (janein == 1 && (spieler >= 21 || gegner >= 21)) {
         
         if ((gegner > 21 || gegner < 21) && spieler == 21) {
-            printf("Player wins.");
+            printf("Player wins.\n");
             ergebnis = 1;
             return ergebnis;
         }
         else if (gegner == 21 && (spieler > 21 || spieler < 21)) {
-            printf("Opponent wins.");
+            printf("Opponent wins.\n");
             ergebnis = 2;
             return ergebnis;
         }
         else if (gegner > 21 && spieler > 21) {
-            printf("No one wins.");
+            printf("No one wins.\n");
             ergebnis = 0;
             return ergebnis;
             
         }
         else if (gegner == spieler && gegner == 21) {
-            printf("Tie.");
+            printf("Tie.\n");
             ergebnis = 0;
             return ergebnis;
         }
          if (gegner > 21 && spieler < 21) {
-            printf("Player wins.");
+            printf("Player wins.\n");
             ergebnis = 1;
             return ergebnis;
         }
         if (gegner < 21 && spieler > 21) {
-            printf("Opponent wins.");
+            printf("Opponent wins.\n");
             ergebnis = 2;
             return ergebnis;
         }
     }
-    //if ergenis == 0 dann blackjack(spieler, gegner)
+    if (ergebnis = 0){
+        return blackjack(spieler, gegner, janein);
+    }
+   
 }
 

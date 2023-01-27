@@ -272,5 +272,40 @@ void test_runRaetselTestBJifende6(void){
 
 }
 
+void test_runRaetselTestBJifnull(void){
+
+    int spieler = 0;
+    int geber = 0;
+    int janein = 0;
+
+    userInput_ExpectAndReturn(1);
+    randnum_ExpectAndReturn(10);
+    randnum_ExpectAndReturn(10);
+    userInput_ExpectAndReturn(1);
+    randnum_ExpectAndReturn(10);
+    randnum_ExpectAndReturn(10);
+    userInput_ExpectAndReturn(1);
+ 
+    printf("-----------------------7------------------------\n");
+
+    int result = blackjack(spieler, geber, janein);
+    TEST_ASSERT_EQUAL_INT(0, result);
+
+
+
+    userInput_ExpectAndReturn(1);
+    randnum_ExpectAndReturn(10);
+    randnum_ExpectAndReturn(10);
+    userInput_ExpectAndReturn(1);
+    randnum_ExpectAndReturn(10);
+    randnum_ExpectAndReturn(7);
+    userInput_ExpectAndReturn(1);
+ 
+    printf("-----------------------8------------------------\n");
+
+    result = blackjack(spieler, geber, janein);
+    TEST_ASSERT_EQUAL_INT(2, result);
+
+}
 
 #endif // TEST
