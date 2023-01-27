@@ -2,7 +2,7 @@
 #cleans artifacts before building
 date
 ceedling clean
-ceedling gcov:encounter
+ceedling gcov:all
 ceedling utils:gcov
 cd build/artifacts/gcov
-xdg-open GcovCoverageResults.html &
+xdg-open GcovCoverageResults.html
