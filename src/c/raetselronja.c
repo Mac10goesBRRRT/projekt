@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <stdbool.h>
 
 #include "raetselronja.h"
 #include "userinput.h"
@@ -90,12 +91,16 @@ int differenz = 0;
 int blackjack(int spieler, int gegner, int janein){
 
     int lower = 1, upper = 11, count = 1, num = 0, ergebnis = 0;
+    bool wiederholen = false;
 
     srand(time(NULL));
 
-    printf("Do you want to start the game?\nYES(1), NO(2)\n");
+    if (wiederholen = false){
+        printf("Do you want to start the game?\nYES(1), NO(2)\n");
+    }
     janein = userInput();
-
+    
+    
     while (spieler < 21 && gegner < 21) {
 
         if (janein == 1) {
@@ -170,6 +175,7 @@ int blackjack(int spieler, int gegner, int janein){
         }
     }
     if (ergebnis = 0){
+        wiederholen = true;
         return blackjack(spieler, gegner, janein);
     }
    
