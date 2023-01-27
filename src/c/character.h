@@ -2,10 +2,18 @@
 #define CHARACTER_H
 
 typedef struct {
-    int strength,dexterity,intelligence,healthPoints,manaPoints,level,exp,maxExp,attack,armor,maxHealthPoints,gold;
+    int strength,dexterity,intelligence,healthPoints,manaPoints,level,exp,maxExp;
+    int attack,armor,maxHealthPoints,gold,items[10],weaponClass;
     char name [50];
 } Character;
+typedef struct {
+    int attack,durability;
+    char name [50];
+} Weapon;
 
+enum {
+    SWORD = 1, BOW = 2, STAFF = 3
+};
 enum {
     STRENGTH = 1, DEXTERITY = 2, INTELLIGENCE = 3, HEALTHPOINTS = 4, MANAPOINTS = 5, LEVEL = 6, EXP = 7, MAXEXP = 8
 };
@@ -59,4 +67,22 @@ void setCharacterGold (Character *character, int newGold);
 int getCharacterGold (Character *character);
 
 void levelUp (Character *character);
+
+void setCharacterName (Character *character, char newName[]);
+
+char* getCharacterName (Character *character);
+
+void setCharacterWeaponClass (Character *character, int newWeaponClass);
+
+int getCharacterWeaponClass (Character *character);
+
+int getWeaponAttack (Weapon *weapon);
+
+void setWeaponAttack (Weapon *weapon, int newAttack);
+
+int getWeaponDurability (Weapon *weapon);
+
+int setWeaponDurability (Weapon *weapon, int newDurability);
+
+int calculateDamage (Character *character,Weapon *weapon);
 #endif

@@ -98,6 +98,37 @@ int getCharacterGold (Character *character){
     return character->gold;
 }
 
+void setCharacterName (Character *character, char *newName) {
+    strcpy(character->name,newName);
+}
+
+char* getCharacterName (Character *character) {
+    return character->name;
+}
+
+int getWeaponAttack (Weapon *weapon) {
+    return weapon->attack;
+}
+
+void setWeaponAttack (Weapon *weapon, int newAttack) {
+    weapon->attack = newAttack;
+}
+
+int getWeaponDurability (Weapon *weapon) {
+    return weapon->durability;
+}
+
+int setWeaponDurability (Weapon *weapon, int newDurability) {
+    weapon->durability = newDurability;
+}
+
+void setCharacterWeaponClass (Character* character, int weaponClass) {
+    character->weaponClass = weaponClass;
+}
+
+int getCharacterWeaponClass (Character* character) {
+    return character->weaponClass;
+}
 
 void increaseStat (Character *character, int stat, int amount) {
     switch (stat)
@@ -127,4 +158,18 @@ void levelUp (Character *character) {
         increaseStat(character,LEVEL,1);
         setCharacterExp(character,getCharacterExp(character)-getCharacterMaxExp(character));
    }
+}
+
+int calculateDamage (Character *character,Weapon *weapon) {
+    switch (character->weaponClass)
+    {
+        case 1:
+            return character->strength*weapon->attack;
+        case 2:
+            return character->dexterity*weapon->attack;
+        case 3:
+            return character->intelligence*weapon->attack;
+        default:
+            return 1;
+    }
 }

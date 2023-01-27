@@ -3,6 +3,7 @@
 #include "character.h"
 Character testCharacter;
 Character testCharacter2;
+Weapon testWeapon;
 
 void setUp(void)
 {
@@ -20,6 +21,11 @@ void setUp(void)
     testCharacter2.exp = 110;
     testCharacter.maxExp = 100;
     testCharacter2.maxExp = 100;
+    testCharacter.attack = 5;
+    testCharacter2.weaponClass = SWORD;
+
+    testWeapon.attack = 5;
+    testWeapon.durability = 100;
 }
 
 void tearDown(void)
@@ -117,4 +123,19 @@ void test_levelUp_notEnoughExp_loseExp (void) {
     TEST_ASSERT_EQUAL_INT(50,testCharacter.exp);
 }
 
+void test_calculateDamage_Sword (void) {
+    TEST_ASSERT_EQUAL_INT(25,calculateDamage(&testCharacter2,&testWeapon));
+}
+
+void test_calculateDamage_Bow (void) {
+    setCharacterWeaponClass(&testCharacter2,BOW);
+
+    TEST_ASSERT_EQUAL_INT(25,calculateDamage(&testCharacter2,&testWeapon));
+}
+
+void test_calculateDamage_Staff (void) {
+    setCharacterWeaponClass(&testCharacter2,STAFF);
+
+    TEST_ASSERT_EQUAL_INT(35,calculateDamage(&testCharacter2,&testWeapon));
+}
 #endif // TEST

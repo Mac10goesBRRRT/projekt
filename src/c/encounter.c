@@ -17,9 +17,9 @@ humanoide gegner haben heiltränke mit denen sie sich ggf heilen.
 heilung erfolgt dann, wenn bestimmte hp (50%) unterschritten wird. wird allerdings gewürfelt,
 je niedriger die hp%, desto höher die chance. */
 
-bool playerAlive(int health)
+bool playerAlive(Character *character)
 {
-    if (health > 0)
+    if (getCharacterHealthPoints(character) > 0)
     {
         return true;
     }
@@ -29,48 +29,43 @@ bool playerAlive(int health)
     }
 }
 
-int playerHeal(int health, int damage, Character* character)
+int playerHeal(Character* character, int amount)
 {
-    int maxhealth = getCharacterMaxHealthPoints(character);
-    health = health + damage;
-    if (health > maxhealth)
+    setCharacterHealthPoints(character, getCharacterHealthPoints(character)+ amount);
+    if (getCharacterHealthPoints(character) > getCharacterMaxHealthPoints(character))
     {
-        health = maxhealth;
+        setCharacterHealthPoints(character, getCharacterMaxHealthPoints(character));
     }
-    return health;
+    return getCharacterHealthPoints(character);
 }
 
-int playerDamaged(int health, int damage, int armor, Character* character)
+int playerDamaged(enemy* enemy, Character* character)
 {
-    int damagedealt = damage - armor;
+    int damagedealt = getEnemyDamage(enemy) - getCharacterArmor(character);
     if (damagedealt < 1)
     {
         damagedealt = 1;
     }
-    return health - damagedealt;
+    return getCharacterHealthPoints(character) - damagedealt;
 }
 
 void enemyHeal(enemy *enemy, int healAmount)
 {
-    int currentHealth = getEnemyHealth(enemy);
-    int maxHealth = getEnemyMaxHealth(enemy);
-    if (currentHealth + healAmount > maxHealth)
+    if (getEnemyHealth(enemy) + healAmount > getEnemyMaxHealth(enemy))
     {
-        healAmount = maxHealth - currentHealth;
+        healAmount = getEnemyMaxHealth(enemy) - getEnemyHealth(enemy);
     }
-    setEnemyHealth(enemy, currentHealth + healAmount);
+    setEnemyHealth(enemy, getEnemyHealth(enemy) + healAmount);
 }
 
-void enemyDamaged(enemy *enemy, int damage)
+void enemyDamaged(enemy *enemy,Character* character)
 {
-    int armor = getEnemyArmor(enemy);
-    int currentHealth = getEnemyHealth(enemy);
-    int damagedealt = damage - armor;
+    int damagedealt = getCharacterAttack(character) - getEnemyArmor(enemy);
     if (damagedealt < 1)
     {
         damagedealt = 1;
     }
-    setEnemyHealth(enemy, currentHealth - damagedealt);
+    setEnemyHealth(enemy, getEnemyHealth(enemy) - damagedealt);
 }
 
 
@@ -86,17 +81,17 @@ int fight(Character *character, enemy* enemy)
     int playerH = 0;
     int currentTurn = 2;
     char decision;
-    while (playerAlive(getCharacterHealthPoints(character)) && getEnemyHealth(enemy) > 0)
+    while (playerAlive(character) && getEnemyHealth(enemy) > 0)
     {
         if (currentTurn != 1)
         {
             decision = playerInputChar();
             switch(decision){
                 case 'a':
-                    enemyDamaged(enemy, getCharacterAttack(character));
+                    enemyDamaged(enemy, character);
                     break;
                 case 'h':
-                    playerH = playerHeal(getCharacterHealthPoints(character), 10, character);
+                    playerH = playerHeal(character,10);
                     setCharacterHealthPoints(character, playerH);
                     break;
                 case 'f':
@@ -112,13 +107,13 @@ int fight(Character *character, enemy* enemy)
             }
             else
             {
-                playerH = playerDamaged(getCharacterHealthPoints(character), getEnemyDamage(enemy), getCharacterArmor(character), character);
+                playerH = playerDamaged(enemy, character);
                 setCharacterHealthPoints(character, playerH);
             }
         }
         currentTurn = switchTurns(currentTurn);
     }
-    if (playerAlive(getCharacterHealthPoints(character)))
+    if (playerAlive(character))
     {
         setCharacterExp(character, getCharacterExp(character) + getEnemyExp(enemy));
         setCharacterGold(character, getCharacterGold(character) + getEnemyGold(enemy));
@@ -130,7 +125,9 @@ int fight(Character *character, enemy* enemy)
     }
 }
 
-
+int rollInitiative (Character *character) {
+    return randomIntRange(1,20) + character->dexterity;
+}
 
 bool enemyChoosesHeal(enemy* enemy)
 {

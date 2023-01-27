@@ -9,9 +9,18 @@
 #include "mock_helper.h"
 #include "utils.h"
 
-
+Character testcharacter;
+enemy testenemy;
 void setUp(void)
 {   
+    testcharacter.dexterity = 5;
+    testcharacter.healthPoints = 100;
+    testcharacter.maxHealthPoints = 100;
+    testcharacter.attack = 10;
+
+    testenemy.damage = 10;
+    testenemy.health = 50;
+    testenemy.armor = 10;
 }
 
 void teardown(void)
@@ -24,7 +33,7 @@ void test_isPlayerAlive_healthGreaterZero(void)
     int health = 100;
     bool result;
     // act
-    result = playerAlive(health);
+    result = playerAlive(&testcharacter);
     // assert
     TEST_ASSERT_TRUE(result);
 }
@@ -32,10 +41,10 @@ void test_isPlayerAlive_healthGreaterZero(void)
 void test_isPlayerAlive_healthLowerZero(void)
 {
     // arrange
-    int health = -1;
+    setCharacterHealthPoints(&testcharacter, -1);
     bool result;
     // act
-    result = playerAlive(health);
+    result = playerAlive(&testcharacter);
 
     // assert
     TEST_ASSERT_FALSE(result);
@@ -44,29 +53,22 @@ void test_isPlayerAlive_healthLowerZero(void)
 void test_playerIsDamaged(void)
 {
     // arrange
-    int health = 100;
-    int damage = 10;
-    int armor = 0;
     int expectedHealth = 90;
     // act
-    Character testChar = {10,10,10,health,100,1,0,100,damage,armor,100};
-    health = playerDamaged(health, damage, armor, &testChar);
+    int result = playerDamaged(&testenemy, &testcharacter);
     // assert
-    TEST_ASSERT_EQUAL(expectedHealth, health);
+    TEST_ASSERT_EQUAL(expectedHealth, result);
 }
 
 void test_playerIsNotOverhealed(void)
 {
     // arrange
-    int health = 95;
-    int armor = 0;
+    setCharacterHealthPoints(&testcharacter, 95);
     int heal = 10;
-    int expectedHealth = 100;
     // act
-    Character testChar = {10,10,10,health,100,1,0,100,10,armor,100};
-    health = playerHeal(health, heal, &testChar);
+    int result = playerHeal(&testcharacter, heal);
     // assert
-    TEST_ASSERT_EQUAL(expectedHealth, health);
+    TEST_ASSERT_EQUAL(getCharacterMaxHealthPoints(&testcharacter), result);
 }
 
 void test_setEnemyHealth(void)
@@ -130,31 +132,24 @@ void test_get_setEnemyArmor(void)
 void test_PlayerAttacksEnemy_DoesDamage(void)
 {
     // arrange
-    int playerDamage = 10;
-    int enemyHealth = 50;
-    int enemyArmor = 4;
+    setEnemyArmor(&testenemy, 4);
     // health - (damage - armor)
     int expectedEnemyHealth = 44;
     // act
-    enemy test = {enemyHealth, 4, enemyArmor};
-    enemyDamaged(&test, playerDamage);
+    enemyDamaged(&testenemy, &testcharacter);
     // assert
-    TEST_ASSERT_EQUAL(expectedEnemyHealth, test.health);
+    TEST_ASSERT_EQUAL(expectedEnemyHealth, getEnemyHealth(&testenemy));
 }
 
 void test_PlayerAttacksEnemy_DoesMinDamage(void)
 {
     // arrange
-    int playerDamage = 10;
-    int enemyHealth = 50;
-    int enemyArmor = 10;
     // health - (damage - armor)
     int expectedEnemyHealth = 49;
     // act
-    enemy test = {enemyHealth, 4, enemyArmor};
-    enemyDamaged(&test, playerDamage);
+    enemyDamaged(&testenemy,&testcharacter);
     // assert
-    TEST_ASSERT_EQUAL(expectedEnemyHealth, test.health);
+    TEST_ASSERT_EQUAL(expectedEnemyHealth, getEnemyHealth(&testenemy));
 }
 
 // A better way to get the value of a struct, REFACTORING if it works
@@ -395,5 +390,10 @@ void test_enemyHealsNoPotion(void)
     TEST_ASSERT_FALSE(result);
 }
 
+int test_rollInitiative (void) {
 
+    int initiative = rollInitiative(&testcharacter);
+
+    TEST_ASSERT(testcharacter.dexterity + 1 <= initiative && testcharacter.dexterity + 20 >= initiative);
+}
 #endif // TEST
