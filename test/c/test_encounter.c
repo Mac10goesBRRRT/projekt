@@ -55,8 +55,9 @@ void test_playerIsDamaged(void)
     // arrange
     int expectedHealth = 90;
     // act
+    int result = playerDamaged(&testenemy, &testcharacter);
     // assert
-    TEST_ASSERT_EQUAL(expectedHealth, playerDamaged(&testenemy, &testcharacter));
+    TEST_ASSERT_EQUAL(expectedHealth, result);
 }
 
 void test_playerIsNotOverhealed(void)
@@ -65,8 +66,9 @@ void test_playerIsNotOverhealed(void)
     setCharacterHealthPoints(&testcharacter, 95);
     int heal = 10;
     // act
+    int result = playerHeal(&testcharacter, heal);
     // assert
-    TEST_ASSERT_EQUAL(getCharacterMaxHealthPoints(&testcharacter), playerHeal(&testcharacter,heal));
+    TEST_ASSERT_EQUAL(getCharacterMaxHealthPoints(&testcharacter), result);
 }
 
 void test_setEnemyHealth(void)
@@ -389,6 +391,9 @@ void test_enemyHealsNoPotion(void)
 }
 
 int test_rollInitiative (void) {
-    TEST_ASSERT(testcharacter.dexterity + 1 <= rollInitiative(&testcharacter) && testcharacter.dexterity + 20 >= rollInitiative(&testcharacter));
+
+    int initiative = rollInitiative(&testcharacter);
+
+    TEST_ASSERT(testcharacter.dexterity + 1 <= initiative && testcharacter.dexterity + 20 >= initiative);
 }
 #endif // TEST
