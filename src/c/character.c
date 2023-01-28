@@ -173,3 +173,11 @@ int calculateDamage (Character *character,Weapon *weapon) {
             return 1;
     }
 }
+
+void setCharacterStatPoints (Character* character, int newStatPoints) {
+    character->statPoints = newStatPoints;
+}
+
+int getCharacterStatPoints (Character* character) {
+    return character->statPoints;
+}
