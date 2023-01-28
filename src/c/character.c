@@ -247,6 +247,13 @@ char* getItemName (Item *item) {
     return item->name;
 }
 
+void initializeInventory (Character *character) {
+    for (int i = 0; i < 10; i++)
+    {
+        character->inventory[i] = NULL;
+    }
+}
+
 void putItemInInventory (Character *character, Item *item,int inventorySlot) {
    if(inventorySlot > 9) {
         printf("Inventory slot is out of range (0-9)\n");
