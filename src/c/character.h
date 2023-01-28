@@ -3,13 +3,18 @@
 
 typedef struct {
     int strength,dexterity,intelligence,healthPoints,manaPoints,level,exp,maxExp;
-    int attack,armor,maxHealthPoints,gold,items[10],weaponClass,statPoints;
+    int attack,armor,maxHealthPoints,gold,*items[10],weaponClass,statPoints;
     char name [50];
 } Character;
 typedef struct {
     int attack,durability;
     char name [50];
 } Weapon;
+typedef struct {
+    int id,amount,damage,healing,mana;
+    char name [50];
+ } Item;
+
 
 enum {
     SWORD = 1, BOW = 2, STAFF = 3
@@ -91,4 +96,30 @@ void setCharacterStatPoints (Character *character, int newStatPoints);
 int getCharacterStatPoints (Character *character);
 
 void initializeCharacter (Character *character,int weaponClass);
+
+void setItemID (Item *item, int newID);
+
+int getItemID (Item *item);
+
+void setItemAmount (Item *item, int newAmount);
+
+int getItemAmount (Item *item);
+
+void setItemDamage (Item *item, int newDamage);
+
+int getItemDamage (Item *item);
+
+void setItemHealing (Item *item, int newHealing);
+
+int getItemHealing (Item *item);
+
+void setItemMana (Item *item, int newMana);
+
+int getItemMana (Item *item);
+
+void setItemName (Item *item, char newName[]);
+
+char* getItemName (Item *item);
+
+
 #endif
