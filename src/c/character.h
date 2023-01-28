@@ -2,19 +2,19 @@
 #define CHARACTER_H
 
 typedef struct {
-    int strength,dexterity,intelligence,healthPoints,manaPoints,level,exp,maxExp;
-    int attack,armor,maxHealthPoints,gold,*items[10],weaponClass,statPoints;
+    int id,amount,damage,healing,mana;
     char name [50];
+ } Item;
+typedef struct {
+    int strength,dexterity,intelligence,healthPoints,manaPoints,level,exp,maxExp;
+    int attack,armor,maxHealthPoints,gold,weaponClass,statPoints;
+    char name [50];
+    Item *inventory[10];
 } Character;
 typedef struct {
     int attack,durability;
     char name [50];
 } Weapon;
-typedef struct {
-    int id,amount,damage,healing,mana;
-    char name [50];
- } Item;
-
 
 enum {
     SWORD = 1, BOW = 2, STAFF = 3
@@ -121,5 +121,6 @@ void setItemName (Item *item, char newName[]);
 
 char* getItemName (Item *item);
 
+void putItemInInventory (Character *character, Item *item, int inventorySlot);
 
 #endif

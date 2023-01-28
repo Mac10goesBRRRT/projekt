@@ -124,6 +124,8 @@ void test_levelUp_notEnoughExp_loseExp (void) {
 }
 
 void test_calculateDamage_Sword (void) {
+    setCharacterWeaponClass(&testCharacter2,SWORD);
+    
     TEST_ASSERT_EQUAL_INT(25,calculateDamage(&testCharacter2,&testWeapon));
 }
 

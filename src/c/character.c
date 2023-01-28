@@ -198,3 +198,63 @@ void initializeCharacter (Character *character,int weaponClass) {
     setCharacterWeaponClass(character,weaponClass);
     setCharacterStatPoints(character,0);
 }
+
+void setItemID (Item *item, int newID) {
+    item->id = newID;
+}
+
+int getItemID (Item *item) {
+    return item->id;
+}
+
+void setItemAmount (Item *item, int newAmount) {
+    item->amount = newAmount;
+}
+
+int getItemAmount (Item *item) {
+    return item->amount;
+}
+
+void setItemDamage (Item *item, int newDamage) {
+    item->damage = newDamage;
+}
+
+int getItemDamage (Item *item) {
+    return item->damage;
+}
+
+void setItemHealing (Item *item, int newHealing) {
+    item->healing = newHealing;
+}
+
+int getItemHealing (Item *item) {
+    return item->healing;
+}
+
+void setItemMana (Item *item, int newMana) {
+    item->mana = newMana;
+}
+
+int getItemMana (Item *item) {
+    return item->mana;
+}
+
+void setItemName (Item *item, char newName[]) {
+    strcpy(item->name,newName);
+}
+
+char* getItemName (Item *item) {
+    return item->name;
+}
+
+void putItemInInventory (Character *character, Item *item,int inventorySlot) {
+   if(inventorySlot > 9) {
+        printf("Inventory slot is out of range (0-9)\n");
+   } else if (inventorySlot < 0) {
+        printf("Inventory slot is out of range (0-9)\n");
+    } else if (character->inventory[inventorySlot] != NULL) {
+        printf("Inventory slot is already occupied\n");
+    } else {
+        character->inventory[inventorySlot] = item;
+    }
+}
