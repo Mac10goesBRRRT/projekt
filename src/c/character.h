@@ -124,4 +124,6 @@ char* getItemName (Item *item);
 void putItemInInventory (Character *character, Item *item, int inventorySlot);
 
 void initializeInventory (Character *character);
+
+Item * getItemInInventory (Character *character, int inventorySlot);
 #endif

@@ -259,9 +259,23 @@ void putItemInInventory (Character *character, Item *item,int inventorySlot) {
         printf("Inventory slot is out of range (0-9)\n");
    } else if (inventorySlot < 0) {
         printf("Inventory slot is out of range (0-9)\n");
-    } else if (character->inventory[inventorySlot] != NULL) {
+    } else if (character->inventory[inventorySlot] == NULL) {
         printf("Inventory slot is already occupied\n");
     } else {
         character->inventory[inventorySlot] = item;
+    }
+}
+Item * getItemInInventory (Character *character, int inventorySlot) {
+    if(inventorySlot > 9) {
+        printf("Inventory slot is out of range (0-9)\n");
+        return NULL;
+    } else if (inventorySlot < 0) {
+        printf("Inventory slot is out of range (0-9)\n");
+        return NULL;
+    } else if (character->inventory[inventorySlot] == NULL) {
+        printf("Inventory slot is empty\n");
+        return NULL;
+    } else {
+        return character->inventory[inventorySlot];
     }
 }
