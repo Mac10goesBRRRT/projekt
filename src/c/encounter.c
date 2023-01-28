@@ -202,3 +202,39 @@ void setEnemyExp(enemy* enemy, int newExp){
 int getEnemyGold(enemy* enemy){
     return enemy->gold;
 }
+int setEnemyGold(enemy* enemy, int newGold){
+    enemy->gold = newGold;
+}
+
+int createRandomEnemy(enemy* enemy)
+{
+    int enemyType = randomIntRange(1, 3);
+    switch(enemyType)
+    {
+        case 1:
+            setEnemyHealth(enemy, 20);
+            setEnemyDamage(enemy, 5);
+            setEnemyArmor(enemy, 2);
+            setEnemyHealPotions(enemy, 1);
+            setEnemyExp(enemy, 10);
+            setEnemyGold(enemy, 10);
+            break;
+        case 2:
+            setEnemyHealth(enemy, 30);
+            setEnemyDamage(enemy, 10);
+            setEnemyArmor(enemy, 5);
+            setEnemyHealPotions(enemy, 2);
+            setEnemyExp(enemy, 20);
+            setEnemyGold(enemy, 20);
+            break;
+        case 3:
+            setEnemyHealth(enemy, 40);
+            setEnemyDamage(enemy, 15);
+            setEnemyArmor(enemy, 10);
+            setEnemyHealPotions(enemy, 3);
+            setEnemyExp(enemy, 30);
+            setEnemyGold(enemy, 30);
+            break;
+    }
+    return enemyType;
+}
