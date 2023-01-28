@@ -181,3 +181,20 @@ void setCharacterStatPoints (Character* character, int newStatPoints) {
 int getCharacterStatPoints (Character* character) {
     return character->statPoints;
 }
+
+void initializeCharacter (Character *character,int weaponClass) {
+    setCharacterHealthPoints(character,100);
+    setCharacterStrength(character,10);
+    setCharacterDexterity(character,10);
+    setCharacterIntelligence(character,10);
+    setCharacterLevel(character,1);
+    setCharacterExp(character,0);
+    setCharacterMaxExp(character,100);
+    setCharacterMaxHealthPoints(character,100);
+    setCharacterAttack(character,10);
+    setCharacterArmor(character,0);
+    setCharacterGold(character,0);
+    setCharacterName(character,"Player");
+    setCharacterWeaponClass(character,weaponClass);
+    setCharacterStatPoints(character,0);
+}

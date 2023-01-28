@@ -89,4 +89,6 @@ int calculateDamage (Character *character,Weapon *weapon);
 void setCharacterStatPoints (Character *character, int newStatPoints);
 
 int getCharacterStatPoints (Character *character);
+
+void initializeCharacter (Character *character,int weaponClass);
 #endif
