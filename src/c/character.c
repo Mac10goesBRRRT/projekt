@@ -247,6 +247,14 @@ char* getItemName (Item *item) {
     return item->name;
 }
 
+void setCharacterStatus (Character *character, int newStatus) {
+    character->status = newStatus;
+}
+
+int getCharacterStatus (Character *character) {
+    return character->status;
+}
+
 void initializeInventory (Character *character) {
     for (int i = 0; i < 10; i++)
     {
