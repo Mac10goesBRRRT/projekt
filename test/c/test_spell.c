@@ -32,13 +32,20 @@ void tearDown(void)
 
 void test_spellFireball(void)
 {
-    TEST_ASSERT_EQUAL_INT(10,spellFireball(&testCharacter));
-    TEST_ASSERT_EQUAL_INT(13,spellFireball(&testCharacter2));
+    int result = spellFireball(&testCharacter).damage;
+    TEST_ASSERT_EQUAL_INT(10,result);
+    result = spellFireball(&testCharacter2).damage;
+    TEST_ASSERT_EQUAL_INT(13,result);
 }
 
 void test_spellHeal(void)
 {
-    TEST_ASSERT_EQUAL_INT(10,spellHeal(&testCharacter));
-    TEST_ASSERT_EQUAL_INT(12,spellHeal(&testCharacter2));
+
+    int result = spellHeal(&testCharacter).healing;
+    TEST_ASSERT_EQUAL_INT(10,result);
+    result = spellHeal(&testCharacter2).healing;
+    TEST_ASSERT_EQUAL_INT(12,result);
 }
+
+
 #endif // TEST

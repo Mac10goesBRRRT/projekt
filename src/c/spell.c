@@ -3,14 +3,24 @@
 #include <string.h>
 
 #include "character.h"
+#include "spell.h"
 
-int spellFireball(Character *character) {
-    int damage = 10 + (getCharacterIntelligence(character) / 2);
-    return damage;
+SpellEffect spellFireball(Character *character) {
+    SpellEffect fireball;
+    fireball.damage = 10 + (getCharacterIntelligence(character) / 2);
+    fireball.healing = 0;
+    fireball.manaCost = 10;
+    fireball.effect = SPELL_EFFECT_NONE;
+    fireball.effectDuration = 0;
+    return fireball;
 }
 
-
-int spellHeal(Character *character) {
-    int heal = 10 + (getCharacterIntelligence(character) / 3);
+SpellEffect spellHeal(Character *character) {
+    SpellEffect heal;
+    heal.damage = 0;
+    heal.healing = 10 + (getCharacterIntelligence(character) / 3);
+    heal.manaCost = 10;
+    heal.effect = SPELL_EFFECT_NONE;
+    heal.effectDuration = 0;
     return heal;
 }
