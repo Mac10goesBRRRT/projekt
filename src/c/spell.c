@@ -24,3 +24,13 @@ SpellEffect spellHeal(Character *character) {
     heal.effectDuration = 0;
     return heal;
 }
+
+SpellEffect spellLightning(Character *character) {
+    SpellEffect lightning;
+    lightning.damage = 10 + (getCharacterIntelligence(character) / 2);
+    lightning.healing = 0;
+    lightning.manaCost = 10;
+    lightning.effect = SPELL_EFFECT_STUN;
+    lightning.effectDuration = 1;
+    return lightning;
+}
