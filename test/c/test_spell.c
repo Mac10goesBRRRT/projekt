@@ -54,4 +54,12 @@ void test_spellLightning(void)
     result = spellLightning(&testCharacter2).damage;
     TEST_ASSERT_EQUAL_INT(13,result);
 }
+
+void test_spellRegeneration(void)
+{
+    int result = spellRegeneration(&testCharacter).healing;
+    TEST_ASSERT_EQUAL_INT(5,result);
+    result = spellRegeneration(&testCharacter2).healing;
+    TEST_ASSERT_EQUAL_INT(6,result);
+}
 #endif // TEST

@@ -34,3 +34,13 @@ SpellEffect spellLightning(Character *character) {
     lightning.effectDuration = 1;
     return lightning;
 }
+
+SpellEffect spellRegeneration (Character *character) {
+    SpellEffect regeneration;
+    regeneration.damage = 0;
+    regeneration.healing = 5 + (getCharacterIntelligence(character) / 4);
+    regeneration.manaCost = 10;
+    regeneration.effect = SPELL_EFFECT_REGENERATION;
+    regeneration.effectDuration = 2;
+    return regeneration;
+}
