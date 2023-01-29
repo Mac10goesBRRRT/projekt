@@ -134,4 +134,6 @@ int getCharacterStatus (Character *character);
 void setCharacterStatusDuration (Character *character, int newStatusDuration);
 
 int getCharacterStatusDuration (Character *character);
+
+int checkStatus (Character *character);
 #endif

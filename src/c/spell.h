@@ -1,7 +1,6 @@
 #ifndef SPELL_H
 #define SPELL_H
 
-#include "character.h"
 
 typedef struct {
     int damage, healing, manaCost, effect, effectDuration;

@@ -3,6 +3,7 @@
 #include <string.h>
 
 #include "character.h"
+#include "spell.h"
 
 Character character;
 
@@ -293,5 +294,44 @@ Item * getItemInInventory (Character *character, int inventorySlot) {
         return NULL;
     } else {
         return character->inventory[inventorySlot];
+    }
+}
+
+int checkStatus (Character *character) {
+    switch (character->status)
+    {
+    case SPELL_EFFECT_NONE:
+        break;
+    case SPELL_EFFECT_BURN:
+        setCharacterStatusDuration(character,getCharacterStatusDuration(character)-1);
+        if (getCharacterStatusDuration == 0) {
+            setCharacterStatus(character,SPELL_EFFECT_NONE);
+        }
+        return getCharacterStatus(character);
+        break;
+    case SPELL_EFFECT_FREEZE:
+        setCharacterStatusDuration(character,getCharacterStatusDuration(character)-1);
+        if (getCharacterStatusDuration == 0) {
+            setCharacterStatus(character,SPELL_EFFECT_NONE);
+        }
+        return getCharacterStatus(character);
+        break;
+    case SPELL_EFFECT_STUN:
+        setCharacterStatusDuration(character,getCharacterStatusDuration(character)-1);
+        if (getCharacterStatusDuration == 0) {
+            setCharacterStatus(character,SPELL_EFFECT_NONE);
+        }
+        return getCharacterStatus(character);
+        break;
+    case SPELL_EFFECT_REGENERATION:
+        setCharacterStatusDuration(character,getCharacterStatusDuration(character)-1);
+        if (getCharacterStatusDuration == 0) {
+            setCharacterStatus(character,SPELL_EFFECT_NONE);
+        }
+        return getCharacterStatus(character);
+        break;
+    default:
+        return getCharacterStatus(character);
+        break;
     }
 }
