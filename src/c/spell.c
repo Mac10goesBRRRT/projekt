@@ -44,3 +44,13 @@ SpellEffect spellRegeneration (Character *character) {
     regeneration.effectDuration = 2;
     return regeneration;
 }
+
+SpellEffect spellFreeze(Character *character) {
+    SpellEffect freeze;
+    freeze.damage = 0;
+    freeze.healing = 0;
+    freeze.manaCost = 10;
+    freeze.effect = SPELL_EFFECT_FREEZE;
+    freeze.effectDuration = 2;
+    return freeze;
+}

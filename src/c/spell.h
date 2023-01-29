@@ -15,6 +15,7 @@ SpellEffect spellFireball(Character *character);
 SpellEffect spellHeal(Character *character);
 SpellEffect spellLightning(Character *character);
 SpellEffect spellRegeneration (Character *character);
+SpellEffect spellFreeze(Character *character);
 
 
 #endif
