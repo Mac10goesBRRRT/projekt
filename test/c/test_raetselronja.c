@@ -69,7 +69,7 @@ void test_runRaetselTestAufruf(void){
     userInput_ExpectAndReturn(1);
 
 
-    int result = raetselaufruf();
+    int result = aufrufzahlenraetsel();
     TEST_ASSERT_EQUAL_INT(1, result);
 
 }

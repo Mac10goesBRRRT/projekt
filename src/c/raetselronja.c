@@ -36,7 +36,7 @@ int zahlenraetsel(int input[], int loesung, int n) {
 
 }
 
-int raetselaufruf() {
+int aufrufzahlenraetsel() {
 
     int loesung = 0;
     int n = 0;
