@@ -3,6 +3,7 @@
 #include <string.h>
 
 #include "character.h"
+#include "spell.h"
 
 Character character;
 
@@ -171,5 +172,166 @@ int calculateDamage (Character *character,Weapon *weapon) {
             return character->intelligence*weapon->attack;
         default:
             return 1;
+    }
+}
+
+void setCharacterStatPoints (Character* character, int newStatPoints) {
+    character->statPoints = newStatPoints;
+}
+
+int getCharacterStatPoints (Character* character) {
+    return character->statPoints;
+}
+
+void initializeCharacter (Character *character,int weaponClass) {
+    setCharacterHealthPoints(character,100);
+    setCharacterStrength(character,10);
+    setCharacterDexterity(character,10);
+    setCharacterIntelligence(character,10);
+    setCharacterLevel(character,1);
+    setCharacterExp(character,0);
+    setCharacterMaxExp(character,100);
+    setCharacterMaxHealthPoints(character,100);
+    setCharacterAttack(character,10);
+    setCharacterArmor(character,0);
+    setCharacterGold(character,0);
+    setCharacterName(character,"Player");
+    setCharacterWeaponClass(character,weaponClass);
+    setCharacterStatPoints(character,0);
+}
+
+void setItemID (Item *item, int newID) {
+    item->id = newID;
+}
+
+int getItemID (Item *item) {
+    return item->id;
+}
+
+void setItemAmount (Item *item, int newAmount) {
+    item->amount = newAmount;
+}
+
+int getItemAmount (Item *item) {
+    return item->amount;
+}
+
+void setItemDamage (Item *item, int newDamage) {
+    item->damage = newDamage;
+}
+
+int getItemDamage (Item *item) {
+    return item->damage;
+}
+
+void setItemHealing (Item *item, int newHealing) {
+    item->healing = newHealing;
+}
+
+int getItemHealing (Item *item) {
+    return item->healing;
+}
+
+void setItemMana (Item *item, int newMana) {
+    item->mana = newMana;
+}
+
+int getItemMana (Item *item) {
+    return item->mana;
+}
+
+void setItemName (Item *item, char newName[]) {
+    strcpy(item->name,newName);
+}
+
+char* getItemName (Item *item) {
+    return item->name;
+}
+
+void setCharacterStatus (Character *character, int newStatus) {
+    character->status = newStatus;
+}
+
+int getCharacterStatus (Character *character) {
+    return character->status;
+}
+
+void setCharacterStatusDuration (Character *character, int newStatusDuration) {
+    character->statusDuration = newStatusDuration;
+}
+
+int getCharacterStatusDuration (Character *character) {
+    return character->statusDuration;
+}
+
+void initializeInventory (Character *character) {
+    for (int i = 0; i < 10; i++)
+    {
+        character->inventory[i] = NULL;
+    }
+}
+
+void putItemInInventory (Character *character, Item *item,int inventorySlot) {
+   if(inventorySlot > 9) {
+        printf("Inventory slot is out of range (0-9)\n");
+   } else if (inventorySlot < 0) {
+        printf("Inventory slot is out of range (0-9)\n");
+    } else if (character->inventory[inventorySlot] == NULL) {
+        printf("Inventory slot is already occupied\n");
+    } else {
+        character->inventory[inventorySlot] = item;
+    }
+}
+Item * getItemInInventory (Character *character, int inventorySlot) {
+    if(inventorySlot > 9) {
+        printf("Inventory slot is out of range (0-9)\n");
+        return NULL;
+    } else if (inventorySlot < 0) {
+        printf("Inventory slot is out of range (0-9)\n");
+        return NULL;
+    } else if (character->inventory[inventorySlot] == NULL) {
+        printf("Inventory slot is empty\n");
+        return NULL;
+    } else {
+        return character->inventory[inventorySlot];
+    }
+}
+
+int checkStatus (Character *character) {
+    switch (character->status)
+    {
+    case SPELL_EFFECT_NONE:
+        break;
+    case SPELL_EFFECT_BURN:
+        setCharacterStatusDuration(character,getCharacterStatusDuration(character)-1);
+        if (getCharacterStatusDuration == 0) {
+            setCharacterStatus(character,SPELL_EFFECT_NONE);
+        }
+        return getCharacterStatus(character);
+        break;
+    case SPELL_EFFECT_FREEZE:
+        setCharacterStatusDuration(character,getCharacterStatusDuration(character)-1);
+        if (getCharacterStatusDuration == 0) {
+            setCharacterStatus(character,SPELL_EFFECT_NONE);
+        }
+        return getCharacterStatus(character);
+        break;
+    case SPELL_EFFECT_STUN:
+        setCharacterStatusDuration(character,getCharacterStatusDuration(character)-1);
+        if (getCharacterStatusDuration == 0) {
+            setCharacterStatus(character,SPELL_EFFECT_NONE);
+        }
+        return getCharacterStatus(character);
+        break;
+    case SPELL_EFFECT_REGENERATION:
+        setCharacterStatusDuration(character,getCharacterStatusDuration(character)-1);
+        if (getCharacterStatusDuration == 0) {
+            setCharacterStatus(character,SPELL_EFFECT_NONE);
+        }
+        return getCharacterStatus(character);
+        break;
+    default:
+        return getCharacterStatus(character);
+        break;
     }
 }

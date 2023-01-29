@@ -46,4 +46,6 @@ void setEnemyHealPotions(enemy* enemy, int newPotions);
 int getEnemyExp(enemy* enemy);
 void setEnemyExp(enemy* enemy, int newExp);
 
+int createRandomEnemy(enemy* enemy);
+
 #endif

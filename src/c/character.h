@@ -2,9 +2,14 @@
 #define CHARACTER_H
 
 typedef struct {
-    int strength,dexterity,intelligence,healthPoints,manaPoints,level,exp,maxExp;
-    int attack,armor,maxHealthPoints,gold,items[10],weaponClass;
+    int id,amount,damage,healing,mana;
     char name [50];
+ } Item;
+typedef struct {
+    int strength,dexterity,intelligence,healthPoints,manaPoints,level,exp,maxExp;
+    int attack,armor,maxHealthPoints,gold,weaponClass,statPoints,status,statusDuration;
+    char name [50];
+    Item *inventory[10];
 } Character;
 typedef struct {
     int attack,durability;
@@ -85,4 +90,50 @@ int getWeaponDurability (Weapon *weapon);
 int setWeaponDurability (Weapon *weapon, int newDurability);
 
 int calculateDamage (Character *character,Weapon *weapon);
+
+void setCharacterStatPoints (Character *character, int newStatPoints);
+
+int getCharacterStatPoints (Character *character);
+
+void initializeCharacter (Character *character,int weaponClass);
+
+void setItemID (Item *item, int newID);
+
+int getItemID (Item *item);
+
+void setItemAmount (Item *item, int newAmount);
+
+int getItemAmount (Item *item);
+
+void setItemDamage (Item *item, int newDamage);
+
+int getItemDamage (Item *item);
+
+void setItemHealing (Item *item, int newHealing);
+
+int getItemHealing (Item *item);
+
+void setItemMana (Item *item, int newMana);
+
+int getItemMana (Item *item);
+
+void setItemName (Item *item, char newName[]);
+
+char* getItemName (Item *item);
+
+void putItemInInventory (Character *character, Item *item, int inventorySlot);
+
+void initializeInventory (Character *character);
+
+Item * getItemInInventory (Character *character, int inventorySlot);
+
+void setCharacterStatus (Character *character, int newStatus);
+
+int getCharacterStatus (Character *character);
+
+void setCharacterStatusDuration (Character *character, int newStatusDuration);
+
+int getCharacterStatusDuration (Character *character);
+
+int checkStatus (Character *character);
 #endif
