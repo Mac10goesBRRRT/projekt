@@ -136,4 +136,8 @@ void setCharacterStatusDuration (Character *character, int newStatusDuration);
 int getCharacterStatusDuration (Character *character);
 
 int checkStatus (Character *character);
+
+void setCharacterManaPoints (Character *character, int newManaPoints);
+
+int getCharacterManaPoints (Character *character);
 #endif

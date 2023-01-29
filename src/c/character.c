@@ -335,3 +335,11 @@ int checkStatus (Character *character) {
         break;
     }
 }
+
+void setCharacterManaPoints (Character *character, int newManaPoints) {
+    character->manaPoints = newManaPoints;
+}
+
+int getCharacterManaPoints (Character *character) {
+    return character->manaPoints;
+}
