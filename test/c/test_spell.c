@@ -35,4 +35,10 @@ void test_spellFireball(void)
     TEST_ASSERT_EQUAL_INT(10,spellFireball(&testCharacter));
     TEST_ASSERT_EQUAL_INT(13,spellFireball(&testCharacter2));
 }
+
+void test_spellHeal(void)
+{
+    TEST_ASSERT_EQUAL_INT(10,spellHeal(&testCharacter));
+    TEST_ASSERT_EQUAL_INT(12,spellHeal(&testCharacter2));
+}
 #endif // TEST
