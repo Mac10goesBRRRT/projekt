@@ -255,6 +255,14 @@ int getCharacterStatus (Character *character) {
     return character->status;
 }
 
+void setCharacterStatusDuration (Character *character, int newStatusDuration) {
+    character->statusDuration = newStatusDuration;
+}
+
+int getCharacterStatusDuration (Character *character) {
+    return character->statusDuration;
+}
+
 void initializeInventory (Character *character) {
     for (int i = 0; i < 10; i++)
     {

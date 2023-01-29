@@ -7,7 +7,7 @@ typedef struct {
  } Item;
 typedef struct {
     int strength,dexterity,intelligence,healthPoints,manaPoints,level,exp,maxExp;
-    int attack,armor,maxHealthPoints,gold,weaponClass,statPoints,status;
+    int attack,armor,maxHealthPoints,gold,weaponClass,statPoints,status,statusDuration;
     char name [50];
     Item *inventory[10];
 } Character;
@@ -130,4 +130,8 @@ Item * getItemInInventory (Character *character, int inventorySlot);
 void setCharacterStatus (Character *character, int newStatus);
 
 int getCharacterStatus (Character *character);
+
+void setCharacterStatusDuration (Character *character, int newStatusDuration);
+
+int getCharacterStatusDuration (Character *character);
 #endif
