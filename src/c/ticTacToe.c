@@ -24,3 +24,14 @@ void printField(char field[3][3]){
         printf("\n");
     }
 }
+
+char initField(){
+    char field[3][3] = 
+    {
+        {'-','-','-'},
+        {'-','-','-'},
+        {'-','-','-'}
+    };
+    return field;
+}
+
