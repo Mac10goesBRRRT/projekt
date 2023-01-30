@@ -18,3 +18,9 @@ int printlabyrinth(lab laby, int hoehe, int breite){
     
 return 0;
 }
+
+int wegsuchen(lab laby, int startx, int starty, int zielx, int ziely){
+
+
+    return 0;
+}
