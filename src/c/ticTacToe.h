@@ -3,5 +3,6 @@
 
 int something(int a);
 void printPrompt();
+void printField(char field[3][3]);
 
 #endif
