@@ -5,6 +5,7 @@
 
 #include "character.h"
 #include "encounter.h"
+#include "spell.h"
 
 #include "playerinput.h"
 #include "helper.h"
@@ -237,4 +238,12 @@ int createRandomEnemy(enemy* enemy)
             break;
     }
     return enemyType;
+}
+
+bool dodge (Character *character, enemy* enemy) {
+    if (randomIntRange(1,20) + character->dexterity > 15)
+    {
+        return true;
+    }
+    return false;
 }

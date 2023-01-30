@@ -7,6 +7,7 @@
 
 SpellEffect spellFireball(Character *character) {
     SpellEffect fireball;
+    fireball.id = 0;
     fireball.damage = 10 + (getCharacterIntelligence(character) / 2);
     fireball.healing = 0;
     fireball.manaCost = 10;
@@ -17,6 +18,7 @@ SpellEffect spellFireball(Character *character) {
 
 SpellEffect spellHeal(Character *character) {
     SpellEffect heal;
+    heal.id = 1;
     heal.damage = 0;
     heal.healing = 10 + (getCharacterIntelligence(character) / 3);
     heal.manaCost = 10;
@@ -27,6 +29,7 @@ SpellEffect spellHeal(Character *character) {
 
 SpellEffect spellLightning(Character *character) {
     SpellEffect lightning;
+    lightning.id = 2;
     lightning.damage = 10 + (getCharacterIntelligence(character) / 2);
     lightning.healing = 0;
     lightning.manaCost = 10;
@@ -37,6 +40,7 @@ SpellEffect spellLightning(Character *character) {
 
 SpellEffect spellRegeneration (Character *character) {
     SpellEffect regeneration;
+    regeneration.id = 3;
     regeneration.damage = 0;
     regeneration.healing = 5 + (getCharacterIntelligence(character) / 4);
     regeneration.manaCost = 10;
@@ -47,6 +51,7 @@ SpellEffect spellRegeneration (Character *character) {
 
 SpellEffect spellFreeze(Character *character) {
     SpellEffect freeze;
+    freeze.id = 4;
     freeze.damage = 0;
     freeze.healing = 0;
     freeze.manaCost = 10;

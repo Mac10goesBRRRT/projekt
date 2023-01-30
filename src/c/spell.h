@@ -3,7 +3,7 @@
 
 
 typedef struct {
-    int damage, healing, manaCost, effect, effectDuration;
+    int id,damage, healing, manaCost, effect, effectDuration;
 } SpellEffect;
 
 enum {
