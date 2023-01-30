@@ -16,7 +16,7 @@ void printPrompt(){
 void printField(char field[3][3]){
     for (int i = 0; i < 3; i++){
         for (int j = 0; j < 3; j++){
-            printf("%d", field[i][j]);
+            printf("%c", field[i][j]);
             if (j < 2) {
                 printf("|");
             }
@@ -25,13 +25,17 @@ void printField(char field[3][3]){
     }
 }
 
-char initField(){
-    char field[3][3] = 
-    {
-        {'-','-','-'},
-        {'-','-','-'},
-        {'-','-','-'}
-    };
-    return field;
+void initField(char field[3][3]) {
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            field[i][j] = '-';
+        }
+    }
 }
 
+void getPlayerInput(char field[3][3]){
+    int row, col;
+    printf("Enter the field as row col: ");
+    scanf("%d %d", &row, &col);
+    field[row][col] = 'O';
+}

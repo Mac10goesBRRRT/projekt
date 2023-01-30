@@ -4,6 +4,7 @@
 int something(int a);
 void printPrompt();
 void printField(char field[3][3]);
-char initField();
+void initField(char field[3][3]);
+void getPlayerInput(char field[3][3]);
 
 #endif
