@@ -32,11 +32,17 @@ void initField(char field[3][3]) {
 
 void getPlayerInput(char field[3][3]){
     int row, col;
-    printf("Enter the field as row col: ");
-    scanf("%d %d", &row, &col);
-    row -= 1;
-    col -= 1;
-    field[row][col] = 'O';
+    bool valid = false;
+    while (!valid){
+        printf("Enter the field as row col: ");
+        scanf("%d %d", &row, &col);
+        row -= 1;
+        col -= 1;
+        if(validateUserInput(row, col)){
+            field[row][col] = 'O';
+            valid = validateUserInput(row, col);
+        }
+    }
 }
 
 bool validateUserInput(int row, int col){
