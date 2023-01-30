@@ -21,6 +21,11 @@ return 0;
 
 int wegsuchen(lab laby, int startx, int starty, int zielx, int ziely){
 
-
-    return 0;
+    if(startx == zielx && starty == ziely){
+        return 0;
+    }
+    else{
+        return -1;
+    }
+    
 }
