@@ -45,4 +45,5 @@ bool validateUserInput(int row, int col){
             return true;
         }
     }
+    return false;
 }
