@@ -54,14 +54,14 @@ void test_LabyrinthAmZielAngekommen(void){
 
 void test_LabyrinthAmZielNichtAngekommen(void){
 
-    bool result;
+    bool result = 0;
     int input = 1;
     int hoehe = 3;
     int breite = 3;
     lab laby = {
-        {'1', '2', '3'},
-        {'4', '5', '6'},
-        {'7', '8', '9'},
+        {'0', '1', '1'},
+        {'1', '0', '1'},
+        {'1', '1', '1'},
     };
 
     wegsuchen(laby, &result, 1, 1, 0, 0);
@@ -88,6 +88,25 @@ void test_LabyrinthMarkiert(void){
     result = laby[0][0];
     printlabyrinth(laby, hoehe, breite);
     TEST_ASSERT_EQUAL_CHAR('X', result);
+
+
+}
+
+void test_LabyrinthUnten(void){
+
+    bool result;
+    int input = 1;
+    int hoehe = 3;
+    int breite = 3;
+    lab laby = {
+        {'0', '1', '1'},
+        {'0', '1', '1'},
+        {'0', '1', '1'},
+    };
+
+    wegsuchen(laby, &result, 0, 0, 2, 0);
+    printlabyrinth(laby, hoehe, breite);
+    TEST_ASSERT_EQUAL_INT(1, result);
 
 
 }
