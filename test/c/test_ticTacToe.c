@@ -71,4 +71,21 @@ void test_ticTacToe_ComputerWins(void)
     TEST_ASSERT_EQUAL_INT(COMPUTER, result);
 }
 
+void test_ticTacToe_NooneWins(void)
+{
+    /* arrange */
+    int result;
+    char field[][3] = {
+        {'X', 'O', 'O'},
+        {'O', 'X', 'X'},
+        {'X', 'O', 'O'}
+    };
+
+    /* act */
+    result = wasGameWon(field);
+
+    /* assert */
+    TEST_ASSERT_EQUAL_INT(DRAW, result);
+}
+
 #endif // TEST

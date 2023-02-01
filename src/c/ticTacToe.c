@@ -55,7 +55,16 @@ bool validateUserInput(int row, int col){
 }
 
 int wasGameWon(char field[3][3]){
-    int winner = NOWINNERYET; 
+    int winner = NOWINNERYET;
+    bool fieldFull = true;
+    for (int i = 0; i < 3; i++){
+        for (int j = 0; j < 3; j++){
+            if(field[i][j]=='-'){
+                fieldFull = false;
+            }
+        }
+    }
+    if (fieldFull == true) winner = DRAW; 
     if(field[0][0] == 'O'){
         if (field[0][0] == field[0][1] && field[0][2] == field[0][1]){
             winner = PLAYER;
@@ -75,7 +84,7 @@ int wasGameWon(char field[3][3]){
             winner = PLAYER;
         }
     }
-    if(field[1][1] == 'O'){
+    else if(field[1][1] == 'O'){
         if (field[1][1] == field[0][1] && field[0][1] == field[2][1]){
             winner = PLAYER;
         }
@@ -86,7 +95,7 @@ int wasGameWon(char field[3][3]){
             winner = PLAYER;
         }
     }
-    if(field[0][0] == 'X'){
+    else if(field[0][0] == 'X'){
         if (field[0][0] == field[0][1] && field[0][2] == field[0][1]){
             winner = COMPUTER;
         }
@@ -105,7 +114,7 @@ int wasGameWon(char field[3][3]){
             winner = COMPUTER;
         }
     }
-    if(field[1][1] == 'X'){
+    else if(field[1][1] == 'X'){
         if (field[1][1] == field[0][1] && field[0][1] == field[2][1]){
             winner = COMPUTER;
         }
