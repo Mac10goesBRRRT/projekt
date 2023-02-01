@@ -14,15 +14,17 @@ typedef struct enemy{
 } enemy; 
 
 
-bool playerAlive(Character *character);
-int playerHeal(Character* character,int amount);
-int playerDamaged(enemy* enemy, Character* character);
-int rollInitiative (Character *character);
+bool playerAlive(Player *player);
+int playerHeal(Player* player,int amount);
+int playerDamaged(enemy* enemy, Player* player);
+int rollInitiative (Player *player);
 void enemyHeal(enemy *enemy, int healAmount);
-void enemyDamaged(enemy* enemy, Character* character);
+void enemyDamaged(enemy* enemy, Player* player);
 bool enemyChoosesHeal(enemy* enemy);
 int switchTurns(int currentTurn);
-int fight(Character *character, enemy* enemy);
+int fight(Player *player, enemy* enemy);
+bool dodge (Player *player, enemy* enemy);
+void rest(Player *player);
 
 
 

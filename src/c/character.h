@@ -10,7 +10,7 @@ typedef struct {
     int attack,armor,maxHealthPoints,gold,weaponClass,statPoints,status,statusDuration;
     char name [50];
     Item *inventory[10];
-} Character;
+} Player;
 typedef struct {
     int attack,durability;
     char name [50];
@@ -23,63 +23,63 @@ enum {
     STRENGTH = 1, DEXTERITY = 2, INTELLIGENCE = 3, HEALTHPOINTS = 4, MANAPOINTS = 5, LEVEL = 6, EXP = 7, MAXEXP = 8
 };
 
-void setCharacterHealthPoints (Character *character, int newHealthPoints);
+void setPlayerHealthPoints (Player *player, int newHealthPoints);
 
-int getCharacterHealthPoints (Character *character);
+int getPlayerHealthPoints (Player *player);
 
-void setCharacterStrength (Character *character, int newStrength);
+void setPlayerStrength (Player *player, int newStrength);
 
-int getCharacterStrength (Character *character);
+int getPlayerStrength (Player *player);
 
-void setCharacterDexterity (Character *character, int newDexterity);
+void setPlayerDexterity (Player *player, int newDexterity);
 
-int getCharacterDexterity (Character *character);
+int getPlayerDexterity (Player *player);
 
-void setCharacterIntelligence (Character *character, int newIntelligence);
+void setPlayerIntelligence (Player *player, int newIntelligence);
 
-int getCharacterIntelligence (Character *character);
+int getPlayerIntelligence (Player *player);
 
-void setCharacterLevel (Character *character, int newLevel);
+void setPlayerLevel (Player *player, int newLevel);
 
-int getCharacterLevel (Character *character);
+int getPlayerLevel (Player *player);
 
-void setCharacterExp (Character *character, int newExp);
+void setPlayerExp (Player *player, int newExp);
 
-int getCharacterExp (Character *character);
+int getPlayerExp (Player *player);
 
-void setCharacterMaxExp (Character *character, int newMaxExp);
+void setPlayerMaxExp (Player *player, int newMaxExp);
 
-int getCharacterMaxExp (Character *character);
+int getPlayerMaxExp (Player *player);
 
-void increaseStat (Character *character, int stat, int amount);
+void increaseStat (Player *player, int stat, int amount);
 
-int calculateStatIncrease (Character *character, int amount);
+int calculateStatIncrease (Player *player, int amount);
 
-void setCharacterMaxHealthPoints (Character *character, int newMaxHealthPoints);
+void setPlayerMaxHealthPoints (Player *player, int newMaxHealthPoints);
 
-int getCharacterMaxHealthPoints (Character *character);
+int getPlayerMaxHealthPoints (Player *player);
 
-void setCharacterAttack (Character *character, int newAttack);
+void setPlayerAttack (Player *player, int newAttack);
 
-int getCharacterAttack (Character *character);
+int getPlayerAttack (Player *player);
 
-void setCharacterArmor (Character *character, int newArmor);
+void setPlayerArmor (Player *player, int newArmor);
 
-int getCharacterArmor (Character *character);
+int getPlayerArmor (Player *player);
 
-void setCharacterGold (Character *character, int newGold);
+void setPlayerGold (Player *player, int newGold);
 
-int getCharacterGold (Character *character);
+int getPlayerGold (Player *player);
 
-void levelUp (Character *character);
+void levelUp (Player *player);
 
-void setCharacterName (Character *character, char newName[]);
+void setPlayerName (Player *player, char newName[]);
 
-char* getCharacterName (Character *character);
+char* getPlayerName (Player *player);
 
-void setCharacterWeaponClass (Character *character, int newWeaponClass);
+void setPlayerWeaponClass (Player *player, int newWeaponClass);
 
-int getCharacterWeaponClass (Character *character);
+int getPlayerWeaponClass (Player *player);
 
 int getWeaponAttack (Weapon *weapon);
 
@@ -89,13 +89,13 @@ int getWeaponDurability (Weapon *weapon);
 
 int setWeaponDurability (Weapon *weapon, int newDurability);
 
-int calculateDamage (Character *character,Weapon *weapon);
+int calculateDamage (Player *player,Weapon *weapon);
 
-void setCharacterStatPoints (Character *character, int newStatPoints);
+void setPlayerStatPoints (Player *player, int newStatPoints);
 
-int getCharacterStatPoints (Character *character);
+int getPlayerStatPoints (Player *player);
 
-void initializeCharacter (Character *character,int weaponClass);
+void initializePlayer (Player *player,int weaponClass);
 
 void setItemID (Item *item, int newID);
 
@@ -121,19 +121,23 @@ void setItemName (Item *item, char newName[]);
 
 char* getItemName (Item *item);
 
-void putItemInInventory (Character *character, Item *item, int inventorySlot);
+void putItemInInventory (Player *player, Item *item, int inventorySlot);
 
-void initializeInventory (Character *character);
+void initializeInventory (Player *player);
 
-Item * getItemInInventory (Character *character, int inventorySlot);
+Item * getItemInInventory (Player *player, int inventorySlot);
 
-void setCharacterStatus (Character *character, int newStatus);
+void setPlayerStatus (Player *player, int newStatus);
 
-int getCharacterStatus (Character *character);
+int getPlayerStatus (Player *player);
 
-void setCharacterStatusDuration (Character *character, int newStatusDuration);
+void setPlayerStatusDuration (Player *player, int newStatusDuration);
 
-int getCharacterStatusDuration (Character *character);
+int getPlayerStatusDuration (Player *player);
 
-int checkStatus (Character *character);
+int checkStatus (Player *player);
+
+void setPlayerManaPoints (Player *player, int newManaPoints);
+
+int getPlayerManaPoints (Player *player);
 #endif
