@@ -34,5 +34,8 @@ void wegsuchen(lab laby, bool* done, int y, int x, int ziely, int zielx){
         if (!*done && x + 1 <= zielx && laby[y][x+1] == '0'){
             wegsuchen(laby, done, y, x + 1, ziely, zielx);
         }
+        if (!*done && y - 1 >= 0 && laby[y-1][x] == '0'){ // oben
+            wegsuchen(laby, done, y - 1, x, ziely, zielx);
+        }
     }
 }
