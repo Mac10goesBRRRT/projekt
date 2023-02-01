@@ -3,8 +3,8 @@
 
 #include <stdbool.h>
 
-#define MAXZEILEN 5
-#define MAXSPALTEN 5
+#define MAXZEILEN 10
+#define MAXSPALTEN 10
 
 typedef char lab[MAXZEILEN][MAXSPALTEN];
 int printlabyrinth(lab laby, int hoehe, int breite);
