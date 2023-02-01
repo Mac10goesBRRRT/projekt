@@ -9,14 +9,14 @@
 #include "mock_helper.h"
 #include "utils.h"
 
-Character testcharacter;
+Player testplayer;
 enemy testenemy;
 void setUp(void)
 {   
-    testcharacter.dexterity = 5;
-    testcharacter.healthPoints = 100;
-    testcharacter.maxHealthPoints = 100;
-    testcharacter.attack = 10;
+    testplayer.dexterity = 5;
+    testplayer.healthPoints = 100;
+    testplayer.maxHealthPoints = 100;
+    testplayer.attack = 10;
 
     testenemy.damage = 10;
     testenemy.health = 50;
@@ -33,7 +33,7 @@ void test_isPlayerAlive_healthGreaterZero(void)
     int health = 100;
     bool result;
     // act
-    result = playerAlive(&testcharacter);
+    result = playerAlive(&testplayer);
     // assert
     TEST_ASSERT_TRUE(result);
 }
@@ -41,10 +41,10 @@ void test_isPlayerAlive_healthGreaterZero(void)
 void test_isPlayerAlive_healthLowerZero(void)
 {
     // arrange
-    setCharacterHealthPoints(&testcharacter, -1);
+    setPlayerHealthPoints(&testplayer, -1);
     bool result;
     // act
-    result = playerAlive(&testcharacter);
+    result = playerAlive(&testplayer);
 
     // assert
     TEST_ASSERT_FALSE(result);
@@ -55,7 +55,7 @@ void test_playerIsDamaged(void)
     // arrange
     int expectedHealth = 90;
     // act
-    int result = playerDamaged(&testenemy, &testcharacter);
+    int result = playerDamaged(&testenemy, &testplayer);
     // assert
     TEST_ASSERT_EQUAL(expectedHealth, result);
 }
@@ -63,12 +63,12 @@ void test_playerIsDamaged(void)
 void test_playerIsNotOverhealed(void)
 {
     // arrange
-    setCharacterHealthPoints(&testcharacter, 95);
+    setPlayerHealthPoints(&testplayer, 95);
     int heal = 10;
     // act
-    int result = playerHeal(&testcharacter, heal);
+    int result = playerHeal(&testplayer, heal);
     // assert
-    TEST_ASSERT_EQUAL(getCharacterMaxHealthPoints(&testcharacter), result);
+    TEST_ASSERT_EQUAL(getPlayerMaxHealthPoints(&testplayer), result);
 }
 
 void test_setEnemyHealth(void)
@@ -136,7 +136,7 @@ void test_PlayerAttacksEnemy_DoesDamage(void)
     // health - (damage - armor)
     int expectedEnemyHealth = 44;
     // act
-    enemyDamaged(&testenemy, &testcharacter);
+    enemyDamaged(&testenemy, &testplayer);
     // assert
     TEST_ASSERT_EQUAL(expectedEnemyHealth, getEnemyHealth(&testenemy));
 }
@@ -147,7 +147,7 @@ void test_PlayerAttacksEnemy_DoesMinDamage(void)
     // health - (damage - armor)
     int expectedEnemyHealth = 49;
     // act
-    enemyDamaged(&testenemy,&testcharacter);
+    enemyDamaged(&testenemy,&testplayer);
     // assert
     TEST_ASSERT_EQUAL(expectedEnemyHealth, getEnemyHealth(&testenemy));
 }
@@ -188,7 +188,7 @@ void test_FightPlayerWins(void)
     int result;
     // act
     //strength,dexterity,intelligence,healthPoints,manaPoints,level,exp,maxExp,attack,armor,maxHealthPoints;
-    Character testChar = {10,10,10,playerHealth,100,1,0,100,playerDamage,playerArmor,playerMaxHealth};
+    Player testChar = {10,10,10,playerHealth,100,1,0,100,playerDamage,playerArmor,playerMaxHealth};
     playerInputChar_ExpectAndReturn('a');
     enemy test = {enemyHealth, enemyDamage, enemyArmor, enemyMaxHealth};
     result = fight(&testChar, &test);
@@ -203,7 +203,7 @@ void test_FightEnemyWins(void)
     int enemyHealth = 100, enemyDamage = 4, enemyArmor = 4, enemyMaxHealth = 100;
     int result;
     // act
-    Character testChar = {10,10,10,playerHealth,100,1,0,100,playerDamage,playerArmor,playerMaxHealth};
+    Player testChar = {10,10,10,playerHealth,100,1,0,100,playerDamage,playerArmor,playerMaxHealth};
     playerInputChar_ExpectAndReturn('a');
     randomInt_ExpectAndReturn(1);
     enemy test = {enemyHealth, enemyDamage, enemyArmor, enemyMaxHealth};
@@ -219,7 +219,7 @@ void test_FightPlayerChoosesAttack(void)
     int enemyHealth = 6, enemyDamage = 4, enemyArmor = 4, enemyMaxHealth = 100;
     int result;
     // act
-    Character testChar = {10,10,10,playerHealth,100,1,0,100,playerDamage,playerArmor,playerMaxHealth};
+    Player testChar = {10,10,10,playerHealth,100,1,0,100,playerDamage,playerArmor,playerMaxHealth};
     playerInputChar_ExpectAndReturn('a');
     enemy test = {enemyHealth, enemyDamage, enemyArmor, enemyMaxHealth};
     fight(&testChar, &test);
@@ -235,7 +235,7 @@ void test_FightPlayerHeals_thenAttacks_Wins(void)
     int enemyHealth = 11, enemyDamage = 4, enemyArmor = 4, enemyMaxHealth = 100;
     int result;
     // act
-    Character testChar = {10,10,10,playerHealth,100,1,0,100,playerDamage,playerArmor,playerMaxHealth};
+    Player testChar = {10,10,10,playerHealth,100,1,0,100,playerDamage,playerArmor,playerMaxHealth};
     enemy test = {enemyHealth, enemyDamage, enemyArmor, enemyMaxHealth};
     playerInputChar_ExpectAndReturn('h');
     randomInt_ExpectAndReturn(1);
@@ -254,7 +254,7 @@ void test_FightPlayerFlees(void)
     int enemyHealth = 11, enemyDamage = 4, enemyArmor = 4, enemyMaxHealth = 100;
     int result;
     // act
-    Character testChar = {10,10,10,playerHealth,100,1,0,100,playerDamage,playerArmor,playerMaxHealth};
+    Player testChar = {10,10,10,playerHealth,100,1,0,100,playerDamage,playerArmor,playerMaxHealth};
     enemy test = {enemyHealth, enemyDamage, enemyArmor, enemyMaxHealth};
     playerInputChar_ExpectAndReturn('f');
     result = fight(&testChar, &test);
@@ -368,7 +368,7 @@ void test_enemyChoosesHeal_ThenAttackWins(void)
     int playerHealth = 10, playerDamage = 10, playerArmor = 0, playerMaxHealth = 10;
     enemy test = {enemyHealth, enemyDamage, enemyArmor, enemyMaxHealth,1 };
     //act
-    Character testChar = {10,10,10,playerHealth,100,1,0,100,playerDamage,playerArmor,playerMaxHealth};
+    Player testChar = {10,10,10,playerHealth,100,1,0,100,playerDamage,playerArmor,playerMaxHealth};
     playerInputChar_ExpectAndReturn('a');
     randomInt_ExpectAndReturn(39); //39%20 = 19 , 19 + 1 = 20
     playerInputChar_ExpectAndReturn('a');
@@ -392,8 +392,8 @@ void test_enemyHealsNoPotion(void)
 
 int test_rollInitiative (void) {
 
-    int initiative = rollInitiative(&testcharacter);
+    int initiative = rollInitiative(&testplayer);
 
-    TEST_ASSERT(testcharacter.dexterity + 1 <= initiative && testcharacter.dexterity + 20 >= initiative);
+    TEST_ASSERT(testplayer.dexterity + 1 <= initiative && testplayer.dexterity + 20 >= initiative);
 }
 #endif // TEST

@@ -5,106 +5,106 @@
 #include "character.h"
 #include "spell.h"
 
-Character character;
+Player player;
 
-void setCharacterHealthPoints (Character *character, int newHealthPoints){
-    character->healthPoints = newHealthPoints;
+void setPlayerHealthPoints (Player *player, int newHealthPoints){
+    player->healthPoints = newHealthPoints;
 }
 
-int getCharacterHealthPoints (Character *character) {
-    return character->healthPoints;
+int getPlayerHealthPoints (Player *player) {
+    return player->healthPoints;
 }
 
-void setCharacterStrength (Character *character, int newStrength) {
-   character->strength = newStrength;
+void setPlayerStrength (Player *player, int newStrength) {
+   player->strength = newStrength;
 }
 
-int getCharacterStrength (Character *character) {
-    return character->strength;
+int getPlayerStrength (Player *player) {
+    return player->strength;
 }
 
-void setCharacterDexterity (Character *character, int newDexterity) {
-    character->dexterity = newDexterity;
+void setPlayerDexterity (Player *player, int newDexterity) {
+    player->dexterity = newDexterity;
 }
 
-int getCharacterDexterity (Character *character) {
-    return character->dexterity;
+int getPlayerDexterity (Player *player) {
+    return player->dexterity;
 }
 
-void setCharacterIntelligence (Character *character, int newIntelligence) {
-    character->intelligence = newIntelligence;
+void setPlayerIntelligence (Player *player, int newIntelligence) {
+    player->intelligence = newIntelligence;
 }
 
-int getCharacterIntelligence (Character *character) {
-    return character->intelligence;
+int getPlayerIntelligence (Player *player) {
+    return player->intelligence;
 }
 
-void setCharacterLevel (Character *character, int newLevel) {
-    character->level = newLevel;
+void setPlayerLevel (Player *player, int newLevel) {
+    player->level = newLevel;
 }
 
-int getCharacterLevel (Character *character) {
-    return character->level;
+int getPlayerLevel (Player *player) {
+    return player->level;
 }
 
-void setCharacterExp (Character *character, int newExp) {
-    character->exp = newExp;
+void setPlayerExp (Player *player, int newExp) {
+    player->exp = newExp;
 }
 
-int getCharacterExp (Character *character) {
-    return character->exp;
+int getPlayerExp (Player *player) {
+    return player->exp;
 }
 
-void setCharacterMaxExp (Character *character, int newMaxExp) {
-    character->maxExp = newMaxExp;
+void setPlayerMaxExp (Player *player, int newMaxExp) {
+    player->maxExp = newMaxExp;
 }
 
-int getCharacterMaxExp (Character *character) {
-    return character->maxExp;
+int getPlayerMaxExp (Player *player) {
+    return player->maxExp;
 }
 
-int calculateStatIncrease (Character *character, int amount) {
-    return character->level*amount;
+int calculateStatIncrease (Player *player, int amount) {
+    return player->level*amount;
 }
 
-void setCharacterMaxHealthPoints (Character *character, int newMaxHealthPoints){
-    character->maxHealthPoints = newMaxHealthPoints;
+void setPlayerMaxHealthPoints (Player *player, int newMaxHealthPoints){
+    player->maxHealthPoints = newMaxHealthPoints;
 }
 
-int getCharacterMaxHealthPoints (Character *character){
-    return character->maxHealthPoints;
+int getPlayerMaxHealthPoints (Player *player){
+    return player->maxHealthPoints;
 }
 
-void setCharacterAttack (Character *character, int newAttack){
-    character->attack = newAttack;
+void setPlayerAttack (Player *player, int newAttack){
+    player->attack = newAttack;
 }
 
-int getCharacterAttack (Character *character){
-    return character->attack;
+int getPlayerAttack (Player *player){
+    return player->attack;
 }
 
-void setCharacterArmor (Character *character, int newArmor){
-    character->armor = newArmor;
+void setPlayerArmor (Player *player, int newArmor){
+    player->armor = newArmor;
 }
 
-int getCharacterArmor (Character *character){
-    return character->armor;
+int getPlayerArmor (Player *player){
+    return player->armor;
 }
 
-void setCharacterGold (Character *character, int newGold){
-    character->gold = newGold;
+void setPlayerGold (Player *player, int newGold){
+    player->gold = newGold;
 }
 
-int getCharacterGold (Character *character){
-    return character->gold;
+int getPlayerGold (Player *player){
+    return player->gold;
 }
 
-void setCharacterName (Character *character, char *newName) {
-    strcpy(character->name,newName);
+void setPlayerName (Player *player, char *newName) {
+    strcpy(player->name,newName);
 }
 
-char* getCharacterName (Character *character) {
-    return character->name;
+char* getPlayerName (Player *player) {
+    return player->name;
 }
 
 int getWeaponAttack (Weapon *weapon) {
@@ -123,81 +123,81 @@ int setWeaponDurability (Weapon *weapon, int newDurability) {
     weapon->durability = newDurability;
 }
 
-void setCharacterWeaponClass (Character* character, int weaponClass) {
-    character->weaponClass = weaponClass;
+void setPlayerWeaponClass (Player* player, int weaponClass) {
+    player->weaponClass = weaponClass;
 }
 
-int getCharacterWeaponClass (Character* character) {
-    return character->weaponClass;
+int getPlayerWeaponClass (Player* player) {
+    return player->weaponClass;
 }
 
-void increaseStat (Character *character, int stat, int amount) {
+void increaseStat (Player *player, int stat, int amount) {
     switch (stat)
     {
     case 1:        
-        character->strength += amount;break;
+        player->strength += amount;break;
     case 2:
-        character->dexterity += amount;break;
+        player->dexterity += amount;break;
     case 3:
-        character->intelligence += amount;break;
+        player->intelligence += amount;break;
     case 4:
-        character->healthPoints += amount;break;
+        player->healthPoints += amount;break;
     case 5:
-        character->manaPoints += amount;break;
+        player->manaPoints += amount;break;
     case 6:
-        character->level += amount;break;
+        player->level += amount;break;
     case 7:
-        character->exp += amount;break;
+        player->exp += amount;break;
     case 8:
-        character->maxExp += amount;break;
+        player->maxExp += amount;break;
     default:
         break;
     }
 }
-void levelUp (Character *character) {
-   if (getCharacterExp(character) > getCharacterMaxExp(character)) {
-        increaseStat(character,LEVEL,1);
-        setCharacterExp(character,getCharacterExp(character)-getCharacterMaxExp(character));
+void levelUp (Player *player) {
+   if (getPlayerExp(player) > getPlayerMaxExp(player)) {
+        increaseStat(player,LEVEL,1);
+        setPlayerExp(player,getPlayerExp(player)-getPlayerMaxExp(player));
    }
 }
 
-int calculateDamage (Character *character,Weapon *weapon) {
-    switch (character->weaponClass)
+int calculateDamage (Player *player,Weapon *weapon) {
+    switch (player->weaponClass)
     {
         case 1:
-            return character->strength*weapon->attack;
+            return player->strength*weapon->attack;
         case 2:
-            return character->dexterity*weapon->attack;
+            return player->dexterity*weapon->attack;
         case 3:
-            return character->intelligence*weapon->attack;
+            return player->intelligence*weapon->attack;
         default:
             return 1;
     }
 }
 
-void setCharacterStatPoints (Character* character, int newStatPoints) {
-    character->statPoints = newStatPoints;
+void setPlayerStatPoints (Player* player, int newStatPoints) {
+    player->statPoints = newStatPoints;
 }
 
-int getCharacterStatPoints (Character* character) {
-    return character->statPoints;
+int getPlayerStatPoints (Player* player) {
+    return player->statPoints;
 }
 
-void initializeCharacter (Character *character,int weaponClass) {
-    setCharacterHealthPoints(character,100);
-    setCharacterStrength(character,10);
-    setCharacterDexterity(character,10);
-    setCharacterIntelligence(character,10);
-    setCharacterLevel(character,1);
-    setCharacterExp(character,0);
-    setCharacterMaxExp(character,100);
-    setCharacterMaxHealthPoints(character,100);
-    setCharacterAttack(character,10);
-    setCharacterArmor(character,0);
-    setCharacterGold(character,0);
-    setCharacterName(character,"Player");
-    setCharacterWeaponClass(character,weaponClass);
-    setCharacterStatPoints(character,0);
+void initializePlayer (Player *player,int weaponClass) {
+    setPlayerHealthPoints(player,100);
+    setPlayerStrength(player,10);
+    setPlayerDexterity(player,10);
+    setPlayerIntelligence(player,10);
+    setPlayerLevel(player,1);
+    setPlayerExp(player,0);
+    setPlayerMaxExp(player,100);
+    setPlayerMaxHealthPoints(player,100);
+    setPlayerAttack(player,10);
+    setPlayerArmor(player,0);
+    setPlayerGold(player,0);
+    setPlayerName(player,"Player");
+    setPlayerWeaponClass(player,weaponClass);
+    setPlayerStatPoints(player,0);
 }
 
 void setItemID (Item *item, int newID) {
@@ -248,97 +248,97 @@ char* getItemName (Item *item) {
     return item->name;
 }
 
-void setCharacterStatus (Character *character, int newStatus) {
-    character->status = newStatus;
+void setPlayerStatus (Player *player, int newStatus) {
+    player->status = newStatus;
 }
 
-int getCharacterStatus (Character *character) {
-    return character->status;
+int getPlayerStatus (Player *player) {
+    return player->status;
 }
 
-void setCharacterStatusDuration (Character *character, int newStatusDuration) {
-    character->statusDuration = newStatusDuration;
+void setPlayerStatusDuration (Player *player, int newStatusDuration) {
+    player->statusDuration = newStatusDuration;
 }
 
-int getCharacterStatusDuration (Character *character) {
-    return character->statusDuration;
+int getPlayerStatusDuration (Player *player) {
+    return player->statusDuration;
 }
 
-void initializeInventory (Character *character) {
+void initializeInventory (Player *player) {
     for (int i = 0; i < 10; i++)
     {
-        character->inventory[i] = NULL;
+        player->inventory[i] = NULL;
     }
 }
 
-void putItemInInventory (Character *character, Item *item,int inventorySlot) {
+void putItemInInventory (Player *player, Item *item,int inventorySlot) {
    if(inventorySlot > 9) {
         printf("Inventory slot is out of range (0-9)\n");
    } else if (inventorySlot < 0) {
         printf("Inventory slot is out of range (0-9)\n");
-    } else if (character->inventory[inventorySlot] == NULL) {
+    } else if (player->inventory[inventorySlot] == NULL) {
         printf("Inventory slot is already occupied\n");
     } else {
-        character->inventory[inventorySlot] = item;
+        player->inventory[inventorySlot] = item;
     }
 }
-Item * getItemInInventory (Character *character, int inventorySlot) {
+Item * getItemInInventory (Player *player, int inventorySlot) {
     if(inventorySlot > 9) {
         printf("Inventory slot is out of range (0-9)\n");
         return NULL;
     } else if (inventorySlot < 0) {
         printf("Inventory slot is out of range (0-9)\n");
         return NULL;
-    } else if (character->inventory[inventorySlot] == NULL) {
+    } else if (player->inventory[inventorySlot] == NULL) {
         printf("Inventory slot is empty\n");
         return NULL;
     } else {
-        return character->inventory[inventorySlot];
+        return player->inventory[inventorySlot];
     }
 }
 
-int checkStatus (Character *character) {
-    switch (character->status)
+int checkStatus (Player *player) {
+    switch (player->status)
     {
     case SPELL_EFFECT_NONE:
         break;
     case SPELL_EFFECT_BURN:
-        setCharacterStatusDuration(character,getCharacterStatusDuration(character)-1);
-        if (getCharacterStatusDuration == 0) {
-            setCharacterStatus(character,SPELL_EFFECT_NONE);
+        setPlayerStatusDuration(player,getPlayerStatusDuration(player)-1);
+        if (getPlayerStatusDuration == 0) {
+            setPlayerStatus(player,SPELL_EFFECT_NONE);
         }
-        return getCharacterStatus(character);
+        return getPlayerStatus(player);
         break;
     case SPELL_EFFECT_FREEZE:
-        setCharacterStatusDuration(character,getCharacterStatusDuration(character)-1);
-        if (getCharacterStatusDuration == 0) {
-            setCharacterStatus(character,SPELL_EFFECT_NONE);
+        setPlayerStatusDuration(player,getPlayerStatusDuration(player)-1);
+        if (getPlayerStatusDuration == 0) {
+            setPlayerStatus(player,SPELL_EFFECT_NONE);
         }
-        return getCharacterStatus(character);
+        return getPlayerStatus(player);
         break;
     case SPELL_EFFECT_STUN:
-        setCharacterStatusDuration(character,getCharacterStatusDuration(character)-1);
-        if (getCharacterStatusDuration == 0) {
-            setCharacterStatus(character,SPELL_EFFECT_NONE);
+        setPlayerStatusDuration(player,getPlayerStatusDuration(player)-1);
+        if (getPlayerStatusDuration == 0) {
+            setPlayerStatus(player,SPELL_EFFECT_NONE);
         }
-        return getCharacterStatus(character);
+        return getPlayerStatus(player);
         break;
     case SPELL_EFFECT_REGENERATION:
-        setCharacterStatusDuration(character,getCharacterStatusDuration(character)-1);
-        if (getCharacterStatusDuration == 0) {
-            setCharacterStatus(character,SPELL_EFFECT_NONE);
+        setPlayerStatusDuration(player,getPlayerStatusDuration(player)-1);
+        if (getPlayerStatusDuration == 0) {
+            setPlayerStatus(player,SPELL_EFFECT_NONE);
         }
-        return getCharacterStatus(character);
+        return getPlayerStatus(player);
         break;
     default:
-        return getCharacterStatus(character);
+        return getPlayerStatus(player);
         break;
     }
 }
-void setCharacterManaPoints (Character *character, int newManaPoints) {
-    character->manaPoints = newManaPoints;
+void setPlayerManaPoints (Player *player, int newManaPoints) {
+    player->manaPoints = newManaPoints;
 }
 
-int getCharacterManaPoints (Character *character) {
-    return character->manaPoints;
+int getPlayerManaPoints (Player *player) {
+    return player->manaPoints;
 }

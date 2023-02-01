@@ -11,11 +11,11 @@ enum {
 };
 
 
-SpellEffect spellFireball(Character *character);
-SpellEffect spellHeal(Character *character);
-SpellEffect spellLightning(Character *character);
-SpellEffect spellRegeneration (Character *character);
-SpellEffect spellFreeze(Character *character);
+SpellEffect spellFireball(Player *player);
+SpellEffect spellHeal(Player *player);
+SpellEffect spellLightning(Player *player);
+SpellEffect spellRegeneration (Player *player);
+SpellEffect spellFreeze(Player *player);
 
 
 #endif
