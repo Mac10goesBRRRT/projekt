@@ -111,4 +111,23 @@ void test_LabyrinthUnten(void){
 
 }
 
+void test_LabyrinthRechts(void){
+
+    bool result;
+    int input = 1;
+    int hoehe = 3;
+    int breite = 3;
+    lab laby = {
+        {'0', '0', '0'},
+        {'1', '1', '1'},
+        {'1', '1', '1'},
+    };
+
+    wegsuchen(laby, &result, 0, 0, 0, 2);
+    printlabyrinth(laby, hoehe, breite);
+    TEST_ASSERT_EQUAL_INT(1, result);
+
+
+}
+
 #endif // TEST
