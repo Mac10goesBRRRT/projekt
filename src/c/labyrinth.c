@@ -15,11 +15,14 @@ int printlabyrinth(lab laby, int hoehe, int breite){
         }
         printf("\n");
     }
+    printf("\n");
     
 return 0;
 }
 
 int wegsuchen(lab laby, int y, int x, int ziely, int zielx){
+
+    laby[y][x] = 'X';
 
     if(x == zielx && y == ziely){
         return 0;

@@ -70,4 +70,25 @@ void test_LabyrinthAmZiel2(void){
 
 }
 
+void test_LabyrinthMarkiert(void){
+
+    char result;
+    int input = 1;
+    int hoehe = 3;
+    int breite = 3;
+    lab laby = {
+        {'0', '1', '1'},
+        {'1', '1', '1'},
+        {'1', '1', '1'},
+    };
+
+    
+    wegsuchen(laby, 0, 0, 0, 0);
+    result = laby[0][0];
+    printlabyrinth(laby, hoehe, breite);
+    TEST_ASSERT_EQUAL_CHAR('X', result);
+
+
+}
+
 #endif // TEST
