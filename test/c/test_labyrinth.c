@@ -34,7 +34,7 @@ void test_runExampleTest(void)
 }
 
 
-void test_LabyrinthAmZiel(void){
+void test_LabyrinthAmZielAngekommen(void){
 
     bool result;
     int input = 1;
@@ -52,7 +52,7 @@ void test_LabyrinthAmZiel(void){
 
 }
 
-void test_LabyrinthAmZiel2(void){
+void test_LabyrinthAmZielNichtAngekommen(void){
 
     bool result;
     int input = 1;
