@@ -40,6 +40,9 @@ void wegsuchen(lab laby, bool* done, int y, int x, int ziely, int zielx){
         if (!*done && x - 1 >= 0 && laby[y][x-1] == '0'){ // links
             wegsuchen(laby, done, y, x - 1, ziely, zielx);
         }
+        if (!*done){
+            laby[y][x] = '0';
+        }
 
     }
 }
