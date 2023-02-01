@@ -2,6 +2,7 @@
 #include "unity.h"
 //in example.h wird die Funktion deklariert
 #include "labyrinth.h"
+#include <stdbool.h>
 
 //Vor- bzw. Nachbereitung
 void setUp(void)
@@ -14,8 +15,7 @@ void tearDown(void)
 
 
 void test_runExampleTest(void)
-{
-
+{ 
     int result;
     int input = 1;
     int hoehe = 3;
@@ -36,7 +36,7 @@ void test_runExampleTest(void)
 
 void test_LabyrinthAmZiel(void){
 
-    int result;
+    bool result;
     int input = 1;
     int hoehe = 3;
     int breite = 3;
@@ -46,15 +46,15 @@ void test_LabyrinthAmZiel(void){
         {'7', '8', '9'},
     };
 
-    result = wegsuchen(laby, 0, 0, 0, 0);
-    TEST_ASSERT_EQUAL_INT(0, result);
+    wegsuchen(laby, &result, 0, 0, 0, 0);
+    TEST_ASSERT_EQUAL_INT(1, result);
 
 
 }
 
 void test_LabyrinthAmZiel2(void){
 
-    int result;
+    bool result;
     int input = 1;
     int hoehe = 3;
     int breite = 3;
@@ -64,8 +64,8 @@ void test_LabyrinthAmZiel2(void){
         {'7', '8', '9'},
     };
 
-    result = wegsuchen(laby, 1, 1, 0, 0);
-    TEST_ASSERT_EQUAL_INT(-1, result);
+    wegsuchen(laby, &result, 1, 1, 0, 0);
+    TEST_ASSERT_EQUAL_INT(0, result);
 
 
 }
@@ -73,6 +73,7 @@ void test_LabyrinthAmZiel2(void){
 void test_LabyrinthMarkiert(void){
 
     char result;
+    bool du;
     int input = 1;
     int hoehe = 3;
     int breite = 3;
@@ -83,7 +84,7 @@ void test_LabyrinthMarkiert(void){
     };
 
     
-    wegsuchen(laby, 0, 0, 0, 0);
+    wegsuchen(laby, &du, 0, 0, 0, 0);
     result = laby[0][0];
     printlabyrinth(laby, hoehe, breite);
     TEST_ASSERT_EQUAL_CHAR('X', result);

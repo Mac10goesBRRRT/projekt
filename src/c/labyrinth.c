@@ -20,15 +20,14 @@ int printlabyrinth(lab laby, int hoehe, int breite){
 return 0;
 }
 
-int wegsuchen(lab laby, int y, int x, int ziely, int zielx){
+void wegsuchen(lab laby, bool* done, int y, int x, int ziely, int zielx){
 
     laby[y][x] = 'X';
 
     if(x == zielx && y == ziely){
-        return 0;
+        *done = true;
     }
     else{
-        return -1;
+        *done = false;
     }
-    
 }
