@@ -247,3 +247,10 @@ bool dodge (Character *character, enemy* enemy) {
     }
     return false;
 }
+
+void rest(Character *character) {
+    setCharacterHealthPoints(character, getCharacterMaxHealthPoints(character));
+    setCharacterManaPoints(character, 10);
+    setCharacterStatus(character, SPELL_EFFECT_NONE);
+    setCharacterStatusDuration(character, 0);
+}

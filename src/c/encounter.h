@@ -24,6 +24,7 @@ bool enemyChoosesHeal(enemy* enemy);
 int switchTurns(int currentTurn);
 int fight(Character *character, enemy* enemy);
 bool dodge (Character *character, enemy* enemy);
+void rest(Character *character);
 
 
 
