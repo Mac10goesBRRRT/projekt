@@ -23,7 +23,7 @@ return 0;
 
 void wegsuchen(lab laby, bool* done, int y, int x, int ziely, int zielx){
 
-    laby[y][x] = 'X';
+    laby[y][x] = MARKIERT;
 
 
     if(x == zielx && y == ziely){
