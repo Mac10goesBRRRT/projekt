@@ -19,9 +19,9 @@ int printlabyrinth(lab laby, int hoehe, int breite){
 return 0;
 }
 
-int wegsuchen(lab laby, int startx, int starty, int zielx, int ziely){
+int wegsuchen(lab laby, int y, int x, int ziely, int zielx){
 
-    if(startx == zielx && starty == ziely){
+    if(x == zielx && y == ziely){
         return 0;
     }
     else{

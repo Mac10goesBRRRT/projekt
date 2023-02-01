@@ -6,6 +6,6 @@
 
 typedef char lab[MAXZEILEN][MAXSPALTEN];
 int printlabyrinth(lab laby, int hoehe, int breite);
-int wegsuchen(lab laby, int startx, int starty, int zielx, int ziely);
+int wegsuchen(lab laby, int y, int x, int ziely, int zielx);
 
 #endif
