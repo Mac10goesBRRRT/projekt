@@ -88,4 +88,21 @@ void test_ticTacToe_NooneWins(void)
     TEST_ASSERT_EQUAL_INT(DRAW, result);
 }
 
+void test_ticTacToe_NoWinnerYet(void)
+{
+    /* arrange */
+    int result;
+    char field[][3] = {
+        {'X', 'O', 'O'},
+        {'O', '-', 'X'},
+        {'X', 'O', 'O'}
+    };
+
+    /* act */
+    result = wasGameWon(field);
+
+    /* assert */
+    TEST_ASSERT_EQUAL_INT(NOWINNERYET, result);
+}
+
 #endif // TEST
