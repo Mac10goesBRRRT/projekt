@@ -5,6 +5,7 @@
 
 #define MAXZEILEN 10
 #define MAXSPALTEN 10
+#define WEG '0'
 
 typedef char lab[MAXZEILEN][MAXSPALTEN];
 int printlabyrinth(lab laby, int hoehe, int breite);
