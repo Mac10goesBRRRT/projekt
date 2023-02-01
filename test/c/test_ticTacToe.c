@@ -37,5 +37,22 @@ void test_ticTacToe_invalidUserInput(void)
     TEST_ASSERT_EQUAL_INT(false, result);
 }
 
+void test_ticTacToe_playerWins(void)
+{
+    /* arrange */
+    int result;
+    char field[][3] = {
+        {'O', 'O', '-'},
+        {'-', 'O', '-'},
+        {'-', '-', 'O'}
+    };
+
+    /* act */
+    result = wasGameWon(field);
+
+    /* assert */
+    TEST_ASSERT_EQUAL_INT(PLAYER, result);
+}
+
 
 #endif // TEST
