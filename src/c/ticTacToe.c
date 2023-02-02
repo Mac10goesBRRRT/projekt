@@ -139,7 +139,8 @@ int wasGameWon(char field[3][3]){
 }
 
 void getComputerInput(char field[3][3]){
-    bool symbolSet = false;
+    bool symbolSet = false, *pt = &symbolSet;
+    fillAlmostFull(field, pt);
     while (!symbolSet){
         int row, col;
         row = rand() % 3;
@@ -147,6 +148,268 @@ void getComputerInput(char field[3][3]){
         if (field[row][col] == '-'){
             field[row][col] = 'X';
             symbolSet = true;
+        }
+    }
+}
+
+
+void fillAlmostFull(char field[3][3], bool* pt) {
+    if (field[0][0] == 'X') {
+        if (field[0][1] == 'X') {
+            field[0][2] = 'X';
+            *pt = true;
+            return;
+        }
+        else if (field[0][2] == 'X') {
+            field[0][1] = 'X';
+            *pt = true;
+            return;
+        }
+        else if (field[1][0] == 'X') {
+            field[2][0] = 'X';
+            *pt = true;
+            return;
+        }
+        else if (field[2][0] == 'X') {
+            field[1][0] = 'X';
+            *pt = true;
+            return;
+        }
+        else if (field[1][1] == 'X') {
+            field[2][2] = 'X';
+            *pt = true;
+            return;
+        }
+        else if (field[2][2] == 'X') {
+            field[1][1] = 'X';
+            *pt = true;
+            return;
+        }
+    }
+    if (field[0][1] == 'X') {
+        if (field[0][0] == 'X') {
+            field[0][2] = 'X';
+            *pt = true;
+            return;
+        }
+        else if (field[0][2] == 'X') {
+            field[0][0] = 'X';
+            *pt = true;
+            return;
+        }
+        else if (field[1][1] == 'X') {
+            field[2][1] = 'X';
+            *pt = true;
+            return;
+        }
+        else if (field[2][1] == 'X') {
+            field[1][1] = 'X';
+            *pt = true;
+            return;
+        }
+    }
+    if (field[0][2] == 'X') {
+        if (field[0][0] == 'X') {
+            field[0][1] = 'X';
+            *pt = true;
+            return;
+        }
+        else if (field[0][1] == 'X') {
+            field[0][0] = 'X';
+            *pt = true;
+            return;
+        }
+        else if (field[1][1] == 'X') {
+            field[2][0] = 'X';
+            *pt = true;
+            return;
+        }
+        else if (field[2][0] == 'X') {
+            field[1][1] = 'X';
+            *pt = true;
+            return;
+        }
+        else if (field[1][2] == 'X') {
+            field[2][2] = 'X';
+            *pt = true;
+            return;
+        }
+        else if (field[2][2] == 'X') {
+            field[1][2] = 'X';
+            *pt = true;
+            return;
+        }
+    }
+    if (field[1][0] == 'X') {
+        if (field[1][1] == 'X') {
+            field[1][2] = 'X';
+            *pt = true;
+            return;
+        }
+        else if (field[1][2] == 'X') {
+            field[1][1] = 'X';
+            *pt = true;
+            return;
+        }
+        else if (field[0][0] == 'X') {
+            field[2][0] = 'X';
+            *pt = true;
+            return;
+        }
+        else if (field[2][0] == 'X') {
+            field[0][0] = 'X';
+            *pt = true;
+            return;
+        }
+    }
+    if (field[1][1] == 'X') {
+        if (field[1][0] == 'X') {
+            field[1][2] = 'X';
+            *pt = true;
+            return;
+        }
+        else if (field[1][2] == 'X') {
+            field[1][0] = 'X';
+            *pt = true;
+            return;
+        }
+        else if (field[0][1] == 'X') {
+            field[2][1] = 'X';
+            *pt = true;
+            return;
+        }
+        else if (field[2][1] == 'X') {
+            field[0][1] = 'X';
+            *pt = true;
+            return;
+        }
+        else if (field[0][0] == 'X') {
+            field[2][2] = 'X';
+            *pt = true;
+            return;
+        }
+        else if (field[2][2] == 'X') {
+            field[0][0] = 'X';
+            *pt = true;
+            return;
+        }
+        else if (field[0][2] == 'X') {
+            field[2][0] = 'X';
+            *pt = true;
+            return;
+        }
+        else if (field[2][0] == 'X') {
+            field[0][2] = 'X';
+            *pt = true;
+            return;
+        }
+    }
+    if (field[1][2] == 'X') {
+        if (field[1][0] == 'X') {
+            field[1][1] = 'X';
+            *pt = true;
+            return;
+        }
+        else if (field[1][1] == 'X') {
+            field[1][0] = 'X';
+            *pt = true;
+            return;
+        }
+        else if (field[0][2] == 'X') {
+            field[2][2] = 'X';
+            *pt = true;
+            return;
+        }
+        else if (field[2][2] == 'X') {
+            field[0][2] = 'X';
+            *pt = true;
+            return;
+        }
+    }
+    if (field[2][0] == 'X') {
+        if (field[2][1] == 'X') {
+            field[2][2] = 'X';
+            *pt = true;
+            return;
+        }
+        else if (field[2][2] == 'X') {
+            field[2][1] = 'X';
+            *pt = true;
+            return;
+        }
+        else if (field[0][0] == 'X') {
+            field[1][0] = 'X';
+            *pt = true;
+            return;
+        }
+        else if (field[1][0] == 'X') {
+            field[0][0] = 'X';
+            *pt = true;
+            return;
+        }
+        else if (field[1][1] == 'X') {
+            field[0][2] = 'X';
+            *pt = true;
+            return;
+        }
+        else if (field[0][2] == 'X') {
+            field[1][1] = 'X';
+            *pt = true;
+            return;
+        }
+    }
+    if (field[2][1] == 'X') {
+        if (field[2][0] == 'X') {
+            field[2][2] = 'X';
+            *pt = true;
+            return;
+        }
+        else if (field[2][2] == 'X') {
+            field[2][0] = 'X';
+            *pt = true;
+            return;
+        }
+        else if (field[1][1] == 'X') {
+            field[0][1] = 'X';
+            *pt = true;
+            return;
+        }
+        else if (field[0][1] == 'X') {
+            field[1][1] = 'X';
+            *pt = true;
+            return;
+        }
+    }
+    if (field[2][2] == 'X') {
+        if (field[2][0] == 'X') {
+            field[2][1] = 'X';
+            *pt = true;
+            return;
+        }
+        else if (field[2][1] == 'X') {
+            field[2][0] = 'X';
+            *pt = true;
+            return;
+        }
+        else if (field[0][2] == 'X') {
+            field[1][2] = 'X';
+            *pt = true;
+            return;
+        }
+        else if (field[1][2] == 'X') {
+            field[0][2] = 'X';
+            *pt = true;
+            return;
+        }
+        else if (field[1][1] == 'X') {
+            field[0][0] = 'X';
+            *pt = true;
+            return;
+        }
+        else if (field[0][0] == 'X') {
+            field[1][1] = 'X';
+            *pt = true;
+            return;
         }
     }
 }
