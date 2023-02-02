@@ -886,6 +886,18 @@ int play() {
         counter += 1;
     }
     printField(field);
-    printf("%d", winner);
+    printWinner(winner);
     return winner;
+}
+
+void printWinner(int winner){
+    if(winner == PLAYER){
+        printf("You won\n");
+    }
+    else if(winner == COMPUTER){
+        printf("I won\n");
+    }
+    else if(winner == DRAW){
+        printf("It's a draw\n");
+    }
 }
