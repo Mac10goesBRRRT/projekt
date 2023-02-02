@@ -276,4 +276,38 @@ void test_LabyrinthSchritteBeiDreiGewonnen(void){
     
 }
 
+void test_LabyrinthAuswahl(void){
+
+    bool result;
+    int input = 1;
+    int hoehe = 5;
+    int breite = 6;
+    int schritte = 14;
+    int versuche = 0;
+    int auswahl = 1;
+    
+   
+    
+    lab laby = {
+        {'0', '1', '0', '0', '0', '0'},
+        {'0', '1', '0', '1', '1', '0'},
+        {'0', '0', '0', '0', '1', '0'},
+        {'0', '1', '1', '0', '1', '0'},
+        {'0', '1', '0', '0', '1', '0'},
+    };
+
+     labyrinthauswahl(auswahl);
+    //printlabyrinth(laby, hoehe, breite); //hier in die funktion die print frage machen
+    wegsuchen(laby, &result, 0, 0, 4, 5);
+
+    userInput_ExpectAndReturn(5);
+    userInput_ExpectAndReturn(8);
+    userInput_ExpectAndReturn(10);
+    userInput_ExpectAndReturn(14);
+
+    labyrinthschritte(laby, hoehe, breite, schritte, versuche); //die geliche funktion nur mit dem if vergleich und userinput
+    TEST_ASSERT_EQUAL_INT(1, result);
+    
+}
+
 #endif // TEST

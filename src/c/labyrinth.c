@@ -19,7 +19,6 @@ int printlabyrinth(lab laby, int hoehe, int breite){
     printf("\n");
     printf("How many steps do you need to reach your goal?\n");
     printf("\n");
-
 return 0;
 }
 
@@ -79,4 +78,28 @@ void labyrinthschritte(lab laby, int hoehe, int breite, int schritte, int versuc
             printf("You lost.\n");
         }
     }  
+}
+
+void labyrinthauswahl(int auswahl){
+
+    printf("Bitte wählen Sie ein Labyrinth aus\n");
+
+    switch (auswahl){
+    case 1:
+        lab laby = {
+            {'0', '1', '0', '0', '0', '0'},
+            {'0', '1', '0', '1', '1', '0'},
+            {'0', '0', '0', '0', '1', '0'},
+            {'0', '1', '1', '0', '1', '0'},
+            {'0', '1', '0', '0', '1', '0'},
+        };
+        int hoehe = 5;
+        int breite = 6;
+        printlabyrinth(laby, hoehe, breite);
+        break;
+    
+    default:
+        break;
+    }
+
 }
