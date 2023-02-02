@@ -38,14 +38,14 @@ void getPlayerInput(char field[3][3]){
         scanf("%d %d", &row, &col);
         row -= 1;
         col -= 1;
-        if(validateUserInput(row, col)){
+        if(validatePlayerInput(row, col)){
             field[row][col] = 'O';
-            valid = validateUserInput(row, col);
+            valid = validatePlayerInput(row, col);
         }
     }
 }
 
-bool validateUserInput(int row, int col){
+bool validatePlayerInput(int row, int col){
     if (row < 3 && row >= 0){
         if (col < 3 && col >= 0){
             return true;
@@ -137,3 +137,4 @@ int wasGameWon(char field[3][3]){
     }
     return winner;
 }
+

@@ -18,7 +18,7 @@ void test_ticTacToe_validUserInput(void)
     int row = 2, col = 0;
 
     /* act */
-    result = validateUserInput(row, col);
+    result = validatePlayerInput(row, col);
 
     /* assert */
     TEST_ASSERT_EQUAL_INT(true, result);
@@ -31,7 +31,7 @@ void test_ticTacToe_invalidUserInput(void)
     int row = 1, col = 3;
 
     /* act */
-    result = validateUserInput(row, col);
+    result = validatePlayerInput(row, col);
 
     /* assert */
     TEST_ASSERT_EQUAL_INT(false, result);
