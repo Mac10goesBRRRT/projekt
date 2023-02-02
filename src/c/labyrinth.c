@@ -11,8 +11,16 @@
 int printlabyrinth(lab laby, int hoehe, int breite){
     
     for(int i = 0; i < hoehe; i++){
-        for(int j = 0; j < breite; j++){
-            printf("%c ", laby[i][j]);
+        for(int j = 0; j < breite; j++){  
+            if(laby[i][j] == '1'){
+                printf("■ ");
+            }
+            else if(laby[i][j] == WEG){
+                printf("  ");
+            }
+            else{
+                printf("%c ", laby[i][j]);
+            }
         }
         printf("\n");
     }
@@ -62,7 +70,15 @@ void labyrinthschritte(lab laby, int hoehe, int breite, int schritte, int versuc
 
         for(int i = 0; i < hoehe; i++){
             for(int j = 0; j < breite; j++){
-                printf("%c ", laby[i][j]);
+                if(laby[i][j] == MAUER){
+                    printf("■ ");
+                }
+                else if(laby[i][j] == WEG){
+                    printf("  ");
+                }
+                else{
+                    printf("%c ", laby[i][j]);
+                }
             }
             printf("\n");
         }
@@ -82,7 +98,7 @@ void labyrinthschritte(lab laby, int hoehe, int breite, int schritte, int versuc
 
 void labyrinthauswahl(int auswahl){
 
-    printf("Bitte wählen Sie ein Labyrinth aus\n");
+    printf("Pleas choose a maze.\n");
 
     switch (auswahl){
     case 1:
@@ -96,6 +112,21 @@ void labyrinthauswahl(int auswahl){
         int hoehe = 5;
         int breite = 6;
         printlabyrinth(laby, hoehe, breite);
+        break;
+    case 2:
+        lab laby2 = {
+            {'0', '0', '0', '0', '1', '0', '1', '1', '0'},
+            {'1', '0', '1', '0', '0', '1', '1', '1', '0'},
+            {'1', '0', '1', '1', '0', '0', '1', '1', '0'},
+            {'0', '0', '0', '1', '1', '0', '1', '0', '1'},
+            {'0', '1', '0', '1', '0', '0', '1', '0', '1'},
+            {'0', '1', '0', '1', '0', '1', '0', '0', '0'},
+            {'0', '1', '0', '1', '0', '0', '0', '1', '0'},
+
+        };
+        hoehe = 7;
+        breite = 9;
+        printlabyrinth(laby2, hoehe, breite);
         break;
     
     default:
