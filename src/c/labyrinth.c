@@ -75,6 +75,8 @@ void labyrinthschritte(lab laby, int hoehe, int breite, int schritte, int versuc
             versuche = versuche + 1;
             labyrinthschritte(laby, hoehe, breite, schritte, versuche); //if schleife für 3 versuche
         }
-
+        else{
+            printf("Verloren\n");
+        }
     }  
 }
