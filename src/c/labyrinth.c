@@ -17,7 +17,7 @@ int printlabyrinth(lab laby, int hoehe, int breite){
         printf("\n");
     }
     printf("\n");
-    printf("Wie viele Schritte brauchen Sie bis zum Ziel?\n");
+    printf("How many steps do you need to reach your goal?\n");
     printf("\n");
 
 return 0;
@@ -59,7 +59,7 @@ void labyrinthschritte(lab laby, int hoehe, int breite, int schritte, int versuc
     antwort = 5;
 
     if(antwort == schritte){
-        printf("Richtig, Sie brauchen %d Schritte.\n", schritte);
+        printf("Correct you need %d steps.\n", schritte);
 
         for(int i = 0; i < hoehe; i++){
             for(int j = 0; j < breite; j++){
@@ -71,12 +71,12 @@ void labyrinthschritte(lab laby, int hoehe, int breite, int schritte, int versuc
     }
     else{
         if(versuche != 3){
-            printf("Ihre Antwort ist falsch. Versuchen Sie es erneut.\n");
+            printf("Your answer is wrong. Try again.\n");
             versuche = versuche + 1;
             labyrinthschritte(laby, hoehe, breite, schritte, versuche); //if schleife für 3 versuche
         }
         else{
-            printf("Verloren\n");
+            printf("You lost.\n");
         }
     }  
 }

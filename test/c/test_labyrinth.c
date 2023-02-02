@@ -75,7 +75,7 @@ void test_LabyrinthAmZielNichtAngekommen(void){
 void test_LabyrinthMarkiert(void){
 
     char result;
-    bool du;
+    bool fertig;
     int input = 1;
     int hoehe = 3;
     int breite = 3;
@@ -86,7 +86,7 @@ void test_LabyrinthMarkiert(void){
     };
 
     
-    wegsuchen(laby, &du, 0, 0, 0, 0);
+    wegsuchen(laby, &fertig, 0, 0, 0, 0);
     result = laby[0][0];
     printlabyrinth(laby, hoehe, breite);
     TEST_ASSERT_EQUAL_CHAR('X', result);
