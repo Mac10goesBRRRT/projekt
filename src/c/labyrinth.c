@@ -11,8 +11,14 @@
 int printlabyrinth(lab laby, int hoehe, int breite){
     
     for(int i = 0; i < hoehe; i++){
-        for(int j = 0; j < breite; j++){
-            printf("%c ", laby[i][j]);
+        for(int j = 0; j < breite; j++){  
+            if(laby[i][j] == '1'){
+                printf("■ ");
+            }
+
+            else{
+                printf("%c ", laby[i][j]);
+            }
         }
         printf("\n");
     }
