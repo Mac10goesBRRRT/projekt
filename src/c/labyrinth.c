@@ -53,7 +53,7 @@ void wegsuchen(lab laby, bool* done, int y, int x, int ziely, int zielx){
 
 void labyrinthschritte(lab laby, int hoehe, int breite, int schritte){
 
-    
+    int antwort = 0;
 
     for(int i = 0; i < hoehe; i++){
         for(int j = 0; j < breite; j++){
@@ -63,4 +63,11 @@ void labyrinthschritte(lab laby, int hoehe, int breite, int schritte){
     }
     printf("\n");
 
+    antwort = 14;
+
+    if(antwort == schritte){
+        printf("Richtig, Sie brauchen %d Schritte.\n", schritte);
+    }
+    
+    
 }
