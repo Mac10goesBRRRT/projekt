@@ -20,6 +20,7 @@ void printField(char field[3][3]){
         }
         printf("\n");
     }
+    printf("/n");
 }
 
 void initField(char field[3][3]) {
@@ -863,4 +864,28 @@ void fillAlmostFull(char field[3][3], bool* pt) {
             }
         }
     }
+}
+
+int play() {
+    printPrompt();
+    int counter = 0;
+    char field[3][3];
+    initField(field);
+    int winner = NOWINNERYET;
+    while (winner == NOWINNERYET) {
+        if (counter % 2 == 0) {
+            printField(field);
+            getPlayerInput(field);
+            winner = wasGameWon(field);
+        }
+        else if (counter % 2 == 1) {
+            printField(field);
+            getComputerInput(field);
+            winner = wasGameWon(field);
+        }
+        counter += 1;
+    }
+    printField(field);
+    printf("%d", winner);
+    return winner;
 }
