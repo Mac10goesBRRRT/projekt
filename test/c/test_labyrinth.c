@@ -210,6 +210,9 @@ void test_LabyrinthSchritte(void){
 
     printlabyrinth(laby, hoehe, breite); //hier in die funktion die print frage machen
     wegsuchen(laby, &result, 0, 0, 4, 5);
+
+    userInput_ExpectAndReturn(14);
+
     labyrinthschritte(laby, hoehe, breite, schritte, versuche); //die geliche funktion nur mit dem if vergleich und userinput
     TEST_ASSERT_EQUAL_INT(1, result);
     

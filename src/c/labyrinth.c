@@ -56,7 +56,7 @@ void labyrinthschritte(lab laby, int hoehe, int breite, int schritte, int versuc
     int antwort = 0;
     
 
-    antwort = 5;
+    antwort = userInput();
 
     if(antwort == schritte){
         printf("Correct you need %d steps.\n", schritte);
