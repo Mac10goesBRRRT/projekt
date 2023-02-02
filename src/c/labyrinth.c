@@ -70,7 +70,15 @@ void labyrinthschritte(lab laby, int hoehe, int breite, int schritte, int versuc
 
         for(int i = 0; i < hoehe; i++){
             for(int j = 0; j < breite; j++){
-                printf("%c ", laby[i][j]);
+                if(laby[i][j] == '1'){
+                    printf("■ ");
+                }
+                else if(laby[i][j] == WEG){
+                    printf("  ");
+                }
+                else{
+                    printf("%c ", laby[i][j]);
+                }
             }
             printf("\n");
         }
@@ -90,7 +98,7 @@ void labyrinthschritte(lab laby, int hoehe, int breite, int schritte, int versuc
 
 void labyrinthauswahl(int auswahl){
 
-    printf("Bitte wählen Sie ein Labyrinth aus\n");
+    printf("Pleas choose a maze.\n");
 
     switch (auswahl){
     case 1:
