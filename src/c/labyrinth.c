@@ -70,7 +70,7 @@ void labyrinthschritte(lab laby, int hoehe, int breite, int schritte, int versuc
 
         for(int i = 0; i < hoehe; i++){
             for(int j = 0; j < breite; j++){
-                if(laby[i][j] == '1'){
+                if(laby[i][j] == MAUER){
                     printf("■ ");
                 }
                 else if(laby[i][j] == WEG){
