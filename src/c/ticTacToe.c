@@ -138,3 +138,15 @@ int wasGameWon(char field[3][3]){
     return winner;
 }
 
+void getComputerInput(char field[3][3]){
+    bool symbolSet = false;
+    while (!symbolSet){
+        int row, col;
+        row = rand() % 3;
+        col = rand() % 3;
+        if (field[row][col] == '-'){
+            field[row][col] = 'X';
+            symbolSet = true;
+        }
+    }
+}
