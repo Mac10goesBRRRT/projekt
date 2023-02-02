@@ -466,34 +466,46 @@ void fillAlmostFull(char field[3][3], bool* pt) {
     }
     if (field[2][2] == 'X') {
         if (field[2][0] == 'X') {
+            if( field[2][1] == '-'){
             field[2][1] = 'X';
             *pt = true;
             return;
+            }
         }
         else if (field[2][1] == 'X') {
+            if( field[2][0] == '-'){
             field[2][0] = 'X';
             *pt = true;
             return;
+            }
         }
         else if (field[0][2] == 'X') {
+            if( field[1][2] == '-'){
             field[1][2] = 'X';
             *pt = true;
             return;
+            }
         }
         else if (field[1][2] == 'X') {
+            if( field[0][2] == '-'){
             field[0][2] = 'X';
             *pt = true;
             return;
+            }
         }
         else if (field[1][1] == 'X') {
+            if( field[0][0] == '-'){
             field[0][0] = 'X';
             *pt = true;
             return;
+            }
         }
         else if (field[0][0] == 'X') {
+            if( field[1][1] == '-'){
             field[1][1] = 'X';
             *pt = true;
             return;
+            }
         }
     }
 
@@ -809,34 +821,46 @@ void fillAlmostFull(char field[3][3], bool* pt) {
     }
     if (field[2][2] == 'O') {
         if (field[2][0] == 'O') {
+            if( field[2][1] == '-'){
             field[2][1] = 'X';
             *pt = true;
             return;
+            }
         }
         else if (field[2][1] == 'O') {
+            if( field[2][0] == '-'){
             field[2][0] = 'X';
             *pt = true;
             return;
+            }
         }
         else if (field[0][2] == 'O') {
+            if( field[1][2] == '-'){
             field[1][2] = 'X';
             *pt = true;
             return;
+            }
         }
         else if (field[1][2] == 'O') {
+            if( field[0][2] == '-'){
             field[0][2] = 'X';
             *pt = true;
             return;
+            }
         }
         else if (field[1][1] == 'O') {
+            if( field[0][0] == '-'){
             field[0][0] = 'X';
             *pt = true;
             return;
+            }
         }
         else if (field[0][0] == 'O') {
+            if( field[1][1] == '-'){
             field[1][1] = 'X';
             *pt = true;
             return;
+            }
         }
     }
 }
