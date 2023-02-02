@@ -51,7 +51,7 @@ void wegsuchen(lab laby, bool* done, int y, int x, int ziely, int zielx){
     }
 }
 
-int labyrinthschritte(lab laby, int hoehe, int breite, int schritte){
+void labyrinthschritte(lab laby, int hoehe, int breite, int schritte){
 
     
 
@@ -62,7 +62,5 @@ int labyrinthschritte(lab laby, int hoehe, int breite, int schritte){
         printf("\n");
     }
     printf("\n");
-
-    
 
 }
