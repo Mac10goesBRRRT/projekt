@@ -65,64 +65,74 @@ int wasGameWon(char field[3][3]){
         }
     }
     if (fieldFull == true) winner = DRAW; 
-    if(field[0][0] == 'O'){
+    if(field[0][0] == 'O' || field[0][0] == 'X'){
         if (field[0][0] == field[0][1] && field[0][2] == field[0][1]){
-            winner = PLAYER;
+            if (field[0][0] == 'O'){
+                winner = PLAYER;
+            }
+            else if (field[0][0] == 'X'){
+                winner = COMPUTER;
+            }
         }
         if (field[0][0] == field[1][0] && field[1][0] == field[2][0]){
-            winner = PLAYER;
+            if (field[0][0] == 'O'){
+                winner = PLAYER;
+            }
+            else if (field[0][0] == 'X'){
+                winner = COMPUTER;
+            }
         }
         if (field[0][0] == field[1][1] && field[1][1] == field[2][2]){
-            winner = PLAYER;
+            if (field[0][0] == 'O'){
+                winner = PLAYER;
+            }
+            else if (field[0][0] == 'X'){
+                winner = COMPUTER;
+            }
         }
     }
-    if(field[2][2] == 'O'){
+    if(field[2][2] == 'O' || field[2][2] == 'X'){
         if (field[2][2] == field[2][1] && field[2][2] == field[2][0]){
-            winner = PLAYER;
+            if (field[2][2] == 'O'){
+                winner = PLAYER;
+            }
+            else if (field[2][2] == 'X'){
+                winner = COMPUTER;
+            }
         }
         if (field[2][2] == field[1][2] && field[1][2] == field[0][2]){
-            winner = PLAYER;
+            if (field[2][2] == 'O'){
+                winner = PLAYER;
+            }
+            else if (field[2][2] == 'X'){
+                winner = COMPUTER;
+            }
         }
     }
-    if(field[1][1] == 'O'){
+    if(field[1][1] == 'O' || field[1][1] == 'X'){
         if (field[1][1] == field[0][1] && field[0][1] == field[2][1]){
-            winner = PLAYER;
+            if (field[1][1] == 'O'){
+                winner = PLAYER;
+            }
+            else if (field[1][1] == 'X'){
+                winner = COMPUTER;
+            }
         }
         if (field[1][1] == field[1][0] && field[1][0] == field[1][2]){
-            winner = PLAYER;
+            if (field[1][1] == 'O'){
+                winner = PLAYER;
+            }
+            else if (field[1][1] == 'X'){
+                winner = COMPUTER;
+            }
         }
          if (field[2][0] == field[1][1] && field[1][1] == field[0][2]){
-            winner = PLAYER;
-        }
-    }
-     if(field[0][0] == 'X'){
-        if (field[0][0] == field[0][1] && field[0][2] == field[0][1]){
-            winner = COMPUTER;
-        }
-         if (field[0][0] == field[1][0] && field[1][0] == field[2][0]){
-            winner = COMPUTER;
-        }
-         if (field[0][0] == field[1][1] && field[1][1] == field[2][2]){
-            winner = COMPUTER;
-        }
-    }
-     if(field[2][2] == 'X'){
-        if (field[2][2] == field[2][1] && field[2][2] == field[2][0]){
-            winner = COMPUTER;
-        }
-         if (field[2][2] == field[1][2] && field[1][2] == field[0][2]){
-            winner = COMPUTER;
-        }
-    }
-     if(field[1][1] == 'X'){
-        if (field[1][1] == field[0][1] && field[0][1] == field[2][1]){
-            winner = COMPUTER;
-        }
-         if (field[1][1] == field[1][0] && field[1][0] == field[1][2]){
-            winner = COMPUTER;
-        }
-         if (field[2][0] == field[1][1] && field[1][1] == field[0][2]){
-            winner = COMPUTER;
+            if (field[1][1] == 'O'){
+                winner = PLAYER;
+            }
+            else if (field[1][1] == 'X'){
+                winner = COMPUTER;
+            }
         }
     }
     return winner;
