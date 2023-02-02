@@ -4,6 +4,7 @@
 #include <time.h>
 #include <stdbool.h>
 #include "labyrinth.h"
+#include "userinput.h"
 
 
 
@@ -16,7 +17,9 @@ int printlabyrinth(lab laby, int hoehe, int breite){
         printf("\n");
     }
     printf("\n");
-    
+    printf("Wie viele Schritte brauchen Sie bis zum Ziel?\n");
+    printf("\n");
+
 return 0;
 }
 
@@ -46,4 +49,20 @@ void wegsuchen(lab laby, bool* done, int y, int x, int ziely, int zielx){
             laby[y][x] = WEG;
         }
     }
+}
+
+int labyrinthschritte(lab laby, int hoehe, int breite, int schritte){
+
+    
+
+    for(int i = 0; i < hoehe; i++){
+        for(int j = 0; j < breite; j++){
+            printf("%c ", laby[i][j]);
+        }
+        printf("\n");
+    }
+    printf("\n");
+
+    
+
 }

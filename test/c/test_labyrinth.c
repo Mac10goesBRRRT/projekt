@@ -3,6 +3,8 @@
 //in example.h wird die Funktion deklariert
 #include "labyrinth.h"
 #include <stdbool.h>
+#include "userinput.h"
+#include "mock_userinput.h"
 
 //Vor- bzw. Nachbereitung
 void setUp(void)
@@ -174,6 +176,7 @@ void test_LabyrinthVerzweigung(void){
     int input = 1;
     int hoehe = 5;
     int breite = 6;
+    
     lab laby = {
         {'0', '1', '0', '0', '0', '0'},
         {'0', '1', '0', '1', '1', '0'},
@@ -182,9 +185,33 @@ void test_LabyrinthVerzweigung(void){
         {'0', '1', '0', '0', '1', '0'},
     };
 
+    
     wegsuchen(laby, &result, 0, 0, 4, 5);
     printlabyrinth(laby, hoehe, breite);
     TEST_ASSERT_EQUAL_INT(1, result);
+}
+
+
+void test_LabyrinthSchritte(void){
+
+    bool result;
+    int input = 1;
+    int hoehe = 5;
+    int breite = 6;
+    int schritte = 14;
+    lab laby = {
+        {'0', '1', '0', '0', '0', '0'},
+        {'0', '1', '0', '1', '1', '0'},
+        {'0', '0', '0', '0', '1', '0'},
+        {'0', '1', '1', '0', '1', '0'},
+        {'0', '1', '0', '0', '1', '0'},
+    };
+
+    printlabyrinth(laby, hoehe, breite); //hier in die funktion die print frage machen
+    wegsuchen(laby, &result, 0, 0, 4, 5);
+    labyrinthschritte(laby, hoehe, breite, schritte); //die geliche funktion nur mit dem if vergleich und userinput
+    TEST_ASSERT_EQUAL_INT(1, result);
+    
 }
 
 #endif // TEST
