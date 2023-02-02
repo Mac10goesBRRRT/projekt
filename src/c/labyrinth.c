@@ -15,7 +15,9 @@ int printlabyrinth(lab laby, int hoehe, int breite){
             if(laby[i][j] == '1'){
                 printf("■ ");
             }
-
+            else if(laby[i][j] == WEG){
+                printf("  ");
+            }
             else{
                 printf("%c ", laby[i][j]);
             }
