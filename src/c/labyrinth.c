@@ -51,11 +51,12 @@ void wegsuchen(lab laby, bool* done, int y, int x, int ziely, int zielx){
     }
 }
 
-void labyrinthschritte(lab laby, int hoehe, int breite, int schritte){
+void labyrinthschritte(lab laby, int hoehe, int breite, int schritte, int versuche){
 
     int antwort = 0;
+    
 
-    antwort = 14;
+    antwort = 5;
 
     if(antwort == schritte){
         printf("Richtig, Sie brauchen %d Schritte.\n", schritte);
@@ -68,8 +69,12 @@ void labyrinthschritte(lab laby, int hoehe, int breite, int schritte){
         }
         printf("\n");
     }
-    
+    else{
+        if(versuche != 3){
+            printf("Ihre Antwort ist falsch. Versuchen Sie es erneut.\n");
+            versuche = versuche + 1;
+            labyrinthschritte(laby, hoehe, breite, schritte, versuche); //if schleife für 3 versuche
+        }
 
-
-    
+    }  
 }
