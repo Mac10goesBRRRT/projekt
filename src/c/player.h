@@ -13,4 +13,6 @@ typedef struct
 
 Player addItemToInventory(Item *availableItem, int itemIndex, Player actualPlayer);
 
+void showInventory(Player actualPlayer);
+
 #endif
