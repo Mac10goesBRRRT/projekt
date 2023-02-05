@@ -129,5 +129,27 @@ void test_buyItem(void)
 
 }
 
+void test_sellItem(void)
+{
+    /* arrange */
+    // Hier die Werte eingeben/deklarieren
+    int buyItemID = 1; // prepare sell
+    actualPlayer = addItemToInventory(availableItems, buyItemID, actualPlayer); // prepare sell
+
+    int itemToRemove = 0; // index to remove (we already bought it in function above)
+
+    /* act */
+    // Die Funktion wird ausgeführt
+    Item itemBeforeRemove = actualPlayer.itemInventory[0];
+    actualPlayer = sellItem(itemToRemove, actualPlayer); // then remove
+    Item itemAfterRemove = actualPlayer.itemInventory[0];
+
+    // OUTPUT
+    //printf("sellItem | before: %d -> after: %d", itemBeforeRemove.id, itemAfterRemove.id);
+
+    /* assert */
+    // Vergleichen mit Inhalt von game.Map File
+    TEST_ASSERT_NOT_EQUAL_UINT8(itemBeforeRemove.id, itemAfterRemove.id);
+}
 
 #endif // TEST

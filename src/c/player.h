@@ -22,6 +22,7 @@ Player removeMoneyFromPlayer(Player actualPlayer, int money);
 
 //add and remove items with currency
 Player buyItem(Item *availableItems, int itemIndex, Player actualPlayer);
+Player sellItem(int itemIndex, Player actualPlayer);
 
 //show
 void showInventory(Player actualPlayer);

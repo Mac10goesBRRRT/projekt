@@ -89,6 +89,13 @@ Player buyItem(Item *availableItems, int itemIndex, Player actualPlayer)
     }
 }
 
+Player sellItem(int itemIndex, Player actualPlayer)
+{
+    actualPlayer = addMoneyToPlayer(actualPlayer, actualPlayer.itemInventory[itemIndex].price / 2);
+    actualPlayer = removeItemFromInventory(itemIndex, actualPlayer);
+    printf("Item has been sold! Your balance is now: %d$\n", actualPlayer.wallet);
+    return actualPlayer;
+}
 
 // show
 void showInventory(Player actualPlayer)
