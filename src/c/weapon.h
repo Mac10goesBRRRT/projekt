@@ -27,4 +27,8 @@ void setFullName(Weapon *weapon, char *fullNameToSet);
 int getTypeID(Weapon *weapon);
 void setTypeID(Weapon *weapon, int typeToSet);
 
+//typeName placeholder
+
+int getDamageModifier(Weapon *weapon);
+
 #endif

@@ -116,4 +116,22 @@ void test_setTypeID(void)
     TEST_ASSERT_EQUAL(type, result);
 }
 
+void test_getDamageModifier(void)
+{
+    // arrange
+    int damageModifier = 2, result;
+    Weapon test;
+    test.damageModifier = damageModifier;
+
+    /* act */
+    // Die Funktion wird ausgeführt
+    result = getDamageModifier(&test);
+
+    // output
+    printf("getDamageModifier | damageModifier should be: %d -> is: %d", damageModifier, result);
+
+    // assert
+    TEST_ASSERT_EQUAL(damageModifier, result);
+}
+
 #endif // TEST

@@ -29,3 +29,8 @@ void setTypeID(Weapon *weapon, int typeToSet)
 {
     weapon->typeID = typeToSet;
 }
+
+int getDamageModifier(Weapon *weapon)
+{
+    return weapon->damageModifier;
+}
