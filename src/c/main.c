@@ -31,6 +31,7 @@ int lastPlayerPosition = 0;
 
 // function declarations
 void printInit();
+void setUp();
 void acceptInstructions();
 void processInput();
 int checkExit();
@@ -39,21 +40,14 @@ void printStatus();
 
 int main()
 {
-	// define variables
-	actualPlayer.id = 1;
-	actualPlayer.wallet = 100;
-	char userInput[20]; // maximum defined user input length
-	gameRunning = 1;
-
 	// init and instructions
 	printInit();
 
-	// get Content
-	map = getMap(gameMapFile);
-	availableItems = getItems(itemsMapFile);
-
 	if (acceptedRules == 1)
 	{
+		setUp();
+
+		char userInput[20];		 // maximum defined user input length
 		while (gameRunning == 1) // while running
 		{
 			// Print current status
@@ -99,6 +93,19 @@ void printInit()
 	acceptInstructions();
 }
 
+// setUp
+void setUp()
+{
+	// define variables
+	actualPlayer.id = 1;
+	actualPlayer.wallet = 100;
+	gameRunning = 1;
+
+	// get Content
+	map = getMap(gameMapFile);
+	availableItems = getItems(itemsMapFile);
+}
+
 // accept rules and instructions for init dialogue
 void acceptInstructions()
 {
@@ -139,7 +146,7 @@ void processInput(char userInput[20])
 		Room actualRoom = map[playerPosition];
 		if (actualRoom.shopAvailable == 1)
 		{
-			int *result =  malloc (sizeof (int) * 2);
+			int *result = malloc(sizeof(int) * 2);
 			result = openShop(availableItems, actualPlayer); // result > 0 -> integer = index of item OR result = 0 -> cancel
 			if (result[0] == 0)
 			{
