@@ -11,9 +11,14 @@ typedef struct
     int wallet;
 } Player;
 
+//add and remove items
 Player addItemToInventory(Item *availableItem, int itemIndex, Player actualPlayer);
 Player removeItemFromInventory(int index, Player actualPlayer);
 
+//currency
+Player setTotal(Player actualPlayer, int value);
+
+//show
 void showInventory(Player actualPlayer);
 
 #endif

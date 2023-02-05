@@ -51,6 +51,13 @@ Player removeItemFromInventory(int itemIndex, Player actualPlayer)
     return actualPlayer;
 }
 
+//currency
+Player setTotal(Player actualPlayer, int value)
+{
+    actualPlayer.wallet = value;
+    return actualPlayer;
+}
+
 //show
 void showInventory(Player actualPlayer)
 {

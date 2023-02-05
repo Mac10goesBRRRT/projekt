@@ -44,10 +44,32 @@ void test_removeItemFromInventory(void)
     Item itemAfterRemove = actualPlayer.itemInventory[0];
 
     // OUTPUT
+    printf("removeItem | ID_before: %d -> ID_after: %d", itemBeforeRemove.id, itemAfterRemove.id);
 
     /* assert */
     // Vergleichen mit Inhalt von game.Map File
     TEST_ASSERT_NOT_EQUAL_UINT8(itemBeforeRemove.id, itemAfterRemove.id);
+}
+
+void test_setTotal(void)
+{
+    /* arrange */
+    // Hier die Werte eingeben/deklarieren
+    int setMoney = 100;
+
+    /* act */
+    // Die Funktion wird ausgeführt
+    int valueBefore = actualPlayer.wallet;
+    actualPlayer = setTotal(actualPlayer, setMoney);
+    int valueAfter = actualPlayer.wallet;
+
+    // OUTPUT
+    printf("setTotal | before: %d -> after: %d", valueBefore, valueAfter);
+
+    /* assert */
+    // Vergleichen mit Inhalt
+    TEST_ASSERT_EQUAL_INT(setMoney, actualPlayer.wallet);
+    TEST_ASSERT_NOT_EQUAL_UINT8(valueBefore, valueAfter);
 }
 
 #endif // TEST
