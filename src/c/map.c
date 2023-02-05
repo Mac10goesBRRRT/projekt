@@ -62,3 +62,7 @@ Room *getMap(char *gameMapFile)
 int getRoomSuccessor(Room *room){
 	return room->successor;
 }
+
+void setRoomSuccessor(Room *room, int successorSet){
+	room->successor = successorSet;
+}

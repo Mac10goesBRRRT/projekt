@@ -28,7 +28,7 @@ Room *getMap(char *gameMapFile);
 
 
 int getRoomSuccessor(Room *room);
-
+void setRoomSuccessor(Room *room, int successorSet);
 
 
 

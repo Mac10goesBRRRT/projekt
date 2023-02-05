@@ -63,6 +63,23 @@ void test_getRoomSuccessor(void)
     TEST_ASSERT_EQUAL(successor, result);
 }
 
+void test_setRoomSuccessor(void)
+{
+        // arrange
+    int successor = 2, result;
+
+    // act
+    Room test;
+    setRoomSuccessor(&test, successor);
+    result = test.successor;
+
+    //output
+    printf("setRoomSuccessor | successor to set: %d -> is: %d", successor, result);
+
+    // assert
+    TEST_ASSERT_EQUAL(successor, result);
+}
+
 
 
 #endif // TEST
