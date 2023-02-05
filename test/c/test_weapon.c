@@ -5,13 +5,11 @@
 
 void setUp(void)
 {
-
 }
 
 void tearDown(void)
 {
 }
-
 
 void test_getName(void)
 {
@@ -29,6 +27,23 @@ void test_getName(void)
 
     // assert
     TEST_ASSERT_EQUAL(nameOfWeapon, result);
+}
+
+void test_setName(void)
+{
+    // arrange
+    char *nameWeapon = "switchblade", *result;
+
+    // act
+    Weapon test;
+    setName(&test, nameWeapon);
+    result = test.name;
+
+    // output
+    printf("setName | name set to: %s -> after set: %s", nameWeapon, result);
+
+    // assert
+    TEST_ASSERT_EQUAL(nameWeapon, result);
 }
 
 #endif // TEST

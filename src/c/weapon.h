@@ -11,11 +11,15 @@ typedef struct
     int id;
     char *fullName;
     char *name;
+    int typeID;
+    char *typeName;
     int damageModifier;
     int baseDamage;
     bool canBeUsed;
 } Weapon;
 
 char *getName(Weapon *weapon);
+void setName(Weapon *weapon, char *nameToSet);
+
 
 #endif
