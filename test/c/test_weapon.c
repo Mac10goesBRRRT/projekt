@@ -204,4 +204,21 @@ void test_getAvailable(void)
     TEST_ASSERT_EQUAL(canBeUsed, result);
 }
 
+void test_setAvailable(void)
+{
+    // arrange
+    bool canBeUsed = false, result;
+
+    // act
+    Weapon test;
+    setAvailable(&test, canBeUsed);
+    result = test.canBeUsed;
+
+    // output
+    printf("setAvailable | canBeUsed set to: %d -> after set: %d", canBeUsed, result);
+
+    // assert
+    TEST_ASSERT_EQUAL(canBeUsed, result);
+}
+
 #endif // TEST

@@ -36,6 +36,6 @@ int getBaseDamage(Weapon *weapon);
 void setBaseDamage(Weapon *weapon, int baseDmgSet);
 
 bool getAvailable(Weapon *weapon);
-
+void setAvailable(Weapon *weapon, bool availableSet);
 
 #endif

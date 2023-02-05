@@ -54,3 +54,8 @@ bool getAvailable(Weapon *weapon)
 {
     return weapon->canBeUsed;
 }
+
+void setAvailable(Weapon *weapon, bool availableSet)
+{
+    weapon->canBeUsed = availableSet;
+}
