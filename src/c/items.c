@@ -55,3 +55,9 @@ Item *getItems(char *itemsMapFile)
 	}
 	return getItems;
 }
+
+
+void setItemPrice(Item* item, int price)
+{
+    item->price = price;
+}

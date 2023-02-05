@@ -17,4 +17,6 @@ typedef struct
 Item *getItems(char *itemsMapFile);
 
 
+void setItemPrice(Item* item, int price);
+
 #endif

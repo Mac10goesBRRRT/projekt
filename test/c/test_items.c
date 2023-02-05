@@ -16,7 +16,7 @@ void test_items(void)
 {
     /* arrange */
     // Hier die Werte eingeben/deklarieren
-    Item* items;
+    Item *items;
     int expectedItemID = 1;
     int expectedSecondItemID = 2;
 
@@ -25,7 +25,8 @@ void test_items(void)
     items = getItems("./src/content/items.map");
 
     /* make visible OUTPUT */
-    for(int i=0; i<4;i++){
+    for (int i = 0; i < 4; i++)
+    {
         printf("%s\n", items[i].itemName);
     }
 
@@ -33,6 +34,23 @@ void test_items(void)
     // Vergleichen mit Inhalt von game.Map File
     TEST_ASSERT_EQUAL_INT(expectedItemID, items[0].id);
     TEST_ASSERT_EQUAL_INT(expectedSecondItemID, items[1].id);
+}
+
+void test_setItemPrice(void)
+{
+
+    // arrange
+    int price = 50, result;
+    // act
+    Item test;
+    setItemPrice(&test, price);
+    result = test.price;
+
+    printf("---------------------------------------------------\n");
+    printf("setItemPrice | price to set: %d -> item.price: %d", price, result);
+
+    // assert
+    TEST_ASSERT_EQUAL(price, result);
 }
 
 #endif // TEST
