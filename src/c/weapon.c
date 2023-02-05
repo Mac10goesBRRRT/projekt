@@ -44,3 +44,8 @@ int getBaseDamage(Weapon *weapon)
 {
     return weapon->baseDamage;
 }
+
+void setBaseDamage(Weapon *weapon, int baseDmgSet)
+{
+    weapon->baseDamage = baseDmgSet;
+}

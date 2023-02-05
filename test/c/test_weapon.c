@@ -169,4 +169,21 @@ void test_getBaseDamage(void)
     TEST_ASSERT_EQUAL(baseDamage, result);
 }
 
+void test_setBaseDamage(void)
+{
+    // arrange
+    int baseDamage = 43, result;
+
+    // act
+    Weapon test;
+    setBaseDamage(&test, baseDamage);
+    result = test.baseDamage;
+
+    // output
+    printf("setBaseDamage | baseDamage set to: %d -> after set: %d", baseDamage, result);
+
+    // assert
+    TEST_ASSERT_EQUAL(baseDamage, result);
+}
+
 #endif // TEST
