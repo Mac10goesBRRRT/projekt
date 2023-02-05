@@ -20,12 +20,29 @@
 
 INSTRUCTIONS:
 
-*****
+how to move on the map
+enter "north" to go north
+enter "south" to go south
 
 
+alltime commands:
+- 'inventory' -> will show your items that you have bought or found ()
+
+special commands (not available at any time during the game):
+- 'shop' -> opens the shop where you can buy or sell items
+
+CURRENTLY NOT AVAILABLE FEATURES (will be available soon):
+- "use [item]"
+- "find [item]"
+WARNING: Pickups are always hidden, find them with "find [item]" and take them with "take [item]"
+
+How to leave the game:
+use "esc", "exit" or "quit" to leave the game
 
 
+And remember, EVERY point/room has something you can do.
 Have fun!
+
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 
