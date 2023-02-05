@@ -5,10 +5,9 @@
 
 #include "player.h"
 
-
 // PLAYER INVENTORY
 
-//add and remove
+// add and remove
 Player addItemToInventory(Item *availableItems, int itemIndex, Player actualPlayer)
 {
     int counter = actualPlayer.itemCounter;
@@ -51,14 +50,21 @@ Player removeItemFromInventory(int itemIndex, Player actualPlayer)
     return actualPlayer;
 }
 
-//currency
+// currency
 Player setTotal(Player actualPlayer, int value)
 {
     actualPlayer.wallet = value;
     return actualPlayer;
 }
 
-//show
+Player addMoneyToPlayer(Player actualPlayer, int money)
+{
+    int newTotal = money + actualPlayer.wallet;
+    actualPlayer = setTotal(actualPlayer, newTotal);
+    return actualPlayer;
+}
+
+// show
 void showInventory(Player actualPlayer)
 {
     int inventoryItemCounter = actualPlayer.itemCounter;
@@ -80,4 +86,3 @@ void showInventory(Player actualPlayer)
 
     printf("\n\n");
 }
-

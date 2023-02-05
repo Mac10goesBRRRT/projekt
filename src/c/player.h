@@ -17,6 +17,7 @@ Player removeItemFromInventory(int index, Player actualPlayer);
 
 //currency
 Player setTotal(Player actualPlayer, int value);
+Player addMoneyToPlayer(Player actualPlayer, int money);
 
 //show
 void showInventory(Player actualPlayer);

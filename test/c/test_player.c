@@ -72,4 +72,23 @@ void test_setTotal(void)
     TEST_ASSERT_NOT_EQUAL_UINT8(valueBefore, valueAfter);
 }
 
+void test_addMoneyToPlayer(void)
+{
+    /* arrange */
+    // Hier die Werte eingeben/deklarieren
+    // balance = 70
+    int valueToAdd = 20;
+    int checkSum = actualPlayer.wallet + valueToAdd;
+    /* act */
+    // Die Funktion wird ausgeführt
+    actualPlayer = addMoneyToPlayer(actualPlayer, valueToAdd);
+
+    // OUTPUT
+    printf("%d$ has been added to your balance. TOTAL: %d$", valueToAdd, actualPlayer.wallet);
+
+    /* assert */
+    // Vergleichen mit Inhalt von game.Map File
+    TEST_ASSERT_EQUAL_INT(checkSum, actualPlayer.wallet);
+}
+
 #endif // TEST
