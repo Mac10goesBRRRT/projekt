@@ -20,6 +20,6 @@ Item *getItems(char *itemsMapFile);
 int getItemPrice(Item *item);
 void setItemPrice(Item *item, int price);
 
-
+int getItemShopAvailable(Item *item);
 
 #endif

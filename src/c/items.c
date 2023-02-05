@@ -46,7 +46,7 @@ Item *getItems(char *itemsMapFile)
 			Item i;
 			i.id = atoi(arr[0]);
 			strcpy(i.itemName, arr[1]);
-			//printf(arr[2]);
+			// printf(arr[2]);
 			i.price = atoi(arr[3]);
 
 			getItems[lineCounter] = i;
@@ -61,7 +61,12 @@ int getItemPrice(Item *item)
 	return item->price;
 }
 
-void setItemPrice(Item* item, int price)
+void setItemPrice(Item *item, int price)
 {
-    item->price = price;
+	item->price = price;
+}
+
+int getItemShopAvailable(Item *item)
+{
+	return item->inShopAvailable;
 }

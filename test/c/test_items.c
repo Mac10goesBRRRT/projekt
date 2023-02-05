@@ -72,4 +72,23 @@ void test_getItemPrice(void)
     TEST_ASSERT_EQUAL(price, result);
 }
 
+void test_getItemShopAvailable(void)
+{
+    // arrange
+    bool value = true, result;
+
+    // act
+    Item test;
+    test.inShopAvailable = value;
+    result = getItemShopAvailable(&test);
+
+    //output
+    printf("getItemShopAvailable | value should be: %d -> is: %d", value, result);
+
+    // assert
+    TEST_ASSERT_EQUAL(value, result);
+}
+
+
+
 #endif // TEST
