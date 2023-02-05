@@ -38,16 +38,35 @@ void test_items(void)
 
 void test_setItemPrice(void)
 {
-
     // arrange
     int price = 50, result;
+
     // act
     Item test;
     setItemPrice(&test, price);
     result = test.price;
 
+    //output
     printf("---------------------------------------------------\n");
     printf("setItemPrice | price to set: %d -> item.price: %d", price, result);
+
+    // assert
+    TEST_ASSERT_EQUAL(price, result);
+}
+
+
+void test_getItemPrice(void)
+{
+    // arrange
+    int price = 50, result;
+
+    // act
+    Item test;
+    test.price = price;
+    result = getItemPrice(&test);
+
+    //output
+    printf("getItemPrice | price should be: %d -> price is: %d", price, result);
 
     // assert
     TEST_ASSERT_EQUAL(price, result);

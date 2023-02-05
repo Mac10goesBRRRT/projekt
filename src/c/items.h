@@ -2,7 +2,7 @@
 #define ITEMS_H
 
 #define itemAttributesMax 4 // for items
-#define maxItems 100        // for inventory/item list
+#define maxItems 100		// for inventory/item list
 
 #include <stdbool.h>
 
@@ -17,6 +17,9 @@ typedef struct
 Item *getItems(char *itemsMapFile);
 
 
-void setItemPrice(Item* item, int price);
+int getItemPrice(Item *item);
+void setItemPrice(Item *item, int price);
+
+
 
 #endif
