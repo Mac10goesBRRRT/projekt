@@ -30,6 +30,7 @@ Room *getMap(char *gameMapFile);
 int getRoomSuccessor(Room *room);
 void setRoomSuccessor(Room *room, int successorSet);
 
-
+int getRoomPredecessor(Room *room);
+void setRoomPredecessor(Room *room, int predecessorSet);
 
 #endif // MAP_H

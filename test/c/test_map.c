@@ -80,6 +80,40 @@ void test_setRoomSuccessor(void)
     TEST_ASSERT_EQUAL(successor, result);
 }
 
+void test_getRoomPredecessor(void)
+{
+    // arrange
+    int predecessor = 1, result;
+    Room test;
+    test.predecessor = predecessor;
+
+    /* act */
+    // Die Funktion wird ausgeführt
+    result = getRoomPredecessor(&test);
+
+    // output
+    printf("getRoomPredecessor | Successor should be: %d -> is: %d", predecessor, result);
+
+    // assert
+    TEST_ASSERT_EQUAL(predecessor, result);
+}
+
+void test_setRoomPredecessor(void)
+{
+            // arrange
+    int predecessor = 3, result;
+
+    // act
+    Room test;
+    setRoomPredecessor(&test, predecessor);
+    result = test.predecessor;
+
+    //output
+    printf("setRoomPredecessor | successor to set: %d -> is: %d", predecessor, result);
+
+    // assert
+    TEST_ASSERT_EQUAL(predecessor, result);
+}
 
 
 #endif // TEST

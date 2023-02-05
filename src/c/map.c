@@ -1,4 +1,4 @@
-//headers
+// headers
 #include "map.h"
 
 Room *getMap(char *gameMapFile)
@@ -59,10 +59,22 @@ Room *getMap(char *gameMapFile)
 	return fillMap;
 };
 
-int getRoomSuccessor(Room *room){
+int getRoomSuccessor(Room *room)
+{
 	return room->successor;
 }
 
-void setRoomSuccessor(Room *room, int successorSet){
+void setRoomSuccessor(Room *room, int successorSet)
+{
 	room->successor = successorSet;
+}
+
+int getRoomPredecessor(Room *room)
+{
+	return room->predecessor;
+}
+
+void setRoomPredecessor(Room *room, int predecessorSet)
+{
+	room->predecessor = predecessorSet;
 }
