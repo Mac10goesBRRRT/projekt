@@ -12,6 +12,7 @@ bool acceptedRules;
 
 // declare needed variables
 Room *map;
+int inputCounter = 0;
 
 // content
 char *gameInstructionsFile = "../../src/content/game_instructions.txt";
@@ -27,6 +28,7 @@ void acceptInstructions();
 void processInput();
 int checkExit();
 int checkMove();
+void printStatus();
 
 int main()
 {
@@ -44,8 +46,10 @@ int main()
 	{
 		while (gameRunning == 1) // while running
 		{
+			// Print current status
+			printStatus();
+
 			// User Input
-			printf("User Input:");
 			scanf(" %s", userInput);
 			printf("\n");
 
@@ -124,6 +128,8 @@ void processInput(char userInput[20])
 	{
 		printf("Wrong Input!\n");
 	}
+
+	inputCounter += 1;
 }
 
 // function for checking user input of exit
@@ -137,6 +143,7 @@ int checkExit(char userInput[20])
 	return 0;
 }
 
+//check is user moved
 int checkMove(char userInput[20])
 {
 
@@ -175,5 +182,39 @@ int checkMove(char userInput[20])
 	else
 	{
 		return 1;
+	}
+}
+
+// print actual location and messages from game.map
+void printStatus()
+{
+	Room actualRoom = map[playerPosition];
+	char moveMessage[30];
+
+	if (lastPlayerPosition > playerPosition)
+	{
+		strcpy(moveMessage, "You went to the south!");
+	}
+	else if (lastPlayerPosition < playerPosition)
+	{
+		strcpy(moveMessage, "You went to the north!");
+	}
+	else if (lastPlayerPosition == playerPosition && playerPosition == 0)
+	{
+		strcpy(moveMessage, "START");
+	}
+	else
+	{
+		strcpy(moveMessage, "You didn't move");
+	}
+
+	if (lastPlayerPosition != playerPosition || playerPosition == 0 && inputCounter == 0)
+	{
+		printf("\n\n################################################################################\n");
+
+		printf("--> %s <--\n", moveMessage);
+		printf("%s\n", actualRoom.nameRoom);
+		printf("%s\n", actualRoom.msgRoom);
+		printf("\n");
 	}
 }
