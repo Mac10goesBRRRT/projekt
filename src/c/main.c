@@ -4,17 +4,30 @@
 #include <stdbool.h>
 #include <string.h>
 
+#include "map.h"
+#include "nav_helper.h"
+
 bool gameRunning;
 bool acceptedRules;
 
+//declare needed variables
+Room *map;
+
 // content
 char *gameInstructionsFile = "../../src/content/game_instructions.txt";
+char *gameMapFile = "../../src/content/game.map";
+
+//navigation
+int playerPosition = 0;
+int lastPlayerPosition = 0;
+
 
 // function declarations
 void printInit();
 void acceptInstructions();
 void processInput();
 int checkExit();
+
 
 int main()
 {
@@ -24,6 +37,9 @@ int main()
 
 	// init and instructions
 	printInit();
+
+	//get Content
+	map = getMap(gameMapFile);
 
 	if (acceptedRules == 1)
 	{
@@ -41,6 +57,7 @@ int main()
 	}
 	return 0;
 }
+
 
 // init dialogue
 void printInit()
@@ -100,10 +117,37 @@ void acceptInstructions()
 // process user input
 void processInput(char userInput[20])
 {
+	Room r = map[playerPosition];
 	if (checkExit(userInput) == 1)
 	{
 		gameRunning = 0;
 		printf("!GAME EXIT!\n");
+	}
+	else if (strcmp(userInput, "north") == 0)
+	{
+		printf("->N\n");
+		lastPlayerPosition = playerPosition;
+		if (playerPosition == (int)(mapMax - 1))
+		{
+			printf("You have reached the border. You have to go in the other direction!\n");
+		}
+		else
+		{
+			playerPosition = r.successor;
+		}
+	}
+	else if (strcmp(userInput, "south") == 0)
+	{
+		printf("->S\n");
+		lastPlayerPosition = playerPosition;
+		if (playerPosition > 0)
+		{
+			playerPosition = r.predecessor;
+		}
+		else
+		{
+			printf("You have reached the border. You have to go in the other direction!\n");
+		}
 	}
 	else
 	{
@@ -121,3 +165,4 @@ int checkExit(char userInput[20])
 
 	return 0;
 }
+
