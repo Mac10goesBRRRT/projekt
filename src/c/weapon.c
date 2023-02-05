@@ -39,3 +39,8 @@ void setDamageModifier(Weapon *weapon, int modifierSet)
 {
     weapon->damageModifier = modifierSet;
 }
+
+int getBaseDamage(Weapon *weapon)
+{
+    return weapon->baseDamage;
+}

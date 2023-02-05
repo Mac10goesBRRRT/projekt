@@ -32,4 +32,6 @@ void setTypeID(Weapon *weapon, int typeToSet);
 int getDamageModifier(Weapon *weapon);
 void setDamageModifier(Weapon *weapon, int modifierSet);
 
+int getBaseDamage(Weapon *weapon);
+
 #endif

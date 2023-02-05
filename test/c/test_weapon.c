@@ -151,4 +151,22 @@ void test_setDamageModifier(void)
     TEST_ASSERT_EQUAL(damageModifier, result);
 }
 
+void test_getBaseDamage(void)
+{
+    // arrange
+    int baseDamage = 10, result;
+    Weapon test;
+    test.baseDamage = baseDamage;
+
+    /* act */
+    // Die Funktion wird ausgeführt
+    result = getBaseDamage(&test);
+
+    // output
+    printf("getBaseDamage | baseDamage should be: %d -> is: %d", baseDamage, result);
+
+    // assert
+    TEST_ASSERT_EQUAL(baseDamage, result);
+}
+
 #endif // TEST
