@@ -7,3 +7,7 @@ char *getName(Weapon *weapon){
 void setName(Weapon *weapon, char *nameToSet){
     weapon->name = nameToSet;
 }
+
+char *getFullName(Weapon *weapon){
+    return weapon->fullName;
+}

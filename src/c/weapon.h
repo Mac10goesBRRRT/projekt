@@ -21,5 +21,6 @@ typedef struct
 char *getName(Weapon *weapon);
 void setName(Weapon *weapon, char *nameToSet);
 
+char *getFullName(Weapon *weapon);
 
 #endif

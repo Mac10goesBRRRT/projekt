@@ -46,4 +46,22 @@ void test_setName(void)
     TEST_ASSERT_EQUAL(nameWeapon, result);
 }
 
+void test_getFullName(void)
+{
+    // arrange
+    char *nameOfWeapon = "Kukri v2", *result;
+    Weapon test;
+    test.fullName = nameOfWeapon;
+
+    /* act */
+    // Die Funktion wird ausgeführt
+    result = getFullName(&test);
+
+    // output
+    printf("getFullName | fullName should be: %s -> is: %s", nameOfWeapon, result);
+
+    // assert
+    TEST_ASSERT_EQUAL(nameOfWeapon, result);
+}
+
 #endif // TEST
