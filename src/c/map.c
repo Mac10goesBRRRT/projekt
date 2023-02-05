@@ -58,3 +58,7 @@ Room *getMap(char *gameMapFile)
 
 	return fillMap;
 };
+
+int getRoomSuccessor(Room *room){
+	return room->successor;
+}

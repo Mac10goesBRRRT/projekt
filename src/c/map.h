@@ -26,4 +26,10 @@ typedef struct Room
 
 Room *getMap(char *gameMapFile);
 
+
+int getRoomSuccessor(Room *room);
+
+
+
+
 #endif // MAP_H

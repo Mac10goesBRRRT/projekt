@@ -4,8 +4,10 @@
 #include "map.h"
 #include "nav_helper.h"
 
+
 void setUp(void)
 {
+
 }
 
 void tearDown(void)
@@ -16,13 +18,14 @@ void test_map(void)
 {
     /* arrange */
     // Hier die Werte eingeben
-    Room* map;
+    Room *map;
 
     /* act */
     // Die Funktion wird ausgeführt
     map = getMap("./src/content/game.map");
 
-    for(int i=0; i<4;i++){
+    for (int i = 0; i < 4; i++)
+    {
         printf("%s\n", map[i].nameRoom);
     }
 
@@ -40,5 +43,26 @@ void test_map(void)
     TEST_ASSERT_EQUAL_INT(fdExpectedSuccessor, map[2].successor);
     TEST_ASSERT_EQUAL_INT(fdExpectedID, map[2].id);
 }
+
+void test_getRoomSuccessor(void)
+{
+    // arrange
+    int successor = 1, result;
+    Room test;
+    test.successor = successor;
+
+    /* act */
+    // Die Funktion wird ausgeführt
+    result = getRoomSuccessor(&test);
+
+    // output
+    printf("---------------------------------------------------------\n");
+    printf("getRoomSuccessor | Successor should be: %d -> is: %d", successor, result);
+
+    // assert
+    TEST_ASSERT_EQUAL(successor, result);
+}
+
+
 
 #endif // TEST
