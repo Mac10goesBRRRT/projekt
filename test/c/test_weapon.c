@@ -64,4 +64,21 @@ void test_getFullName(void)
     TEST_ASSERT_EQUAL(nameOfWeapon, result);
 }
 
+void test_setFullName(void)
+{
+    // arrange
+    char *fullNameWeapon = "switchblade v2", *result;
+
+    // act
+    Weapon test;
+    setFullName(&test, fullNameWeapon);
+    result = test.fullName;
+
+    // output
+    printf("setFullName | fullName set to: %s -> after set: %s", fullNameWeapon, result);
+
+    // assert
+    TEST_ASSERT_EQUAL(fullNameWeapon, result);
+}
+
 #endif // TEST
