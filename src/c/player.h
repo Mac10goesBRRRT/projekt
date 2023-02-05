@@ -12,6 +12,7 @@ typedef struct
 } Player;
 
 Player addItemToInventory(Item *availableItem, int itemIndex, Player actualPlayer);
+Player removeItemFromInventory(int index, Player actualPlayer);
 
 void showInventory(Player actualPlayer);
 

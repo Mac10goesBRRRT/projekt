@@ -7,6 +7,8 @@
 
 
 // PLAYER INVENTORY
+
+//add and remove
 Player addItemToInventory(Item *availableItems, int itemIndex, Player actualPlayer)
 {
     int counter = actualPlayer.itemCounter;
@@ -16,6 +18,40 @@ Player addItemToInventory(Item *availableItems, int itemIndex, Player actualPlay
     return actualPlayer;
 }
 
+Player removeItemFromInventory(int itemIndex, Player actualPlayer)
+{
+    Item items[maxItems]; //    actualPlayer.itemInventory
+    int i, index = -1;
+
+    for (i = 0; i < maxItems; i++)
+    {
+        if (i == itemIndex)
+        {
+            // printf("%d - '%s'  has been removed from inventory.\n", actualPlayer.itemInventory[i].id, actualPlayer.itemInventory[i].itemName);
+            index = i;
+            break;
+        }
+    }
+
+    if (index != -1)
+    {
+        // shift all the element from index+1 by one position to the left
+        for (i = index; i < maxItems - 1; i++)
+            actualPlayer.itemInventory[i] = actualPlayer.itemInventory[i + 1];
+
+        /*printf("New Array : ");
+        for(i = 0; i < maxItems - 1; i++)
+            printf("%d ",actualPlayer.itemInventory[i].id);*/
+    }
+    else
+        printf("Element Not Found\n");
+
+    actualPlayer.itemCounter = actualPlayer.itemCounter - 1;
+
+    return actualPlayer;
+}
+
+//show
 void showInventory(Player actualPlayer)
 {
     int inventoryItemCounter = actualPlayer.itemCounter;
@@ -37,3 +73,4 @@ void showInventory(Player actualPlayer)
 
     printf("\n\n");
 }
+
