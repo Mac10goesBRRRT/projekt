@@ -70,3 +70,8 @@ int getItemShopAvailable(Item *item)
 {
 	return item->inShopAvailable;
 }
+
+void setItemShopAvailable(Item *item, bool value)
+{
+	item->inShopAvailable = value;
+}

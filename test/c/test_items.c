@@ -89,6 +89,21 @@ void test_getItemShopAvailable(void)
     TEST_ASSERT_EQUAL(value, result);
 }
 
+void test_setItemShopAvailable(void)
+{
+    // arrange
+    bool value = true, result;
 
+    // act
+    Item test;
+    setItemShopAvailable(&test, value);
+    result = test.inShopAvailable;
+
+    //output
+    printf("setItemShopAvailable | value should be: %d -> is: %d", value, result);
+
+    // assert
+    TEST_ASSERT_EQUAL(value, result);
+}
 
 #endif // TEST
