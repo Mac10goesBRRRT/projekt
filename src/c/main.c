@@ -12,6 +12,7 @@ char *gameInstructionsFile = "../../src/content/game_instructions.txt";
 
 // function declarations
 void printInit();
+void acceptInstructions();
 
 int main()
 {
@@ -37,7 +38,7 @@ int main()
 		}
 	}
 	return 0;
-};
+}
 
 // init dialogue
 void printInit()
@@ -64,6 +65,12 @@ void printInit()
 	free(line);		/* Deallocate allocated memory */
 	fclose(stream); /* closing file */
 
+	acceptInstructions();
+}
+
+//accept rules and instructions for init dialogue
+void acceptInstructions()
+{
 	char userInput[1];
 	bool inputState = 0;
 	int acceptCounter = 0;
@@ -86,4 +93,4 @@ void printInit()
 			printf("Invalid Input!\n");
 		}
 	}
-};
+}
