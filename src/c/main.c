@@ -9,6 +9,7 @@
 #include "items.h"
 #include "shop.h"
 #include "player.h"
+#include "commands.h"
 
 bool gameRunning;
 bool acceptedRules;
@@ -134,21 +135,28 @@ void processInput(char userInput[20])
 	}
 	else if (strcmp(userInput, "shop") == 0)
 	{
-		int result = openShop(availableItems); // result > 0 -> integer = index of item OR result = 0 -> cancel
-		if (result > 0)
+		Room actualRoom = map[playerPosition];
+		if (actualRoom.shopAvailable == 1)
 		{
-			actualPlayer = addItemToInventory(availableItems, result, actualPlayer);
+			int result = openShop(availableItems); // result > 0 -> integer = index of item OR result = 0 -> cancel
+			if (result > 0)
+			{
+				actualPlayer = addItemToInventory(availableItems, result, actualPlayer);
+			}
+		}
+		else
+		{
+			printf("You can't access the shop from here.");
 		}
 	}
 	else if (strcmp(userInput, "inventory") == 0)
 	{
-		showInventory(actualPlayer);		
+		showInventory(actualPlayer);
 	}
 	else if (checkMove(userInput) == 1)
 	{
 		printf("Wrong Input!\n");
 	}
-
 }
 
 // function for checking user input of exit
@@ -232,5 +240,10 @@ void printStatus()
 		printf("%s\n", actualRoom.nameRoom);
 		printf("%s\n", actualRoom.msgRoom);
 		printf("\n");
+
+		char *possibleCommands = malloc(sizeof(char) * (500));
+		possibleCommands = getPossibleCommands(map[playerPosition], playerPosition);
+		printf("%s", possibleCommands);
+		free(possibleCommands);
 	}
 }
