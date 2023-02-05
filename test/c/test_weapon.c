@@ -99,4 +99,21 @@ void test_getTypeID(void)
     TEST_ASSERT_EQUAL(type, result);
 }
 
+void test_setTypeID(void)
+{
+    // arrange
+    int type = 2, result;
+
+    // act
+    Weapon test;
+    setTypeID(&test, type);
+    result = test.typeID;
+
+    // output
+    printf("setTypeID | typeID set to: %d -> after set: %d", type, result);
+
+    // assert
+    TEST_ASSERT_EQUAL(type, result);
+}
+
 #endif // TEST

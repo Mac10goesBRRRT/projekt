@@ -24,3 +24,8 @@ int getTypeID(Weapon *weapon)
 {
     return weapon->typeID;
 }
+
+void setTypeID(Weapon *weapon, int typeToSet)
+{
+    weapon->typeID = typeToSet;
+}
