@@ -81,4 +81,22 @@ void test_setFullName(void)
     TEST_ASSERT_EQUAL(fullNameWeapon, result);
 }
 
+void test_getTypeID(void)
+{
+    // arrange
+    int type = 1, result;
+    Weapon test;
+    test.typeID = type;
+
+    /* act */
+    // Die Funktion wird ausgeführt
+    result = getTypeID(&test);
+
+    // output
+    printf("getTypeID | typeID should be: %d -> is: %d", type, result);
+
+    // assert
+    TEST_ASSERT_EQUAL(type, result);
+}
+
 #endif // TEST

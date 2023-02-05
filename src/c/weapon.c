@@ -19,3 +19,8 @@ void setFullName(Weapon *weapon, char *fullNameToSet)
 {
     weapon->fullName = fullNameToSet;
 }
+
+int getTypeID(Weapon *weapon)
+{
+    return weapon->typeID;
+}

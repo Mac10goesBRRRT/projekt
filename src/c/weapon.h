@@ -24,4 +24,6 @@ void setName(Weapon *weapon, char *nameToSet);
 char *getFullName(Weapon *weapon);
 void setFullName(Weapon *weapon, char *fullNameToSet);
 
+int getTypeID(Weapon *weapon);
+
 #endif
