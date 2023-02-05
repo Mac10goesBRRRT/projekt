@@ -79,6 +79,7 @@ void test_addMoneyToPlayer(void)
     // balance = 70
     int valueToAdd = 20;
     int checkSum = actualPlayer.wallet + valueToAdd;
+
     /* act */
     // Die Funktion wird ausgeführt
     actualPlayer = addMoneyToPlayer(actualPlayer, valueToAdd);
@@ -90,5 +91,27 @@ void test_addMoneyToPlayer(void)
     // Vergleichen mit Inhalt von game.Map File
     TEST_ASSERT_EQUAL_INT(checkSum, actualPlayer.wallet);
 }
+
+void test_removeMoneyFromPlayer(void)
+{
+    /* arrange */
+    // Hier die Werte eingeben/deklarieren
+    int valueToRemove = 20;
+    int checkSum = actualPlayer.wallet - valueToRemove;
+    
+    /* act */
+    // Die Funktion wird ausgeführt
+    actualPlayer = removeMoneyFromPlayer(actualPlayer, valueToRemove);
+
+    // OUTPUT
+    printf("%d$ has been removed from your balance. TOTAL: %d$", valueToRemove, actualPlayer.wallet);
+
+    /* assert */
+    // Vergleichen mit Inhalt von game.Map File
+    TEST_ASSERT_EQUAL_INT(checkSum, actualPlayer.wallet);
+}
+
+
+
 
 #endif // TEST

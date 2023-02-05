@@ -64,6 +64,13 @@ Player addMoneyToPlayer(Player actualPlayer, int money)
     return actualPlayer;
 }
 
+Player removeMoneyFromPlayer(Player actualPlayer, int money)
+{
+    int newTotal = actualPlayer.wallet - money;
+    actualPlayer = setTotal(actualPlayer, newTotal);
+    return actualPlayer;
+}
+
 // show
 void showInventory(Player actualPlayer)
 {
