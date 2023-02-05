@@ -1,0 +1,53 @@
+
+
+************************************************************************************************************
+                       _____          __  __ ______     _____ _______       _____ _______ 
+                      / ____|   /\   |  \/  |  ____|   / ____|__   __|/\   |  __ \__   __|
+                     | |  __   /  \  | \  / | |__     | (___    | |  /  \  | |__) | | |   
+                     | | |_ | / /\ \ | |\/| |  __|     \___ \   | | / /\ \ |  _  /  | |   
+                     | |__| |/ ____ \| |  | | |____    ____) |  | |/ ____ \| | \ \  | |   
+                      \_____/_/    \_\_|  |_|______|  |_____/   |_/_/    \_\_|  \_\ |_|    
+
+************************************************************************************************************
+
+
+ | | /| / /__ / /______  __ _  ___   / /____    / |/ / _ | /  |/  / __/
+ | |/ |/ / -_) / __/ _ \/  ' \/ -_) / __/ _ \  /    / __ |/ /|_/ / _/  
+ |__/|__/\__/_/\__/\___/_/_/_/\__/  \__/\___/ /_/|_/_/ |_/_/  /_/___/ 
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+INSTRUCTIONS:
+
+how to move on the map
+enter "north" to go north
+enter "south" to go south
+
+
+alltime commands:
+- 'inventory' -> will show your items that you have bought or found ()
+
+special commands (not available at any time during the game):
+- 'shop' -> opens the shop where you can buy or sell items
+
+CURRENTLY NOT AVAILABLE FEATURES (will be available soon):
+- "use [item]"
+- "find [item]"
+WARNING: Pickups are always hidden, find them with "find [item]" and take them with "take [item]"
+
+How to leave the game:
+use "esc", "exit" or "quit" to leave the game
+
+
+And remember, EVERY point/room has something you can do.
+Have fun!
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+
+************************************************************************************************************
+
+
+did you read our rules and instructions? Yes(y) or No(n)
