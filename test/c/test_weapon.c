@@ -134,4 +134,21 @@ void test_getDamageModifier(void)
     TEST_ASSERT_EQUAL(damageModifier, result);
 }
 
+void test_setDamageModifier(void)
+{
+    // arrange
+    int damageModifier = 5, result;
+
+    // act
+    Weapon test;
+    setDamageModifier(&test, damageModifier);
+    result = test.damageModifier;
+
+    // output
+    printf("setDamageModifier | damageModifier set to: %d -> after set: %d", damageModifier, result);
+
+    // assert
+    TEST_ASSERT_EQUAL(damageModifier, result);
+}
+
 #endif // TEST

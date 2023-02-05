@@ -34,3 +34,8 @@ int getDamageModifier(Weapon *weapon)
 {
     return weapon->damageModifier;
 }
+
+void setDamageModifier(Weapon *weapon, int modifierSet)
+{
+    weapon->damageModifier = modifierSet;
+}

@@ -30,5 +30,6 @@ void setTypeID(Weapon *weapon, int typeToSet);
 //typeName placeholder
 
 int getDamageModifier(Weapon *weapon);
+void setDamageModifier(Weapon *weapon, int modifierSet);
 
 #endif
