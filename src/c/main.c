@@ -8,6 +8,7 @@
 #include "nav_helper.h"
 #include "items.h"
 #include "shop.h"
+#include "player.h"
 
 bool gameRunning;
 bool acceptedRules;
@@ -15,6 +16,7 @@ bool acceptedRules;
 // declare needed variables
 Room *map;
 Item *availableItems;
+Player actualPlayer;
 int inputCounter = 0;
 
 // content
@@ -37,6 +39,7 @@ void printStatus();
 int main()
 {
 	// define variables
+	actualPlayer.id = 1;
 	char userInput[20]; // maximum defined user input length
 	gameRunning = 1;
 
@@ -134,7 +137,7 @@ void processInput(char userInput[20])
 		int result = openShop(availableItems); // result > 0 -> integer = index of item OR result = 0 -> cancel
 		if (result > 0)
 		{
-			// buyItem -> we need inventory for player first
+			addItemToInventory(availableItems, result, actualPlayer);
 		}
 		printStatus();
 	}
