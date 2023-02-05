@@ -6,17 +6,21 @@
 
 #include "map.h"
 #include "nav_helper.h"
+#include "items.h"
+#include "shop.h"
 
 bool gameRunning;
 bool acceptedRules;
 
 // declare needed variables
 Room *map;
+Item *availableItems;
 int inputCounter = 0;
 
 // content
 char *gameInstructionsFile = "../../src/content/game_instructions.txt";
 char *gameMapFile = "../../src/content/game.map";
+char *itemsMapFile = "../../src/content/items.map";
 
 // navigation
 int playerPosition = 0;
@@ -41,6 +45,7 @@ int main()
 
 	// get Content
 	map = getMap(gameMapFile);
+	availableItems = getItems(itemsMapFile);
 
 	if (acceptedRules == 1)
 	{
@@ -124,6 +129,15 @@ void processInput(char userInput[20])
 		gameRunning = 0;
 		printf("!GAME EXIT!\n");
 	}
+	else if (strcmp(userInput, "shop") == 0)
+	{
+		int result = openShop(availableItems); // result > 0 -> integer = index of item OR result = 0 -> cancel
+		if (result > 0)
+		{
+			// buyItem -> we need inventory for player first
+		}
+		printStatus();
+	}
 	else if (checkMove(userInput) == 1)
 	{
 		printf("Wrong Input!\n");
@@ -143,7 +157,7 @@ int checkExit(char userInput[20])
 	return 0;
 }
 
-//check is user moved
+// check is user moved
 int checkMove(char userInput[20])
 {
 
