@@ -115,5 +115,39 @@ void test_setRoomPredecessor(void)
     TEST_ASSERT_EQUAL(predecessor, result);
 }
 
+void test_getRoomShopAvailable(void)
+{
+    // arrange
+    bool available = true, result;
+    Room test;
+    test.shopAvailable = available;
+
+    /* act */
+    // Die Funktion wird ausgeführt
+    result = getRoomShopAvailable(&test);
+
+    // output
+    printf("getRoomShopAvailable | shopAvailable should be: %d -> is: %d", available, result);
+
+    // assert
+    TEST_ASSERT_EQUAL(available, result);
+}
+
+void test_setRoomShopAvailable(void)
+{
+            // arrange
+    bool available = true, result;
+
+    // act
+    Room test;
+    setRoomShopAvailable(&test, available);
+    result = test.shopAvailable;
+
+    //output
+    printf("setRoomShopAvailable | shopAvailable set to: %d -> after set: %d", available, result);
+
+    // assert
+    TEST_ASSERT_EQUAL(available, result);
+}
 
 #endif // TEST

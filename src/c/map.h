@@ -33,4 +33,7 @@ void setRoomSuccessor(Room *room, int successorSet);
 int getRoomPredecessor(Room *room);
 void setRoomPredecessor(Room *room, int predecessorSet);
 
+bool getRoomShopAvailable(Room *room);
+void setRoomShopAvailable(Room *room, bool shopAvailableSet);
+
 #endif // MAP_H

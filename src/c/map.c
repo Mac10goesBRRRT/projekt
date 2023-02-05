@@ -78,3 +78,13 @@ void setRoomPredecessor(Room *room, int predecessorSet)
 {
 	room->predecessor = predecessorSet;
 }
+
+bool getRoomShopAvailable(Room *room)
+{
+	return room->shopAvailable;
+}
+
+void setRoomShopAvailable(Room *room, bool shopAvailableSet)
+{
+	room->shopAvailable = shopAvailableSet;
+}
