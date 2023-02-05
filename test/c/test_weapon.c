@@ -186,4 +186,22 @@ void test_setBaseDamage(void)
     TEST_ASSERT_EQUAL(baseDamage, result);
 }
 
+void test_getAvailable(void)
+{
+    // arrange
+    bool canBeUsed = true, result;
+    Weapon test;
+    test.canBeUsed = canBeUsed;
+
+    /* act */
+    // Die Funktion wird ausgeführt
+    result = getAvailable(&test);
+
+    // output
+    printf("getAvailable | canBeUsed should be: %d -> is: %d", canBeUsed, result);
+
+    // assert
+    TEST_ASSERT_EQUAL(canBeUsed, result);
+}
+
 #endif // TEST

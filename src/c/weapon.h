@@ -35,4 +35,7 @@ void setDamageModifier(Weapon *weapon, int modifierSet);
 int getBaseDamage(Weapon *weapon);
 void setBaseDamage(Weapon *weapon, int baseDmgSet);
 
+bool getAvailable(Weapon *weapon);
+
+
 #endif

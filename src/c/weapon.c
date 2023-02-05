@@ -49,3 +49,8 @@ void setBaseDamage(Weapon *weapon, int baseDmgSet)
 {
     weapon->baseDamage = baseDmgSet;
 }
+
+bool getAvailable(Weapon *weapon)
+{
+    return weapon->canBeUsed;
+}
