@@ -79,7 +79,7 @@ Player buyItem(Item *availableItems, int itemIndex, Player actualPlayer)
     {
         actualPlayer = addItemToInventory(availableItems, itemIndex, actualPlayer);
         actualPlayer = removeMoneyFromPlayer(actualPlayer, itemPrice);
-        printf("You bought item for %d$! Your balance is now: %d$\n", itemPrice, actualPlayer.wallet);
+        printf("You bought item[%d] for %d$! \nYour balance is now: %d$\n", itemIndex, itemPrice, actualPlayer.wallet);
         return actualPlayer;
     }
     else
@@ -91,9 +91,11 @@ Player buyItem(Item *availableItems, int itemIndex, Player actualPlayer)
 
 Player sellItem(int itemIndex, Player actualPlayer)
 {
+    int priceItemSell = actualPlayer.itemInventory[itemIndex].price;
     actualPlayer = addMoneyToPlayer(actualPlayer, actualPlayer.itemInventory[itemIndex].price / 2);
+    printf("Item has been sold for 50%% of the purchase price (purchase price: %d$)! \nYour balance is now: %d$\n", priceItemSell, actualPlayer.wallet);
+
     actualPlayer = removeItemFromInventory(itemIndex, actualPlayer);
-    printf("Item has been sold! Your balance is now: %d$\n", actualPlayer.wallet);
     return actualPlayer;
 }
 

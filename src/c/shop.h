@@ -2,7 +2,8 @@
 #define SHOP_H
 
 #include "items.h"
+#include "player.h"
 
-int openShop(Item *availableItems);
+int *openShop(Item *availableItems, Player actualPlayer);
 
 #endif

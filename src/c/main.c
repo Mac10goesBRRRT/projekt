@@ -41,6 +41,7 @@ int main()
 {
 	// define variables
 	actualPlayer.id = 1;
+	actualPlayer.wallet = 100;
 	char userInput[20]; // maximum defined user input length
 	gameRunning = 1;
 
@@ -138,10 +139,15 @@ void processInput(char userInput[20])
 		Room actualRoom = map[playerPosition];
 		if (actualRoom.shopAvailable == 1)
 		{
-			int result = openShop(availableItems); // result > 0 -> integer = index of item OR result = 0 -> cancel
-			if (result > 0)
+			int *result =  malloc (sizeof (int) * 2);
+			result = openShop(availableItems, actualPlayer); // result > 0 -> integer = index of item OR result = 0 -> cancel
+			if (result[0] == 0)
 			{
-				actualPlayer = addItemToInventory(availableItems, result, actualPlayer);
+				actualPlayer = buyItem(availableItems, result[1], actualPlayer);
+			}
+			else if (result[0] == 1)
+			{
+				actualPlayer = sellItem(result[1], actualPlayer);
 			}
 		}
 		else
