@@ -14,6 +14,7 @@ char *gameInstructionsFile = "../../src/content/game_instructions.txt";
 void printInit();
 void acceptInstructions();
 void processInput();
+int checkExit();
 
 int main()
 {
@@ -69,7 +70,7 @@ void printInit()
 	acceptInstructions();
 }
 
-//accept rules and instructions for init dialogue
+// accept rules and instructions for init dialogue
 void acceptInstructions()
 {
 	char userInput[1];
@@ -81,13 +82,13 @@ void acceptInstructions()
 		if (strcasecmp(userInput, "y") == 0)
 		{
 			acceptedRules = 1;
-			inputState = 1; //break while
+			inputState = 1; // break while
 		}
 		else if (strcasecmp(userInput, "n") == 0)
 		{
 			printf("You didn't read our rules & instructions. The game will close now. \n\n");
 			acceptedRules = 0;
-			inputState = 1; //break while
+			inputState = 1; // break while
 		}
 		else
 		{
@@ -96,10 +97,10 @@ void acceptInstructions()
 	}
 }
 
-//process user input
+// process user input
 void processInput(char userInput[20])
 {
-	if (strcmp(userInput, "esc") == 0 || strcmp(userInput, "exit") == 0 || strcmp(userInput, "quit") == 0)
+	if (checkExit(userInput) == 1)
 	{
 		gameRunning = 0;
 		printf("!GAME EXIT!\n");
@@ -108,4 +109,15 @@ void processInput(char userInput[20])
 	{
 		printf("Wrong Input!\n");
 	}
+}
+
+//function for checking user input of exit
+int checkExit(char userInput[20])
+{
+	if (strcmp(userInput, "esc") == 0 || strcmp(userInput, "exit") == 0 || strcmp(userInput, "quit") == 0)
+	{
+		return 1;
+	}
+
+	return 0;
 }
