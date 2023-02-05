@@ -137,16 +137,18 @@ void processInput(char userInput[20])
 		int result = openShop(availableItems); // result > 0 -> integer = index of item OR result = 0 -> cancel
 		if (result > 0)
 		{
-			addItemToInventory(availableItems, result, actualPlayer);
+			actualPlayer = addItemToInventory(availableItems, result, actualPlayer);
 		}
-		printStatus();
+	}
+	else if (strcmp(userInput, "inventory") == 0)
+	{
+		showInventory(actualPlayer);		
 	}
 	else if (checkMove(userInput) == 1)
 	{
 		printf("Wrong Input!\n");
 	}
 
-	inputCounter += 1;
 }
 
 // function for checking user input of exit
@@ -163,12 +165,10 @@ int checkExit(char userInput[20])
 // check is user moved
 int checkMove(char userInput[20])
 {
-
 	Room r = map[playerPosition];
-
+	inputCounter += 1;
 	if (strcmp(userInput, "north") == 0)
 	{
-		printf("->N\n");
 		lastPlayerPosition = playerPosition;
 		if (playerPosition == (int)(mapMax - 1))
 		{
@@ -183,7 +183,6 @@ int checkMove(char userInput[20])
 	}
 	else if (strcmp(userInput, "south") == 0)
 	{
-		printf("->S\n");
 		lastPlayerPosition = playerPosition;
 		if (playerPosition > 0)
 		{
