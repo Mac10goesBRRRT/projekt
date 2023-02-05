@@ -13,6 +13,7 @@ char *gameInstructionsFile = "../../src/content/game_instructions.txt";
 // function declarations
 void printInit();
 void acceptInstructions();
+void processInput();
 
 int main()
 {
@@ -34,7 +35,7 @@ int main()
 
 			// NEXT STEP:
 			// Processing
-			// processInput(userInput);
+			processInput(userInput);
 		}
 	}
 	return 0;
@@ -92,5 +93,19 @@ void acceptInstructions()
 		{
 			printf("Invalid Input!\n");
 		}
+	}
+}
+
+//process user input
+void processInput(char userInput[20])
+{
+	if (strcmp(userInput, "esc") == 0 || strcmp(userInput, "exit") == 0 || strcmp(userInput, "quit") == 0)
+	{
+		gameRunning = 0;
+		printf("!GAME EXIT!\n");
+	}
+	else
+	{
+		printf("Wrong Input!\n");
 	}
 }
