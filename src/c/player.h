@@ -20,6 +20,9 @@ Player setTotal(Player actualPlayer, int value);
 Player addMoneyToPlayer(Player actualPlayer, int money);
 Player removeMoneyFromPlayer(Player actualPlayer, int money);
 
+//add and remove items with currency
+Player buyItem(Item *availableItems, int itemIndex, Player actualPlayer);
+
 //show
 void showInventory(Player actualPlayer);
 

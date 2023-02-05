@@ -111,7 +111,23 @@ void test_removeMoneyFromPlayer(void)
     TEST_ASSERT_EQUAL_INT(checkSum, actualPlayer.wallet);
 }
 
+void test_buyItem(void)
+{
+    /* arrange */
+    // Hier die Werte eingeben/deklarieren
+    int itemIndex = 2; // price = 50
+    int checkSum = actualPlayer.wallet - availableItems[itemIndex-1].price;
 
+    /* act */
+    // Die Funktion wird ausgeführt
+    actualPlayer = buyItem(availableItems, itemIndex, actualPlayer);
+
+    /* assert */
+    // Vergleichen mit Inhalt von game.Map File
+    TEST_ASSERT_EQUAL_INT(itemIndex, actualPlayer.itemInventory[0].id); //check if item has right ID
+    TEST_ASSERT_EQUAL_INT(checkSum, actualPlayer.wallet); //check money after transfer
+
+}
 
 
 #endif // TEST

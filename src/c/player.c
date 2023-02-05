@@ -71,6 +71,25 @@ Player removeMoneyFromPlayer(Player actualPlayer, int money)
     return actualPlayer;
 }
 
+//add and remove items with currency
+Player buyItem(Item *availableItems, int itemIndex, Player actualPlayer)
+{
+    int itemPrice = availableItems[itemIndex - 1].price;
+    if (actualPlayer.wallet >= itemPrice)
+    {
+        actualPlayer = addItemToInventory(availableItems, itemIndex, actualPlayer);
+        actualPlayer = removeMoneyFromPlayer(actualPlayer, itemPrice);
+        printf("You bought item for %d$! Your balance is now: %d$\n", itemPrice, actualPlayer.wallet);
+        return actualPlayer;
+    }
+    else
+    {
+        printf("You don't have enough money.\n\n");
+        return actualPlayer;
+    }
+}
+
+
 // show
 void showInventory(Player actualPlayer)
 {
